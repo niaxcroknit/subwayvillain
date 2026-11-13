@@ -802,12 +802,23 @@ for(const s of seats)if(!s.prio&&s.zone===1&&Math.random()<.75){const o=person({
 for(const [x,z,female]of[[-4,1.4,false],[4,-1.2,true]]){const o=person({skin:0xf0c8a5,hair:0x342923,top:female?0xc0a98c:0x718e8a,pants:0x4c5661,phone:true,female});o.position.set(x,0,z);o.rotation.y=female?.4:2.7;pose(o,'idle',0);scene.add(o);}
 // ---------- v6.1 백팩: 뒤로 맨 승객(가해) / 앞으로 맨 승객(매너·보호) ----------
 // 백팩은 그림에 없어서 3D 가방을 따로 붙임. 카메라 쪽으로 살짝 당겨 그림 위에 보이게 함(화면 위치는 그대로).
-const PACK_VIEW=new THREE.Vector3(.163/WORLD_X,.787,.597).multiplyScalar(.72),Y_AX=new THREE.Vector3(0,1,0);
-function addPack(o){const col=pick([0x2c3e50,0x3d4a3a,0x5a2f2f,0x2f2f3a,0x6b5a3a,0x8a3b2e]),dark=new THREE.Color(col).multiplyScalar(.7).getHex();
- const g=new THREE.Group();g.add(soft(.42,.48,.2,col,0,0,0,.08));g.add(soft(.34,.2,.07,dark,0,-.1,.11,.03));g.add(soft(.15,.05,.05,0x1b1b1b,0,.29,0,.02));
- for(const sx of[-.16,.16])g.add(soft(.05,.34,.04,0x1d1d1d,sx,.14,-.1,.015));
- g.traverse(m=>{if(m.isMesh)m.castShadow=false;});o.add(g);o.userData.pack=g;packFix(o);return g;}
-function packFix(o){const g=o.userData.pack;if(!g)return;const r=o.rotation.y;g.position.set(0,1.13,0).addScaledVector(PACK_VIEW,1).applyAxisAngle(Y_AX,-r);g.rotation.set(0,-r,0);}
+// 카메라가 위에서 내려다봐서 세계 높이(y)로 올리면 덜 올라가 보임 → 화면 위쪽(카메라 up) 기준으로 등 위쪽(어깨~허리)에 붙임.
+// 가방은 늘 카메라를 향하고, 그림보다 카메라 쪽으로 살짝 당겨 그림 위에 보이게 함.
+const PACKS=new THREE.Group();PACKS.scale.x=1/WORLD_X;scene.add(PACKS);
+const PK={v:new THREE.Vector3(.163,.787,.597),up:new THREE.Vector3(-.207,.617,-.760),right:new THREE.Vector3(),m:new THREE.Matrix4()};PK.right.crossVectors(PK.up,PK.v).normalize();
+function addPack(o){const col=pick([0x2c3e50,0x3d4a3a,0x5a2f2f,0x2f2f3a,0x6b5a3a,0x8a3b2e]),dark=new THREE.Color(col).multiplyScalar(.68).getHex();
+ const g=new THREE.Group();
+ g.add(soft(.5,.58,.2,col,0,0,0,.13));                       // 등딱지 같은 둥근 몸통
+ g.add(soft(.38,.22,.06,dark,0,-.12,.11,.04));                // 앞주머니
+ g.add(soft(.14,.06,.05,0x1b1b1b,0,.31,-.02,.02));            // 손잡이
+ for(const sx of[-.19,.19]){const st=soft(.08,.16,.07,0x1d1d1d,sx,.3,-.05,.025);st.rotation.z=sx>0?-.35:.35;g.add(st);} // 어깨 끈
+ g.traverse(m=>{if(m.isMesh)m.castShadow=false;});PACKS.add(g);o.userData.pack=g;g.userData.owner=o;packFix(o);return g;}
+function packFix(o){const g=o.userData.pack;if(!g)return;const front=!(Math.cos(o.rotation.y)<0);
+ const h=front?.95:1.03; // 화면 기준 높이: 어깨 아래~등 위쪽
+ g.position.set(o.position.x*WORLD_X,o.position.y,o.position.z).addScaledVector(PK.up,h).addScaledVector(PK.v,.85);
+ PK.m.makeBasis(PK.right,PK.up,PK.v);g.quaternion.setFromRotationMatrix(PK.m);g.scale.setScalar(front?.8:.9);g.visible=!!o.parent&&o.visible!==false;}
+function packCam(){if(!camera.matrixWorld)return;const d=new THREE.Vector3();camera.getWorldDirection(d);if(!isFinite(d.x))return;PK.v.copy(d).negate();PK.up.set(0,1,0).applyQuaternion(camera.quaternion);PK.right.crossVectors(PK.up,PK.v).normalize();
+ for(const g of PACKS.children.slice()){const o=g.userData.owner;if(!o||!o.parent){PACKS.remove(g);continue;}packFix(o);}}
 const PACK_SPOTS=[-11,-8.6,-5.4,-1.8,2.4,5.9,9.1,11.3].flatMap(x=>[{x,z:1.25,used:null},{x:x+CAR,z:1.25,used:null,z2:true}]);
 S.packers=[];
 function spawnPacker(rear,doorX,immediate){
@@ -817,7 +828,7 @@ function spawnPacker(rear,doorX,immediate){
  const o=person({skin:pick(SKIN),hair:pick([0x2a2420,0x4a3424,0x161616]),top:pick([0x6596aa,0xb47f4f,0x6e927a,0x93849d,0xc6a65b]),pants:pick([0x3a4a6a,0x4a4a5a]),female:Math.random()<.5,phone:Math.random()<.5});
  o.position.set(immediate?spot.x:(doorX??spot.x),0,immediate?spot.z:-ZW-.7);scene.add(o);addPack(o);const pk={o,spot,state:immediate?'stand':'in',tag:null};spot.used=pk;
  if(immediate){o.rotation.y=rnd(-.35,.35);pk.tag=el('tag ok','매너 · 백팩 앞으로');pose(o,'idle',0);packFix(o);}S.packers.push(pk);return pk;}
-function packerTick(dt){for(const pk of S.packers){if(pk.state==='in'){const L=steer(pk.o,pk.spot.x,pk.spot.z,2.2,dt,.2);pose(pk.o,'walk',t);packFix(pk.o);if(L<.2){pk.state='stand';pk.o.position.set(pk.spot.x,0,pk.spot.z);pk.o.rotation.y=rnd(-.35,.35);pk.tag=el('tag ok','매너 · 백팩 앞으로');}}else{pose(pk.o,'idle',t);packFix(pk.o);}}}
+function packerTick(dt){packCam();for(const pk of S.packers){if(pk.state==='in'){const L=steer(pk.o,pk.spot.x,pk.spot.z,2.2,dt,.2);pose(pk.o,'walk',t);packFix(pk.o);if(L<.2){pk.state='stand';pk.o.position.set(pk.spot.x,0,pk.spot.z);pk.o.rotation.y=rnd(-.35,.35);pk.tag=el('tag ok','매너 · 백팩 앞으로');}}else{pose(pk.o,'idle',t);packFix(pk.o);}}}
 function packerWave(){const doors=W.doors.filter(d=>SAVE.zone2||d.x<CAR/2).map(d=>d.x);let n=0;
  const rearN=S.villains.filter(v=>v.packRear&&v.state!=='gone'&&v.state!=='fly').length;for(let i=0;i<Math.min(2,3-rearN);i++)if(Math.random()<.7&&spawnPacker(true,pick(doors)))n++;
  if(S.packers.length<2&&Math.random()<.6)spawnPacker(false,pick(doors));return n;}
