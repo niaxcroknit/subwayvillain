@@ -10,7 +10,7 @@ class TextureLoader{load(uri,cb){const canvas=decoded.get(uri);assert(canvas,'Em
 const ctx={THREE:{...T,WebGLRenderer:Renderer,TextureLoader},window:{THREE:T},document:doc,innerWidth:844,innerHeight:390,devicePixelRatio:1,localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},performance:{now:()=>0},requestAnimationFrame:f=>frame=f,addEventListener:(k,f)=>events[k]=f,setInterval(){},setTimeout(){},clearTimeout(){},navigator:{},screen:{},console,Math};
 const gamePath='game/index.html';
 let src=fs.readFileSync(gamePath,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
-src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode':''}};showSelection();\nrequestAnimationFrame(loop);`);
+src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK':''}};showSelection();\nrequestAnimationFrame(loop);`);
 vm.createContext(ctx);vm.runInContext(src,ctx);const q=ctx.qa;
 frame(16);assert(q.getSelection());assert.equal(q.getSelection().models.length,2);
 nodes.get('chooseFemale').onclick();assert.equal(q.hero.o.userData.spec.female,true);assert.equal(q.SAVE.character,'female');assert(nodes.get('chooseFemale').classList.contains('active'));
@@ -91,6 +91,44 @@ if(true){
  q.hero.vel.set(0,0,0);q.hero.seat=null;const prio=q.seats.find(s=>s.prio&&!s.p&&!s.res);if(prio){q.hero.pos.set(prio.x,0,Math.sign(prio.z)*1.9);ticks(60);assert(!q.hero.seat||!q.hero.seat.prio,'hero never rests on a priority seat');}
  q.hero.seat=null;q.hero.dashCd=0;q.hero.face=Math.PI/2;q.dash();assert(q.hero.inv>0);assert(q.hero.vel.x>10);
  console.log('PASS: spycam attacker targetable / victim protected, transfer-station boss + dex, no resting on priority seats, dash invulnerability.');
+}
+{ // v6 (Claude): shake, ultimate, incident timer/escape, segment stars, boss variants, cosmetics, daily, laps, justice
+ for(const e of q.S.elders)e.tipT=1e9;q.S.trickT=1e9;q.hero.dead=0;q.hero.hp=1000;q.hero.seat=null;
+ // 화면 흔들림: 타격 시 충격량이 쌓임
+ const sv=q.S.villains.find(v=>q.targetable(v)&&!v.boss&&v.state==='sit')||(()=>{const s=q.seats.find(s=>s.prio&&!s.p&&!s.res);const v=q.spawnVillain(new T.Vector3(s.x,0,s.z),'sit',s);q.sitVillain(v,s);return v;})();
+ q.S.trauma=0;q.hero.pos.copy(sv.o.position).add(new T.Vector3(0,0,.7));sv.hp=1e6;sv.max=1e6;q.strike(.2);assert(q.S.trauma>0,'hit adds screen shake');sv.hp=sv.max=30;
+ // 한방: 게이지 100에서만 발동, 반경 안 표시된 가해자를 한꺼번에 제압
+ q.S.ult=50;q.activateUlt();assert.equal(q.S.ult,50,'ult needs full gauge');
+ const pool=q.seats.filter(s=>s.prio&&s.zone===1).slice(0,3);const ultTargets=[];for(const s of pool){if(s.p&&q.S.villains.includes(s.p)){ultTargets.push(s.p);continue;}if(s.p||s.res)continue;const v=q.spawnVillain(new T.Vector3(s.x,0,s.z),'sit',s);q.sitVillain(v,s);ultTargets.push(v);}
+ q.hero.pos.set(pool[0].x,0,pool[0].z*.6);const before=q.S.rescueCount;q.S.ult=100;q.activateUlt();assert.equal(q.S.ult,0);for(let i=0;i<30;i++)q.update(1/60);
+ assert(q.S.rescueCount>before,'ultimate defeats nearby offenders');
+ const elder=q.S.elders.find(e=>e.state==='sit');if(elder)assert.notEqual(elder.state,'fly');
+ // 사건 제한 시간: 다 되면 실패 → 가해자 퇴장(공격 불가), 질서 하락
+ for(const i of q.S.incidents){i.phase='resolved';i.ttl=0;}q.updateIncidents(1);
+ let inc=q.spawnIncident('harass',null,true);assert(inc&&inc.limit>0&&inc.left>0);q.S.failPen=0;inc.left=.001;q.updateIncidents(.05);
+ assert.equal(inc.phase,'resolved');assert(inc.failed);assert.equal(q.targetable(inc.attacker),false);assert(q.S.failPen>0);assert.equal(inc.attacker.state,'leave');
+ // 몰카범: 다가가면 도주, 도주 중에도 공격 가능, 끝에 닿으면 놓침
+ q.updateIncidents(5);inc=q.spawnIncident('spycam',null,true);const spy=inc.attacker;q.hero.pos.copy(spy.o.position).add(new T.Vector3(-2,0,.3));q.updateIncidents(1/60);
+ assert(inc.fleeing,'spycam flees when approached');assert(q.targetable(spy),'fleeing spycam is still a target');spy.o.position.x=inc.fleeX;q.updateIncidents(1/60);assert(inc.failed);assert.equal(q.targetable(spy),false);
+ // 구간 미션: 별 0~3개, 역 스탬프 저장
+ q.S.boss=null;q.newSegment();assert.equal(q.S.seg.ms.length,3);q.S.seg.kills=99;q.S.seg.streak=99;q.S.seg.inc=99;q.S.seg.ult=99;q.S.seg.downs=0;q.S.seg.fails=0;q.S.failPen=0;
+ const cash0=q.S.money,st=q.SAVE.st;const res=q.segFinish();assert(res.stars>=2&&res.stars<=3);assert(q.S.money>cash0);assert.equal(q.SAVE.stamps[st],res.stars);assert.equal(q.S.seg,null);
+ // 보스 7종
+ assert.equal(Object.keys(q.BOSSES).length,7);
+ for(const v of q.S.villains)if(v.angry||v.boss){v.state='gone';}q.S.villains=q.S.villains.filter(v=>v.state!=='gone');q.S.boss=null;
+ q.spawnBoss('신도림');assert.equal(q.S.boss.btype,'신도림');const minions=q.S.villains.filter(v=>v.angry&&v.state==='chase'&&!v.boss);assert.equal(minions.length,2);assert(minions.every(v=>q.targetable(v)));
+ q.S.boss.state='gone';q.S.boss=null;q.spawnBoss('왕십리');assert.equal(q.S.boss.B.skill,'charge');assert(q.targetable(q.S.boss));q.S.boss.state='gone';q.S.boss=null;
+ // 꾸미기: 재킷 색은 주인공 셰이더 값만 바꾸고 능력치는 그대로
+ const stat0=JSON.stringify(q.stats());q.SAVE.cos.own.push('j1','u1','f2');q.SAVE.cos.jk='j1';q.SAVE.cos.umb='u1';q.SAVE.cos.fx='f2';q.applyCos();
+ assert.equal(q.hero.o.userData.art.sprite.material.userData.jk.w,1);assert.equal(JSON.stringify(q.stats()),stat0);
+ {const sh={uniforms:{},vertexShader:'#include <uv_vertex>\n#include <logdepthbuf_vertex>',fragmentShader:'void main(){\n#include <map_fragment>\n}'};q.hero.o.userData.art.sprite.material.onBeforeCompile(sh);assert(sh.uniforms.uJk);assert(sh.fragmentShader.includes('jkHsv2rgb'));}
+ q.SAVE.cos.jk='j0';q.applyCos();assert.equal(q.hero.o.userData.art.sprite.material.userData.jk.w,0);
+ // 오늘 미션
+ const d=q.ensureDaily();assert.equal(d.list.length,3);const it=d.list[0];q.dailyProg(it.k,it.goal);assert.equal(it.prog,it.goal);
+ // 바퀴·정의감
+ const laps=q.SAVE.laps;q.SAVE.laps=0;q.S.event=null;q.SAVE.justice=0;assert.equal(q.billVal(),5);q.SAVE.laps=2;assert(q.billVal()>5);const hv=q.spawnVillain(new T.Vector3(0,0,0),'neutral');q.SAVE.laps=0;const lv=q.spawnVillain(new T.Vector3(0,0,0),'neutral');assert(hv.max>lv.max);q.SAVE.laps=laps;
+ const j=q.CARDS.find(c=>c.id==='justice');assert(j.ok());const dm=q.stats().dmg;j.go();assert(q.stats().dmg>dm);q.SAVE.justice=0;
+ console.log('PASS: v6 hit shake, ultimate (full gauge only, offenders only), incident timeout + spycam escape, segment stars/stamps, 7 bosses + minions, cosmetics shader, daily missions, lap scaling, justice upgrade.');
 }
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});
  const rendererSource=fs.readFileSync('tests/software-render.cjs','utf8');const cpu={T,fs,createCanvas,urban:false};vm.createContext(cpu);vm.runInContext(rendererSource.slice(rendererSource.indexOf('function renderCPU(')),cpu);

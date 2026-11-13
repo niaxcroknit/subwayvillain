@@ -1,8 +1,8 @@
 {
   "name": "line2-clash",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "private": true,
-  "description": "2호선 격돌 v5 — Codex handoff",
+  "description": "2호선 격돌 v6 — Claude 타격감·목표·성장 시스템",
   "scripts": {
     "build": "node scripts/build.cjs",
     "test": "node tests/smoke.cjs",
