@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path');
+const root=path.resolve(__dirname,'..');let html=fs.readFileSync(path.join(root,'source/index.html'),'utf8');
+const keys=['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard'];for(const key of keys){const token='__ASSET_'+key+'__';if(!html.includes(token))throw Error('Missing token '+key);html=html.replaceAll(token,'data:image/png;base64,'+fs.readFileSync(path.join(root,'assets/atlas',key+'.png')).toString('base64'));}
+if(html.includes('__ASSET_'))throw Error('Unresolved asset placeholder');const start=html.indexOf('<script>')+8,end=html.indexOf('</script>',start);if(start<8||end<0)throw Error('Missing inline game script');new(require('vm').Script)(html.slice(start,end));fs.mkdirSync(path.join(root,'game'),{recursive:true});fs.writeFileSync(path.join(root,'game/index.html'),html);console.log('Built game/index.html ('+Buffer.byteLength(html)+' bytes)');

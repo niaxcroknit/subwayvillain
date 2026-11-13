@@ -1,0 +1,253 @@
+{
+  "project": "line2-clash",
+  "version": "5.0.0",
+  "basedOn": "codex v4",
+  "editedBy": "Claude 2026-11-13",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 23,
+      "sha256": "7670cbaf80167bd4fc4f5bed4d58b84e3199235b75e5354471e54dd72092cf82"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 4291,
+      "sha256": "27fe3018c8096d38fe3a6a2d16601af426e4ccf57afdf39fd697239679e1ec2e"
+    },
+    {
+      "path": "CODEX-MESSAGE.txt",
+      "bytes": 1726,
+      "sha256": "2bddbe2a1bed02433924b5319651cbd1ba77a47b8d1ee5584f69735255dc30f8"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 1904,
+      "sha256": "4c8f2ac4dd697faf8e8d43100591669b582078864346b6fa18e390a43a3833ec"
+    },
+    {
+      "path": "assets/atlas/boss.png",
+      "bytes": 143247,
+      "sha256": "f7901b86d27645e6a2033437343da50a0d7e9ec64be769994c55eb0b24b2adb7"
+    },
+    {
+      "path": "assets/atlas/guard.png",
+      "bytes": 61561,
+      "sha256": "5eaedf1d9a1454a834c19ca1b348044378dd4c22404afb0d6a5146675163a213"
+    },
+    {
+      "path": "assets/atlas/hero-female.png",
+      "bytes": 565570,
+      "sha256": "d0e5d92508e69eb0369d3794772577285ccbe2af918e7cb011b49c5c22369e14"
+    },
+    {
+      "path": "assets/atlas/hero-male.png",
+      "bytes": 542578,
+      "sha256": "b07eb4fede9adbaf75ef467ea5dc388d7265a8270ba890e303d99da612c6edf6"
+    },
+    {
+      "path": "assets/atlas/herosit.png",
+      "bytes": 160453,
+      "sha256": "bf36043d5e07037b877b801cd33c73cc1c1c2f8008fdc88ea5b933693a57a9c6"
+    },
+    {
+      "path": "assets/atlas/incidents.png",
+      "bytes": 519172,
+      "sha256": "c11430a4024a8f1fe235f324190e96a8ef4e1888b904668e562ae358e9074da2"
+    },
+    {
+      "path": "assets/atlas/passengers.png",
+      "bytes": 538885,
+      "sha256": "469a8763f2f4c0d57c1fb04e52465f6489f1a4da8f89b88f827a4bcdc3b69e55"
+    },
+    {
+      "path": "assets/atlas/spycam.png",
+      "bytes": 135310,
+      "sha256": "d1711bd326dfff905b922a5ce544c72a30c04a1c2a37dde8a1aa69e560fc42d1"
+    },
+    {
+      "path": "assets/original/hero-female.png",
+      "bytes": 1185934,
+      "sha256": "fc6d78cc2734c9cd6c85afe0055f82315ac555e0596f4038c7ec41048fa3312b"
+    },
+    {
+      "path": "assets/original/hero-male.png",
+      "bytes": 1070759,
+      "sha256": "37f06c0b2743d7fc1c5b07e41b00bb2ed93085bfc55769ae8857f0112ac34869"
+    },
+    {
+      "path": "assets/original/incidents.png",
+      "bytes": 1027526,
+      "sha256": "514ff0b7b0c58c4028a2c285e329ddc527e004488b33eb7ff9aad26f256485a3"
+    },
+    {
+      "path": "assets/original/passengers.png",
+      "bytes": 1086620,
+      "sha256": "7322f3105382f37585cc3078479dad06c2ff96c36ba37c8624b654628fcfc29a"
+    },
+    {
+      "path": "assets/v4-atlas/incidents.png",
+      "bytes": 601655,
+      "sha256": "d67349260c4d62f462f182a1a7f586c2213bf704fbc2d998eab444db3569ddf5"
+    },
+    {
+      "path": "docs/ART-PROMPTS.md",
+      "bytes": 3416,
+      "sha256": "7c983a7b4c49b90f85a52102cb7c638ebf8083f5963f1c941f5e6649dfe802ab"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "bytes": 8708,
+      "sha256": "c41a4eaac08ed0392ecca0b1cc74459767b95cbe790fbf77de496e282c2679f2"
+    },
+    {
+      "path": "docs/PLAY-README.md",
+      "bytes": 3677,
+      "sha256": "cc6c51811d48b12b582b0dab3b54a541080430613f5d71c72eaac35e2e576f35"
+    },
+    {
+      "path": "docs/V5-CHANGES.md",
+      "bytes": 6677,
+      "sha256": "12615ce9965ae146e95f1d9db12ddfb3301d04ea989abcd436c229f549826363"
+    },
+    {
+      "path": "game/index.html",
+      "bytes": 3680618,
+      "sha256": "4e2233b3384a62c3495a12edac97117422645fc0a900fb2682cff3badea02850"
+    },
+    {
+      "path": "outputs/claude-v5/01-camera-tags-pads.png",
+      "bytes": 1107844,
+      "sha256": "a637e17af9e914f9615cb21ab5d94a667f71ee20b40f75efd9e5dd9558d5f4fd"
+    },
+    {
+      "path": "outputs/claude-v5/02-first-shop-boss-map-dex.png",
+      "bytes": 994049,
+      "sha256": "e9c1a1555f4cb4b8d1721e75030398febd3dc2c17122af935379d825441317ea"
+    },
+    {
+      "path": "outputs/claude-v5/03-multibuy-shop-rest-boss-incidents.png",
+      "bytes": 1345768,
+      "sha256": "24401548fa23222ad217895479b07c0dec7e345bd975854568e7916a6a7052cf"
+    },
+    {
+      "path": "outputs/claude-v5/04-movement-dash.png",
+      "bytes": 613053,
+      "sha256": "523cb02fc5fdcfab9abc188879eec759a7c4bcc8eeb2bc664112faf5e687ab6f"
+    },
+    {
+      "path": "outputs/claude-v5/05-feet-fix-guard.png",
+      "bytes": 351933,
+      "sha256": "9d55654f7fd44f1e0c503890eb4d8320e8ed4bb2de42aa7cb198909893303fc3"
+    },
+    {
+      "path": "outputs/claude-v5/06-guard-front-back.png",
+      "bytes": 55896,
+      "sha256": "ae101440d195a2284b5b2fed32abbc5b02da2063b1ec88838976ba3dba53df60"
+    },
+    {
+      "path": "outputs/claude-v5/07-temp-art-boss-herosit.png",
+      "bytes": 272370,
+      "sha256": "ecce0b68257802175aeef217803e6bd846c935a2ba4a0b913c894a5788dd0756"
+    },
+    {
+      "path": "outputs/play-models-check.png",
+      "bytes": 313015,
+      "sha256": "5ecd9b64439cd8b0d7b5976970e3126800da646ae3c5c6ebfe272da36489025b"
+    },
+    {
+      "path": "outputs/selection-models-check.png",
+      "bytes": 98045,
+      "sha256": "fb3e44e847cb4268fc702719d5b410ec3376e09f0d0981535abde7edb60007c0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 433,
+      "sha256": "a748b8ddcab223283c0cb49cb525271a93886df618ad34cccdff5a0496febf8e"
+    },
+    {
+      "path": "references/approved/character-selection.png",
+      "bytes": 1988514,
+      "sha256": "31a1b599b4c532d6e3fed48cb7e60cd954b6e6bf555cded052f9952dd42f8433"
+    },
+    {
+      "path": "references/approved/style-02.png",
+      "bytes": 1695978,
+      "sha256": "2657120e26bf36031137bdf1a30b153e6b23cb218c804dd165b0f9500df24c0d"
+    },
+    {
+      "path": "references/history/AGENTS-v4.md",
+      "bytes": 2772,
+      "sha256": "4d4027a1f974c345a8af4763529246fa4921e4564ccc483dd8df28b3ac6b6ce8"
+    },
+    {
+      "path": "references/history/CLAUDE-MESSAGE-v4.txt",
+      "bytes": 1552,
+      "sha256": "97bad1280ea2f92046240d8e1b239add9b69198c8e507b70da476c23d48fe82d"
+    },
+    {
+      "path": "references/history/current-version-screenshot.png",
+      "bytes": 959070,
+      "sha256": "2ea2c082bd767650348cc0683c08eefa469e2e80a23fec255a7a744cf1dda35a"
+    },
+    {
+      "path": "references/history/original-AGENTS.md",
+      "bytes": 8239,
+      "sha256": "beb74125af0d3274b41a1eb6e25d7bd82191aef7f1483bc830fd7d1878e81812"
+    },
+    {
+      "path": "references/history/whiteout-ad-base.png",
+      "bytes": 734333,
+      "sha256": "0a0a8ac952d0bdeea891f3811e41e936c1da5d738240ced263626f25e8d9fe32"
+    },
+    {
+      "path": "references/history/whiteout-ad-clash.png",
+      "bytes": 190546,
+      "sha256": "3b738f90bacca494475622f4cb8428374067890d07c08373e8ce29cec1bd1096"
+    },
+    {
+      "path": "scripts/build.cjs",
+      "bytes": 942,
+      "sha256": "0fe90d8d1eba3802b34cd8ac9f9fe10cee4a8cc77d90c603722ebe940b0527c8"
+    },
+    {
+      "path": "scripts/claude-art/README.md",
+      "bytes": 821,
+      "sha256": "d7ed85125eec5b79b7cc491e1e1570c65efb41aad2ae1f0ba7671a88dd33bea7"
+    },
+    {
+      "path": "scripts/claude-art/fixfeet.py",
+      "bytes": 1980,
+      "sha256": "d8bfbd12b076ea2eaf6d970fc96b1f9e9848dbdad28d273c4c22098d2587cb27"
+    },
+    {
+      "path": "scripts/claude-art/make_guard.py",
+      "bytes": 1468,
+      "sha256": "e368de909596e4da0c43cf252cefc01f8fde4e3a4a00925e8efec6872fed294d"
+    },
+    {
+      "path": "scripts/claude-art/mkart.py",
+      "bytes": 2540,
+      "sha256": "fee37d324f887fb6fd39de160d36423e130bc448b9ea28a7301323bcc55fe71a"
+    },
+    {
+      "path": "scripts/serve.cjs",
+      "bytes": 741,
+      "sha256": "dc7dd3000d8bec3fa66647b38bd2f19c2cfcd12d887faedb96d74e3a8c7e2749"
+    },
+    {
+      "path": "source/index.html",
+      "bytes": 124863,
+      "sha256": "8520292963dea3999d3931ee20116bfebb03eafc4e19b7748af6fc9ba6634d0c"
+    },
+    {
+      "path": "tests/smoke.cjs",
+      "bytes": 14954,
+      "sha256": "911e38d85e9b4f47df183f81fff190ed362046121d07682d1f684935d7d9498b"
+    },
+    {
+      "path": "tests/software-render.cjs",
+      "bytes": 4173,
+      "sha256": "9dc4d9fb02efb7f8ed2494752f5f511d8e261cbdb8e25c40f433a2dc51af79e8"
+    }
+  ]
+}
