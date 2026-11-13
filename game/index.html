@@ -4,6 +4,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <title>2호선 격돌 · 객차 순찰</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1f8a46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="2호선 격돌">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@700;900&display=swap">
@@ -133,7 +142,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .ov .sub{margin:-6px 0 0;font:700 12px var(--body);color:#cfe9d4}
 .cards{display:flex;gap:6px;flex-wrap:nowrap;justify-content:center;max-width:96vw}
 .wallet{font:400 18px var(--display);color:#fff;background:#0c2a1c88;border-radius:14px;padding:6px 14px;align-self:center}
-.card{width:min(118px,calc((96vw - 46px)/8));padding:9px 5px 8px!important;background:#fff9ec;border:3px solid #fff;border-radius:18px;padding:12px 10px 10px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#24402f;box-shadow:0 6px 0 #0c2a1c66;cursor:pointer;font-family:var(--body);position:relative;animation:cardIn .35s ease-out backwards}
+.card{width:min(112px,calc((96vw - 52px)/9));padding:9px 5px 8px!important;background:#fff9ec;border:3px solid #fff;border-radius:18px;padding:12px 10px 10px;display:flex;flex-direction:column;align-items:center;gap:5px;color:#24402f;box-shadow:0 6px 0 #0c2a1c66;cursor:pointer;font-family:var(--body);position:relative;animation:cardIn .35s ease-out backwards}
 .card:nth-child(2){animation-delay:.08s}.card:nth-child(3){animation-delay:.16s}
 @keyframes cardIn{from{transform:translateY(30px) scale(.8);opacity:0}}
 .card .ic{white-space:nowrap;width:min(64px,10vh);height:min(64px,10vh);border-radius:50%;display:grid;place-items:center;font:400 clamp(15px,3.4vh,20px) var(--display);color:#fff;box-shadow:inset 0 -4px 0 #0002}
@@ -206,6 +215,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .dItem small{font-size:10px;color:#5b7465;display:block}.dItem .nm{width:170px}
 .dItem button{border:2px solid #fff;border-radius:12px;background:#f3b24f;color:#4a2e00;font:900 12px var(--body);padding:5px 10px;cursor:pointer;min-width:74px}
 .dItem button:disabled{background:#c8d2c4;color:#5b7465}
+#fanHud{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:calc(max(14px,env(safe-area-inset-bottom)) + 84px);background:linear-gradient(#5aa8ff,#2f78d8);color:#fff;border:2px solid #e6f2ff;border-radius:16px;padding:5px 12px;font:900 12px var(--body);box-shadow:0 3px 0 #1d4a8a66;font-variant-numeric:tabular-nums}
+#fanHud.low{animation:urg .3s ease-in-out infinite alternate;transform-origin:center}
 .dx .tier{font-size:9px;font-weight:900;border-radius:8px;padding:0 6px;color:#fff;background:#9aa89c}.dx .tier.t1{background:#b8723a}.dx .tier.t2{background:#8a9aa8}.dx .tier.t3{background:#d8a020}
 </style>
 
@@ -223,7 +234,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   <div class="mission"><b>구간 미션<span id="segStars"></span></b><div id="segList"><div class="mrow"><i>·</i>위반 표시가 있는 가해 승객만 공격</div></div><div class="orderW">질서 회복도 <i><em id="orderFill"></em></i><span id="orderTx">0%</span></div></div>
   <div class="sideBtns"><button id="btnMap">노선도</button><button id="btnDex">빌런 도감<b id="dexBadge" hidden>N</b></button><button id="btnDaily">오늘 미션<b id="dailyBadge" hidden>!</b></button></div>
   </div>
-  <div id="flashFx"></div>
+  <div id="flashFx"></div><div id="fanHud" hidden></div>
   <div id="bossBar" hidden><span id="bossName">보스</span><i><em id="bossFill"></em></i></div>
   <div id="toast"></div><div id="dexNewWrap"></div>
   <div class="bagHud" id="bagHud">수집 <b id="bagCount">0 / 12</b><i><em id="bagFill"></em></i></div>
@@ -469,7 +480,8 @@ function attachGameArt(g,s){
    shader.fragmentShader='uniform vec4 uJk;\nvec3 jkRgb2hsv(vec3 c){vec4 K=vec4(0.,-1./3.,2./3.,-1.);vec4 p=mix(vec4(c.bg,K.wz),vec4(c.gb,K.xy),step(c.b,c.g));vec4 q=mix(vec4(p.xyw,c.r),vec4(c.r,p.yzx),step(p.x,c.r));float d=q.x-min(q.w,q.y);return vec3(abs(q.z+(q.w-q.y)/(6.*d+1e-10)),d/(q.x+1e-10),q.x);}\nvec3 jkHsv2rgb(vec3 c){vec3 p=abs(fract(c.xxx+vec3(1.,2./3.,1./3.))*6.-3.);return c.z*mix(vec3(1.),clamp(p-1.,0.,1.),c.y);}\n'+shader.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\n if(uJk.w>.5){vec3 sc=pow(max(diffuseColor.rgb,vec3(0.)),vec3(1./2.2));vec3 h=jkRgb2hsv(sc);float w=smoothstep(.115,.14,h.x)*(1.-smoothstep(.27,.30,h.x))*smoothstep(.12,.2,h.y)*(1.-smoothstep(.8,.9,h.z));vec3 n=vec3(uJk.x<0.?h.x:uJk.x/360.,clamp(h.y*uJk.y,0.,1.),clamp(h.z*uJk.z,0.,1.));diffuseColor.rgb=mix(diffuseColor.rgb,pow(jkHsv2rgb(n),vec3(2.2)),w);}');}
  };material.customProgramCacheKey=()=>s.mop?'line2-atlas-hero-v6':'line2-atlas-v2';
  const sprite=new THREE.Sprite(material);if(s.mop){material.depthTest=false;sprite.renderOrder=50;}sprite.center.set(.5,.052);sprite.position.y=.025;sprite.scale.set(2.02,2.02,1);
- g.traverse(o=>{if(o.isMesh&&o.material!==shadowMat){let umbrella=false;for(let p=o;p&&p!==g;p=p.parent)if(p===g.userData.P.mop)umbrella=true;if(!umbrella)o.visible=false;}});
+ // v6.1: 옛 3D 인형 손의 우산은 그림과 위치가 안 맞아 숨김(보이는 우산은 umbTick이 따로 그림)
+ g.traverse(o=>{if(o.isMesh&&o.material!==shadowMat)o.visible=false;});
  g.add(sprite);g.userData.art={sprite,tex,key,rect,kind:'idle'};
  setGameArtPose(g,'idle',0);
 }
@@ -584,7 +596,7 @@ function person(s){
  }
  if(s.phone){patch(P.eR,.16,.26,.035,0x253238,0,-.37,.16,.015);patch(P.eR,.12,.18,.007,0x71b0bc,0,-.36,.182,.005);}
  if(s.cane)P.eR.add(cyl(.025,.025,.87,0x76573b,0,-.37,.12));
- if(s.mop){const m=new THREE.Group();m.position.set(0,-.36,0);P.eR.add(m);m.rotation.x=-1.2;m.add(cyl(.025,.025,1.35,0x263e52,0,.54,0));const canopy=mesh(sculpt('closed-umbrella',[[0,.015,.015],[.12,.10,.10],[.8,.09,.09],[1.03,.015,.015]],12,2),plain(0x2d5876),0,.25,0);m.add(canopy);m.userData.canopy=canopy;const hk=new THREE.Mesh(new THREE.TorusGeometry(.07,.025,6,12,Math.PI),plain(0x946c42));hk.position.y=-.08;hk.rotation.z=Math.PI;m.add(hk);P.mop=m;}
+ if(s.mop){const m=new THREE.Group();m.position.set(0,-.36,0);P.eR.add(m);m.rotation.x=-1.2;m.add(cyl(.025,.025,1.35,0x263e52,0,.54,0));const canopy=mesh(sculpt('closed-umbrella',[[0,.015,.015],[.12,.10,.10],[.8,.09,.09],[1.03,.015,.015]],12,2),plain(0x2d5876),0,.25,0);m.add(canopy);m.userData.canopy=canopy;m.traverse(o=>{if(o.isMesh)o.userData.rigUmb=true;});const hk=new THREE.Mesh(new THREE.TorusGeometry(.07,.025,6,12,Math.PI),plain(0x946c42));hk.position.y=-.08;hk.rotation.z=Math.PI;m.add(hk);P.mop=m;}
  attachGameArt(g,s);return g;
 }
 function pose(g,kind,t,amt=1){
@@ -668,13 +680,16 @@ const ring2=new THREE.Mesh(new THREE.RingGeometry(.96,1.02,40),new THREE.MeshBas
 const fistTrails=[0,1].map(i=>{const m=new THREE.Mesh(new THREE.RingGeometry(.35,.52,24,1,0,Math.PI*1.4),new THREE.MeshBasicMaterial({color:i?0xffb72d:0xfff0a0,side:THREE.DoubleSide,transparent:true,opacity:0,depthWrite:false}));scene.add(m);m.visible=false;return m;});
 function targetable(v){
  if(v&&(v.boss||v.angry))return v.state==='chase'&&!!v.tag;
+ // v6.1 꽉 찬 객차에서 백팩을 뒤로 맨 승객만(빨간 딱지). 앞으로 맨 승객은 보호.
+ if(v&&v.packRear)return v.state==='stand'&&!!v.tag&&!v.sp?.old&&!v.sp?.belly;
  if(!v||!v.guilty||!v.sp?.own||v.sp.old||v.sp.belly||!v.tag)return false;
  if(v.incident)return v.state==='incident'&&v.incident.active&&v.incident.attacker===v&&v.incident.victim.o.parent===scene;
  return v.state==='sit'&&!!v.seat?.prio&&v.seat.p===v;
 }
-function strike(power,reach=0){
+function strike(power,reach=0,cone=0){
  const st=stats();let hits=0,crits=0;const kd=new THREE.Vector3();
  for(const v of S.villains){if(!targetable(v)||d2(v.o.position,hero.pos)>=st.rad+.2+reach)continue;
+ if(cone){const dd=d2(v.o.position,hero.pos);const a=Math.atan2((v.o.position.x-hero.pos.x)*WORLD_X,v.o.position.z-hero.pos.z),df=Math.atan2(Math.sin(a-hero.face),Math.cos(a-hero.face));if(dd>.7&&Math.abs(df)>cone/2+.09)continue;}
  const crit=Math.random()<.14,dmg=st.dmg*power*(crit?2:1)*rnd(.95,1.05);v.hp-=dmg;v.flash=.11;hits++;if(crit)crits++;
  const dir=new THREE.Vector3().subVectors(v.o.position,hero.pos).setY(0);if(dir.lengthSq()<.001)dir.set(1,0,0);dir.normalize();v.recoil=.18;kd.add(dir);
  if(v.state==='chase'&&!v.boss)v.kb.addScaledVector(dir,1.6);
@@ -784,7 +799,29 @@ let seedN=0;for(const s of seats)if(s.zone===1&&s.prio&&!(s.idx===0&&!s.bench.ch
 for(const s of seats)if(!s.prio&&s.zone===1&&Math.random()<.75){const o=person({skin:pick(SKIN),hair:pick([0x2a2420,0x4a3424,0x1a1a1a]),top:pick([0x6596aa,0xb47f4f,0x6e927a,0x93849d,0xc6a65b,0xb9828d]),pants:pick([0x3a4a6a,0x4a4a5a]),phone:Math.random()<.5,long:Math.random()<.3});o.position.set(s.x,0,s.z);o.rotation.y=s.face;pose(o,'sit',0);scene.add(o);s.p={civ:o};}
 
 // Standing commuters are scenery and never enter the combat target list.
-for(const [x,z,female]of[[-4,1.4,false],[4,-1.2,true]]){const o=person({skin:0xf0c8a5,hair:0x342923,top:female?0xc0a98c:0x718e8a,pants:0x4c5661,phone:true,pack:!female,female});o.position.set(x,0,z);o.rotation.y=female?.4:2.7;pose(o,'idle',0);scene.add(o);}
+for(const [x,z,female]of[[-4,1.4,false],[4,-1.2,true]]){const o=person({skin:0xf0c8a5,hair:0x342923,top:female?0xc0a98c:0x718e8a,pants:0x4c5661,phone:true,female});o.position.set(x,0,z);o.rotation.y=female?.4:2.7;pose(o,'idle',0);scene.add(o);}
+// ---------- v6.1 백팩: 뒤로 맨 승객(가해) / 앞으로 맨 승객(매너·보호) ----------
+// 백팩은 그림에 없어서 3D 가방을 따로 붙임. 카메라 쪽으로 살짝 당겨 그림 위에 보이게 함(화면 위치는 그대로).
+const PACK_VIEW=new THREE.Vector3(.163/WORLD_X,.787,.597).multiplyScalar(.72),Y_AX=new THREE.Vector3(0,1,0);
+function addPack(o){const col=pick([0x2c3e50,0x3d4a3a,0x5a2f2f,0x2f2f3a,0x6b5a3a,0x8a3b2e]),dark=new THREE.Color(col).multiplyScalar(.7).getHex();
+ const g=new THREE.Group();g.add(soft(.42,.48,.2,col,0,0,0,.08));g.add(soft(.34,.2,.07,dark,0,-.1,.11,.03));g.add(soft(.15,.05,.05,0x1b1b1b,0,.29,0,.02));
+ for(const sx of[-.16,.16])g.add(soft(.05,.34,.04,0x1d1d1d,sx,.14,-.1,.015));
+ g.traverse(m=>{if(m.isMesh)m.castShadow=false;});o.add(g);o.userData.pack=g;packFix(o);return g;}
+function packFix(o){const g=o.userData.pack;if(!g)return;const r=o.rotation.y;g.position.set(0,1.13,0).addScaledVector(PACK_VIEW,1).applyAxisAngle(Y_AX,-r);g.rotation.set(0,-r,0);}
+const PACK_SPOTS=[-11,-8.6,-5.4,-1.8,2.4,5.9,9.1,11.3].flatMap(x=>[{x,z:1.25,used:null},{x:x+CAR,z:1.25,used:null,z2:true}]);
+S.packers=[];
+function spawnPacker(rear,doorX,immediate){
+ const spots=PACK_SPOTS.filter(p=>!p.used&&(!p.z2||SAVE.zone2));if(!spots.length)return null;const spot=pick(spots);
+ if(rear){const v=spawnVillain(immediate?new THREE.Vector3(spot.x,0,spot.z):new THREE.Vector3(doorX??spot.x,0,-ZW-.7),'packIn');v.packRear=true;v.sp.kind='rearpack';v.spot=spot;spot.used=v;addPack(v.o);
+  if(immediate){v.state='stand';v.o.rotation.y=Math.PI+rnd(-.35,.35);v.guilty=true;v.tag=el('tag bad','위반 · 백팩 뒤로 매기');pose(v.o,'idle',0);packFix(v.o);}return v;}
+ const o=person({skin:pick(SKIN),hair:pick([0x2a2420,0x4a3424,0x161616]),top:pick([0x6596aa,0xb47f4f,0x6e927a,0x93849d,0xc6a65b]),pants:pick([0x3a4a6a,0x4a4a5a]),female:Math.random()<.5,phone:Math.random()<.5});
+ o.position.set(immediate?spot.x:(doorX??spot.x),0,immediate?spot.z:-ZW-.7);scene.add(o);addPack(o);const pk={o,spot,state:immediate?'stand':'in',tag:null};spot.used=pk;
+ if(immediate){o.rotation.y=rnd(-.35,.35);pk.tag=el('tag ok','매너 · 백팩 앞으로');pose(o,'idle',0);packFix(o);}S.packers.push(pk);return pk;}
+function packerTick(dt){for(const pk of S.packers){if(pk.state==='in'){const L=steer(pk.o,pk.spot.x,pk.spot.z,2.2,dt,.2);pose(pk.o,'walk',t);packFix(pk.o);if(L<.2){pk.state='stand';pk.o.position.set(pk.spot.x,0,pk.spot.z);pk.o.rotation.y=rnd(-.35,.35);pk.tag=el('tag ok','매너 · 백팩 앞으로');}}else{pose(pk.o,'idle',t);packFix(pk.o);}}}
+function packerWave(){const doors=W.doors.filter(d=>SAVE.zone2||d.x<CAR/2).map(d=>d.x);let n=0;
+ const rearN=S.villains.filter(v=>v.packRear&&v.state!=='gone'&&v.state!=='fly').length;for(let i=0;i<Math.min(2,3-rearN);i++)if(Math.random()<.7&&spawnPacker(true,pick(doors)))n++;
+ if(S.packers.length<2&&Math.random()<.6)spawnPacker(false,pick(doors));return n;}
+spawnPacker(true,null,true);spawnPacker(true,null,true);spawnPacker(false,null,true);
 // ---------- 어르신 ----------
 function spawnElder(){const sp=elderSpec();const o=person(sp);o.position.set(-13,0,-1.2+rnd(-.3,.3));scene.add(o);const e={o,sp,state:'queue',seat:null,tipT:5,tag:el('tag ok',sp.old?'어르신':'임산부')};S.queue.push(e);S.elders.push(e);}
 for(let i=0;i<3;i++)spawnElder();
@@ -883,11 +920,21 @@ function update(dt){
   // 양팔 풍차는 어깨 축의 전후 회전. 몸통은 가볍게 흔들고 발은 지면을 지킨다.
   hero.swingT-=dt;
   if(hero.pulse>0){hero.pulse-=dt;if(hero.pulse<=0&&hero.dead<=0)strike(.55);}
-  const near=!hero.seat&&S.villains.some(v=>targetable(v)&&d2(v.o.position,hero.pos)<st.rad+.2);
+  // v6.1 강풍 우산 스윙(아이템): 정면 90° 부채꼴, 사거리 길게, 가까운 진상 쪽으로 자동 조준
+  const fan=S.fanT>0;if(fan){S.fanT-=dt;if(S.fanT<=0){S.fanT=0;banner('강풍 우산 스윙 끝',1);}}
+  const reachX=fan?FAN_REACH:.2;
+  const near=!hero.seat&&S.villains.some(v=>targetable(v)&&d2(v.o.position,hero.pos)<st.rad+reachX);
   if(hero.dead<=0&&near&&hero.swingT<=0){
-    hero.swingT=(attackStyle==='fists'?.42:.40)/(1+.12*SAVE.glove);hero.duration=attackStyle==='fists'?.36:.24;hero.spin=hero.duration;hero.combo++;
-    sfx.swing();strike(attackStyle==='fists'?.60:1.10);if(attackStyle==='fists')hero.pulse=.16;
-    if(hero.combo%5===0)num(hero.pos,attackStyle==='fists'?'풍차 난타!':'회전 격파!','crit',24);
+    hero.combo++;sfx.swing();
+    if(fan){let best=null,bd=1e9;for(const v of S.villains)if(targetable(v)){const d=d2(v.o.position,hero.pos);if(d<bd){bd=d;best=v;}}
+      if(best){hero.face=Math.atan2((best.o.position.x-hero.pos.x)*WORLD_X,best.o.position.z-hero.pos.z);hero.o.rotation.y=hero.face;}
+      hero.swingT=.46/(1+.12*SAVE.glove);hero.duration=.26;hero.spin=hero.duration;S.fanDir=-(S.fanDir||1);S.fanSwing=true;
+      strike(1.6,FAN_REACH-.2,Math.PI/2);tone(520,.08,'triangle',.04,0,260);
+      if(hero.combo%5===0)num(hero.pos,'강풍 스윙!','crit',24);}
+    else{S.fanSwing=false;
+    hero.swingT=(attackStyle==='fists'?.42:.40)/(1+.12*SAVE.glove);hero.duration=attackStyle==='fists'?.36:.24;hero.spin=hero.duration;
+    strike(attackStyle==='fists'?.60:1.10);if(attackStyle==='fists')hero.pulse=.16;
+    if(hero.combo%5===0)num(hero.pos,attackStyle==='fists'?'풍차 난타!':'회전 격파!','crit',24);}
   }
   const P=hero.o.userData.P;
   pose(hero.o,hero.dead>0?'hurt':hero.seat?'sit':Math.hypot(hero.vel.x,hero.vel.z)>.7?'walk':'idle',t);
@@ -895,7 +942,8 @@ function update(dt){
   if(P.mop)P.mop.visible=attackStyle==='umbrella'&&!hero.seat;
   if(hero.spin>0){
     hero.spin=Math.max(0,hero.spin-dt);const k=1-hero.spin/hero.duration,env=Math.sin(k*Math.PI);
-    if(attackStyle==='fists'){
+    if(S.fanSwing){hero.o.rotation.y=hero.face;ring.material.opacity=0;fistTrails.forEach(m=>m.visible=false);}
+    else if(attackStyle==='fists'){
       hero.o.rotation.y=hero.face+Math.sin(k*Math.PI*4)*.24;
       P.aL.rotation.set(-k*Math.PI*4,0,-.28);P.aR.rotation.set(-k*Math.PI*4-Math.PI,0,.28);P.eL.rotation.x=P.eR.rotation.x=-.18;
       P.body.rotation.z=Math.sin(k*Math.PI*4)*.10;P.head.rotation.z=-P.body.rotation.z*.5;
@@ -903,9 +951,10 @@ function update(dt){
       fistTrails.forEach((m,i)=>{m.visible=true;m.position.set(hero.pos.x+(i?-.40:.40),1.08,hero.pos.z);m.rotation.set(0,hero.face,0);m.rotateY(Math.PI/2);m.rotateZ(k*Math.PI*4+i*Math.PI);m.material.opacity=env*.75;});
       ring.material.color.setHex(FX.a);ring.material.opacity=env*.35;
     }else{hero.o.rotation.y=hero.face+k*Math.PI*2;P.aR.rotation.x=-1.45;P.aR.rotation.z=1.25;ring.material.color.setHex(FX.b);ring.material.opacity=env*.95;fistTrails.forEach(m=>m.visible=false);}
-    ring.rotation.z=-k*Math.PI*4;ring2.material.opacity=env*.65;
+    ring.rotation.z=-k*Math.PI*4;ring2.material.opacity=S.fanSwing?0:env*.65;
   }else{hero.o.rotation.y+=Math.atan2(Math.sin(hero.face-hero.o.rotation.y),Math.cos(hero.face-hero.o.rotation.y))*Math.min(1,dt*12);ring.material.opacity=ring2.material.opacity=0;fistTrails.forEach(m=>m.visible=false);}
   if(hero.spin>0&&hero.dead<=0)setGameArtPose(hero.o,'windmill',t);
+  umbTick(dt,st);
   ring.scale.setScalar(st.rad);ring.position.set(hero.pos.x,.18,hero.pos.z);ring2.scale.setScalar(st.rad);ring2.position.copy(ring.position);shadowRing.position.set(hero.pos.x,.09,hero.pos.z);
   // 체력 회복
   const danger=S.villains.some(v=>v.state==='chase'&&d2(v.o.position,hero.pos)<3);
@@ -922,6 +971,10 @@ function update(dt){
       if(targetable(v)&&d2(v.o.position,hero.pos)<1.15&&hero.dead<=0&&!(hero.inv>0)){v.atkT-=dt;if(v.atkT<=0){v.atkT=1.6;hero.hp-=5;num(hero.pos,'-5','hurt',16);sfx.hurt();if(hero.hp<=0)heroDown();}}
       continue;
     }
+    if(v.state==='packIn'){const L=steer(v.o,v.spot.x,v.spot.z,2.4,dt,.2);pose(v.o,'walk',t);packFix(v.o);if(L<.2){v.state='stand';v.o.position.set(v.spot.x,0,v.spot.z);v.o.rotation.y=Math.PI+rnd(-.35,.35);v.guilty=true;v.tag=el('tag bad','위반 · 백팩 뒤로 매기');pose(v.o,'idle',t);packFix(v.o);}continue;}
+    if(v.state==='stand'){pose(v.o,'idle',t);packFix(v.o);if(v.recoil>0){v.recoil-=dt;}
+      if(!v.rolled&&targetable(v)&&d2(v.o.position,hero.pos)<2.4){v.rolled=true;say(v.o,pick(['아 왜요, 가방이 뭐요','사람 많은데 어쩌라고','제 가방인데요?']),1200);}
+      continue;}
     if(v.state==='leave'){const L=steer(v.o,v.leaveX,v.leaveZ,3.6,dt,.1);pose(v.o,'walk',t);if(L<.45){discardPerson(v.o);v.state='gone';}continue;}
     if(v.state==='incident'||v.state==='incidentArrival')continue;
     if(v.state==='neutral'){pose(v.o,'idle',t);continue;}
@@ -942,7 +995,7 @@ function update(dt){
   }
   for(const v of S.villains)if(v.state==='chase'){v.o.position.z=clamp(v.o.position.z,-ZW-1.8,1.95);if(v.boss)v.o.position.x=clamp(v.o.position.x,-13.2,SAVE.zone2?CAR+13.2:13.2);}
   S.villains=S.villains.filter(v=>v.state!=='gone');
-  updateIncidents(dt);
+  updateIncidents(dt);packerTick(dt);
   // 서로 밀어내기
   const mv=S.villains.filter(v=>v.state==='chase'||v.state==='rush');
   for(let i=0;i<mv.length;i++){for(let j=i+1;j<mv.length;j++){const a=mv[i].o.position,b=mv[j].o.position;const dx=b.x-a.x,dz=b.z-a.z,L=Math.hypot(dx,dz)||.01;if(L<.7){const o=(.7-L)/2;a.x-=dx/L*o;a.z-=dz/L*o;b.x+=dx/L*o;b.z+=dz/L*o;}}
@@ -1036,7 +1089,7 @@ function update(dt){
   $('bagCount').textContent=hero.stack.length+' / '+st.cap;$('btnCash').textContent=hero.stack.length?'정산 '+hero.stack.length+'장':'빠른 정산';$('btnCash').disabled=hero.dead>0||hero.stack.length===0;$('bagFill').style.width=(hero.stack.length/st.cap*100)+'%';$('bagHud').classList.toggle('full',hero.stack.length>=st.cap);
   $('evTx').textContent=S.event?' · '+S.event.nm:'';
   if(SAVE.laps>0)$('titleTx').textContent+=' · '+(SAVE.laps+1)+'바퀴째';
-  ultUI();renderSeg();tutTick(dt);hintTick(dt);eventLook(dt);
+  ultUI();umbHud();renderSeg();tutTick(dt);hintTick(dt);eventLook(dt);
   SAVE.money=S.money;
 }
 function settleBag(label='빠른 정산',bank){
@@ -1056,7 +1109,7 @@ function killVillain(v,dir){
   if(S.rescueCount%3===0){S.money+=30;banner('진상 3명 제압! 순찰 보너스 +₩30',1.4);sfx.unlock();}
   // 날아가는 연출: 한방이면 훨씬 멀리·높이
   const pw=S.ultHit?1.7:1;v.state='fly';v.t=0;v.vel=new THREE.Vector3(dir.x*rnd(6,9)*pw,rnd(6,8)*(S.ultHit?1.35:1),dir.z*rnd(6,9)*pw);v.rx=rnd(6,12)*pw;v.rz=rnd(-6,6);
-  if(v.seat){v.seat.p=null;v.seat.res=null;v.seat=null;}if(v.tag){v.tag.remove();v.tag=null;}flash(v.o,0);pose(v.o,'hurt',t);
+  if(v.seat){v.seat.p=null;v.seat.res=null;v.seat=null;}if(v.spot){v.spot.used=null;v.spot=null;}if(v.tag){v.tag.remove();v.tag=null;}flash(v.o,0);pose(v.o,'hurt',t);
   dropBills(v.o.position,Math.random()<.3?3:2);sfx.ko();burst(v.o.position,14,0xffffff);
   // 제압 손맛: 짧은 정지 + 큰 흔들림 + 맞은 방향 킥
   S.hitstop=Math.max(S.hitstop,S.ultHit?.03:.06);shake(S.ultHit?.08:.16,.16);kick(dir,.22);
@@ -1069,6 +1122,7 @@ function doorOpen(k){for(const d of W.doors){d.L.position.x=(d.x-W.doors[0].x>-1
 function spawnWave(){
  let added=0;for(const kind of ['drunk','harass','bully','spycam'])if(Math.random()<.75&&spawnIncident(kind,pick([-8.2,0,8.2])))added++;
  const arrived=STATIONS[SAVE.st];if(BOSS_ST.has(arrived)){spawnBoss();added++;}
+ added+=packerWave();
  const free=seats.filter(s=>s.prio&&!s.p&&!s.res&&(s.zone===1||SAVE.zone2));
  const n=Math.min(free.length,Math.min(10,2+S.wave));const doors=W.doors.filter(d=>SAVE.zone2||d.x<CAR/2).map(d=>d.x);
  for(let i=0;i<n;i++){const dx=pick(doors);spawnVillain(new THREE.Vector3(dx+rnd(-.3,.3),0,-ZW-.7),'rush',free[i]);}
@@ -1087,6 +1141,7 @@ function placeTags(){
   for(const v of S.villains){const mid=v.seat&&v.seat.idx===0;add(v.tag,v.o,v.boss?2.5:mid?2.0:1.65,v.boss?40:13,true);}
   for(const inc of S.incidents)add(inc.victim.tag,inc.victim.o,1.7,11,false);
   for(const e of S.elders)add(e.tag,e.o,1.6,10,false);
+  for(const pk of S.packers||[])if(pk.state==='stand')add(pk.tag,pk.o,1.7,10,false);
   items.sort((a,b)=>a.d-b.d);
   const placed=[];let words=0;let lcB=190,lcR=300;try{const r=$('leftCol').getBoundingClientRect();if(r&&r.bottom){lcB=r.bottom+8;lcR=r.right+20;}}catch(e){}
   for(const it of items){
@@ -1130,6 +1185,7 @@ const DEX=[
  {k:'harass',n:'추행범',d:'접촉 시도 · 즉시 제압 대상',a:'incidents',r:0,c:2},
  {k:'bully',n:'시비꾼',d:'괜히 시민한테 시비',a:'incidents',r:2,c:2},
  {k:'spycam',n:'몰카범',d:'몰래 촬영 시도 · 휴대폰 압수',a:'spycam',r:2,c:0},
+ {k:'rearpack',n:'백팩 뒤로 매기',d:'만원 지하철에서 백팩으로 뒷사람을 퍽퍽',a:'passengers',r:3,c:0},
  {k:'boss',n:'환승역 보스',d:'헬스 3년차 · 환승역마다 다른 진상',a:'boss',r:0,c:2,boss:1}
 ];
 const dexPic=e=>`background-image:url(${SPRITE_DATA[e.a]});background-position:${e.c*33.333}% ${e.r*33.333}%`;
@@ -1205,6 +1261,7 @@ function arriveStation(){
  const prev=SAVE.st;SAVE.st=(SAVE.st+1)%NS;
  // 앉아 있던 어르신 몇 분은 이번 역에서 내림 → 빈 노약자석을 두고 진상과 경쟁
  const sat=S.elders.filter(e=>e.state==='sit');for(let i=0;i<Math.min(2,sat.length);i++){const e=sat.splice(Math.floor(Math.random()*sat.length),1)[0];if(e.seat&&e.seat.p===e)e.seat.p=null;if(e.tag)e.tag.remove();discardPerson(e.o);e.state='gone';}S.elders=S.elders.filter(e=>e.state!=='gone');SAVE.lapSt++;peaceGiven=false;
+ for(const pk of S.packers)if(pk.state==='stand'&&Math.random()<.4){if(pk.tag)pk.tag.remove();if(pk.spot)pk.spot.used=null;discardPerson(pk.o);pk.state='gone';}S.packers=S.packers.filter(p=>p.state!=='gone');
  if(hero.stack.length)settleBag(STATIONS[SAVE.st]+' 도착 · 자동 정산');
  const res=segFinish();S.event=null;dailyProg('station',1);
  if(SAVE.lapSt>=NS){SAVE.lapSt=0;SAVE.lapStart=SAVE.st;const cash=Math.round(200*rewardMul());SAVE.laps++;S.money+=cash;addNotes(15);setTimeout(()=>banner((SAVE.laps+1)+'바퀴째 시작! 진상 체력 +30% · 보상 +25% · 완주 +₩'+fmt(cash),2.6),200);}
@@ -1219,6 +1276,7 @@ const CARDS=[
  {id:'milk',ic:'우유',col:'#f0b830',nm:'바나나우유',ds:'체력 완전 회복 · 쪽지 +2',ok:()=>!S.milkBought,lv:()=>null,cost:()=>15,go:()=>{hero.hp=100;addNotes(2);S.milkBought=true;}},
  {id:'guard',ic:'동료',col:'#2f5f9a',nm:'역무원 호출',ds:'같이 싸우는 동료 +1명',ok:()=>SAVE.guards<4,lv:()=>SAVE.guards,cost:()=>[60,140,260,400][SAVE.guards],go:()=>{SAVE.guards++;addGuard();}},
  {id:'zone2',ic:'옆 칸',col:'#8a4ab0',nm:'옆 칸 개방',ds:'새 칸 · 빌런도 보상도 2배',ok:()=>!SAVE.zone2,lv:()=>null,cost:()=>250,go:()=>{SAVE.zone2=true;openZone2();}},
+ {id:'fan',ic:'강풍',col:'#2f78d8',nm:'강풍 우산 스윙',ds:'2분 동안 정면 90° 부채꼴 스윙 · 사거리 길게',ok:()=>(S.fanT||0)<180,lv:()=>null,cost:()=>Math.round(60*(1+.25*SAVE.laps)),go:()=>{S.fanT=Math.min(240,(S.fanT||0)+120);tip('fan','강풍 우산 스윙: 2분 동안 가까운 진상 쪽으로 정면 90°를 휩쓸어요');}},
  {id:'justice',ic:'정의',col:'#b8322a',nm:'정의감',ds:'공격력 +4% · 보상 +3% · 끝없이 강화',ok:()=>true,lv:()=>SAVE.justice,cost:()=>Math.round(150*Math.pow(1.22,SAVE.justice)),go:()=>SAVE.justice++}
 ];
 function renderCards(flash){const box=$('cards');box.innerHTML='';$('shopMoney').textContent='보유 '+fmt(S.money)+'원';
@@ -1326,6 +1384,7 @@ const cosItem=(cat,id)=>COS[cat].items.find(i=>i.id===id)||COS[cat].items[0];
 function applyCos(){
  const u=cosItem('umb',SAVE.cos.umb),j=cosItem('jk',SAVE.cos.jk),f=cosItem('fx',SAVE.cos.fx);
  const P=hero.o&&hero.o.userData.P;if(P&&P.mop&&P.mop.userData.canopy){const cm=P.mop.userData.canopy.material;cm.color.setHex(u.c);cm.color.convertSRGBToLinear();}
+ if(typeof UMB!=='undefined'){UMB.canopyM.color.setHex(u.c);UMB.canopyM.color.convertSRGBToLinear();}
  const a=hero.o&&hero.o.userData.art;if(a&&a.sprite.material.userData.jk){const v=a.sprite.material.userData.jk;if(j.id==='j0')v.set(-1,1,1,0);else v.set(j.h,j.s,j.v,1);}
  FX.a=f.a;FX.b=f.b;fistTrails[0].material.color.setHex(f.a);fistTrails[1].material.color.setHex(f.b);ring2.material.color.setHex(f.a);
 }
@@ -1376,6 +1435,46 @@ function tutTick(dt){
  else if(step===2){showHint('떨어진 벌금 딱지는 저절로 주워요 · 역에 도착하면 돈이 돼요',1);S.tutT-=dt;if(S.tutT<=0){SAVE.tut=3;S.tutT=4.2;}}
  else{showHint('왼쪽 위 구간 미션을 깨면 역에서 별과 보상을 받아요',1);S.tutT=(S.tutT??4)-dt;if(S.tutT<=0){SAVE.tut=9;S.hintT=.01;persist();}}
 }
+// ================= v6.1: 보이는 장우산 · 강풍 우산 스윙(정면 90° 부채꼴) =================
+// 주인공 그림(스프라이트) 위에 따로 그리는 장우산. scene의 x 압축(WORLD_X)을 상쇄해 화면에서 길이가 일정하게 보이게 함.
+const FAN_REACH=1.3;S.fanT=0;
+const UMB=(()=>{
+ const outer=new THREE.Group();outer.scale.x=1/WORLD_X;scene.add(outer);
+ const arm=new THREE.Group();outer.add(arm);
+ const M=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.55,metalness:.05,transparent:true,opacity:1},o||{}));
+ const canopyM=M(0x2d5876),shaftM=M(0x30363c,{metalness:.4,roughness:.35}),hookM=M(0x946c42);
+ const parts=[];const add=m=>{arm.add(m);parts.push(m);m.castShadow=true;return m;};
+ const shaft=add(new THREE.Mesh(new THREE.CylinderGeometry(.022,.022,1.12,10),shaftM));shaft.rotation.x=Math.PI/2;shaft.position.z=.58;
+ const can=add(new THREE.Mesh(sculpt('closed-umbrella',[[0,.015,.015],[.12,.10,.10],[.8,.09,.09],[1.03,.015,.015]],12,2),canopyM));can.rotation.x=Math.PI/2;can.position.z=.22;can.scale.set(1.05,.86,1.05);
+ const strap=add(new THREE.Mesh(new THREE.TorusGeometry(.085,.012,6,14),M(0xe9e4d4)));strap.position.z=.6;
+ const hook=add(new THREE.Mesh(new THREE.TorusGeometry(.07,.024,6,12,Math.PI),hookM));hook.position.set(0,-.07,.02);hook.rotation.y=Math.PI/2;
+ // 지도앱의 방향 표시처럼 퍼지는 파란 부채꼴
+ const cv=document.createElement('canvas');cv.width=cv.height=128;const c=cv.getContext('2d');
+ if(c&&c.createRadialGradient){const g=c.createRadialGradient(64,64,4,64,64,64);g.addColorStop(0,'rgba(120,190,255,.95)');g.addColorStop(.55,'rgba(70,150,255,.55)');g.addColorStop(1,'rgba(70,150,255,0)');c.fillStyle=g;c.fillRect(0,0,128,128);}
+ const coneG=new THREE.Group();outer.add(coneG);
+ const cone=new THREE.Mesh(new THREE.CircleGeometry(1,28,Math.PI/4,Math.PI/2),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,opacity:0,depthWrite:false,depthTest:false,side:THREE.DoubleSide}));cone.rotation.x=-Math.PI/2;cone.position.y=.12;cone.renderOrder=-1;coneG.add(cone);
+ const edgeM=new THREE.MeshBasicMaterial({color:0x6ab4ff,transparent:true,opacity:0,depthWrite:false,depthTest:false,side:THREE.DoubleSide});
+ const edge=new THREE.Mesh(new THREE.RingGeometry(.94,1,28,1,Math.PI/4,Math.PI/2),edgeM);edge.rotation.x=-Math.PI/2;edge.position.y=.13;edge.renderOrder=-1;coneG.add(edge);
+ return{outer,arm,parts,canopyM,coneG,cone,edge};
+})();
+function umbTick(dt,st){
+ const U=UMB,fan=S.fanT>0,show=(attackStyle==='umbrella'||fan)&&!hero.seat&&hero.dead<=0&&mode==='play';
+ U.outer.visible=show;U.outer.position.set(hero.pos.x,0,hero.pos.z);
+ // 부채꼴: 아이템 사용 중엔 늘 은은하게, 휘두를 때 번쩍
+ const R=st.rad+FAN_REACH,sw=hero.spin>0&&S.fanSwing,k=sw?1-hero.spin/hero.duration:0;
+ U.coneG.rotation.y=hero.face+Math.PI;U.cone.scale.setScalar(R);U.edge.scale.setScalar(R);
+ U.cone.material.opacity=fan&&show?(sw?.6*Math.sin(k*Math.PI)+.3:.26+.06*Math.sin(t*4)):0;U.edge.material.opacity=fan&&show?(sw?.95:.5):0;
+ if(!show)return;
+ let yaw,pitch,y=.98,side=0,front=true;
+ if(sw){const e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;yaw=hero.face+S.fanDir*(-Math.PI/4+e*Math.PI/2);pitch=.12;y=1.0;}
+ else if(hero.spin>0&&attackStyle==='umbrella'&&!S.fanSwing){const k2=1-hero.spin/hero.duration;yaw=hero.face+k2*Math.PI*2;pitch=.1;y=1.0;}
+ else if(fan){yaw=hero.face+.55;pitch=.55+Math.sin(t*3)*.04;y=.95;side=.12;}
+ else{yaw=Math.sin(hero.face)>=0?.55:-.55;pitch=1.05;y=.95;side=Math.sin(hero.face)>=0?.3:-.3;}
+ U.arm.position.set(side,y,.05);U.arm.rotation.set(pitch,yaw,0,'YXZ');
+ // 우산 끝이 카메라 쪽(+z)이면 주인공 그림 앞에, 반대면 뒤에 그림
+ front=Math.cos(yaw)>-.25||Math.abs(Math.sin(yaw))>.8&&pitch>.8;const ro=front?56:44;for(const m of U.parts)m.renderOrder=ro;
+}
+function umbHud(){const h=$('fanHud');if(S.fanT>0){h.hidden=false;const s=Math.ceil(S.fanT);h.textContent='강풍 우산 스윙 '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0');if(h.classList)h.classList.toggle('low',S.fanT<10);}else h.hidden=true;}
 // ---------- 루프 ----------
 
 

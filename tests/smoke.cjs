@@ -10,7 +10,7 @@ class TextureLoader{load(uri,cb){const canvas=decoded.get(uri);assert(canvas,'Em
 const ctx={THREE:{...T,WebGLRenderer:Renderer,TextureLoader},window:{THREE:T},document:doc,innerWidth:844,innerHeight:390,devicePixelRatio:1,localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},performance:{now:()=>0},requestAnimationFrame:f=>frame=f,addEventListener:(k,f)=>events[k]=f,setInterval(){},setTimeout(){},clearTimeout(){},navigator:{},screen:{},console,Math};
 const gamePath='game/index.html';
 let src=fs.readFileSync(gamePath,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
-src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK':''}};showSelection();\nrequestAnimationFrame(loop);`);
+src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,spawnPacker,FAN_REACH,UMB':''}};showSelection();\nrequestAnimationFrame(loop);`);
 vm.createContext(ctx);vm.runInContext(src,ctx);const q=ctx.qa;
 frame(16);assert(q.getSelection());assert.equal(q.getSelection().models.length,2);
 nodes.get('chooseFemale').onclick();assert.equal(q.hero.o.userData.spec.female,true);assert.equal(q.SAVE.character,'female');assert(nodes.get('chooseFemale').classList.contains('active'));
@@ -129,6 +129,25 @@ if(true){
  const laps=q.SAVE.laps;q.SAVE.laps=0;q.S.event=null;q.SAVE.justice=0;assert.equal(q.billVal(),5);q.SAVE.laps=2;assert(q.billVal()>5);const hv=q.spawnVillain(new T.Vector3(0,0,0),'neutral');q.SAVE.laps=0;const lv=q.spawnVillain(new T.Vector3(0,0,0),'neutral');assert(hv.max>lv.max);q.SAVE.laps=laps;
  const j=q.CARDS.find(c=>c.id==='justice');assert(j.ok());const dm=q.stats().dmg;j.go();assert(q.stats().dmg>dm);q.SAVE.justice=0;
  console.log('PASS: v6 hit shake, ultimate (full gauge only, offenders only), incident timeout + spycam escape, segment stars/stamps, 7 bosses + minions, cosmetics shader, daily missions, lap scaling, justice upgrade.');
+}
+{ // v6.1: 백팩 뒤로(가해·공격 가능) / 앞으로(매너·보호), 강풍 우산 스윙 부채꼴
+ q.hero.dead=0;q.hero.hp=1000;q.hero.seat=null;q.S.trickT=1e9;
+ const rear=q.spawnPacker(true,null,true),front=q.spawnPacker(false,null,true);
+ assert(rear&&q.targetable(rear),'rear backpack wearer is a marked target');assert(rear.o.userData.pack,'rear pack visible mesh');
+ assert(front&&!q.S.villains.includes(front),'front backpack wearer never enters the target list');assert.equal(front.tag&&front.tag.className,'tag ok');
+ const walking=q.spawnPacker(true,0,false);if(walking){assert.equal(walking.state,'packIn');assert.equal(q.targetable(walking),false,'boarding passenger not a target yet');}
+ q.hero.pos.copy(rear.o.position).add(new T.Vector3(0,0,-.6));rear.hp=1;q.strike(1);assert(['fly','gone'].includes(rear.state));assert(q.SAVE.dex.rearpack>=1);
+ // 강풍 우산 스윙: 2분, 정면 90°만 맞음, 뒤쪽은 안 맞음
+ const fanCard=q.CARDS.find(c=>c.id==='fan');assert(fanCard.ok());q.S.fanT=0;fanCard.go();assert.equal(q.S.fanT,120);
+ const s1=q.seats.find(s=>s.prio&&!s.p&&!s.res)||q.seats.find(s=>s.prio);for(const v of q.S.villains)if(v.state==='sit'&&v.seat){}
+ const mk=(x,z)=>{const v=q.spawnVillain(new T.Vector3(x,0,z),'neutral');v.angry=true;v.state='chase';v.tag={remove(){},classList:{toggle(){}},style:{}};v.hp=v.max=1e6;v.spd=0;return v;};
+ q.hero.pos.set(0,0,0);q.hero.face=0;const inFront=mk(0,1.9),behind=mk(0,-1.2),side=mk(1.2/0.72,0);
+ q.strike(1.6,q.FAN_REACH-.2,Math.PI/2);assert(inFront.hp<1e6,'front target in cone is hit (beyond normal reach)');assert.equal(behind.hp,1e6,'target behind is not hit');assert.equal(side.hp,1e6,'target at 90° is outside the 90° cone');
+ for(const v of[inFront,behind,side])v.state='gone';
+ // 옛 인형 우산 메시는 숨기고, 새 우산은 따로 그림
+ let rigVisible=false;q.hero.o.traverse(o=>{if(o.isMesh&&o.userData.rigUmb&&o.visible)rigVisible=true;});assert.equal(rigVisible,false);assert(q.UMB.parts.length>=3);
+ q.S.fanT=0;
+ console.log('PASS: v6.1 rear backpack = marked target / front backpack protected, boarding not targetable; fan swing hits only a 90° frontal cone with longer reach; visible umbrella separate from hidden rig.');
 }
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});
  const rendererSource=fs.readFileSync('tests/software-render.cjs','utf8');const cpu={T,fs,createCanvas,urban:false};vm.createContext(cpu);vm.runInContext(rendererSource.slice(rendererSource.indexOf('function renderCPU(')),cpu);
