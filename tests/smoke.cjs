@@ -2,7 +2,7 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),T=requir
 const {createCanvas,loadImage}=require('@napi-rs/canvas');
 (async()=>{
 const uriFor=k=>{const w='assets/atlas-webp/'+k+'.webp';return fs.existsSync(w)?'data:image/webp;base64,'+fs.readFileSync(w).toString('base64'):uriFor(k);};
-const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female']){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
+const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female','attacks-male','attacks-female','attacks-bat']){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
 {const cv=decoded.get(uriFor('walk-backpack-female')),d=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let transparent=0;for(let i=3;i<d.length;i+=4)if(d[i]===0)transparent++;assert(transparent>cv.width*cv.height*.5,'female sprite background must be transparent');}
 for(const key of ['hero-male','hero-female','civilians','protected','staff','special','incident','backpack','backpack-female']){const uri=uriFor('dir-'+key),cv=decoded.get(uri);assert.equal(cv.width,1024);assert.equal(cv.height,key.startsWith('hero-')?512:1024);const pixels=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let alpha=0;for(let i=3;i<pixels.length;i+=4)if(pixels[i]===0)alpha++;assert(alpha>cv.width*cv.height*.45,'new directions require clean alpha');}
 const nodes=new Map(),saved=new Map(),events={};let frame,rendered;
@@ -13,7 +13,7 @@ class TextureLoader{load(uri,cb){const canvas=decoded.get(uri);assert(canvas,'Em
 const ctx={THREE:{...T,WebGLRenderer:Renderer,TextureLoader},window:{THREE:T},document:doc,innerWidth:844,innerHeight:390,devicePixelRatio:1,localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},performance:{now:()=>0},requestAnimationFrame:f=>frame=f,addEventListener:(k,f)=>events[k]=f,setInterval(){},setTimeout(){},clearTimeout(){},navigator:{},screen:{},console,Math};
 const gamePath='game/index.html';
 let src=fs.readFileSync(gamePath,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
-src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK':''}};showSelection();\nrequestAnimationFrame(loop);`);
+src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,WEAPONS,curWeapon':''}};showSelection();\nrequestAnimationFrame(loop);`);
 vm.createContext(ctx);vm.runInContext(src,ctx);const q=ctx.qa;
 frame(16);assert(q.getSelection());assert.equal(q.getSelection().models.length,2);
 nodes.get('chooseFemale').onclick();assert.equal(q.hero.o.userData.spec.female,true);assert.equal(q.SAVE.character,'female');assert(nodes.get('chooseFemale').classList.contains('active'));
@@ -203,6 +203,27 @@ if(true){
  const after=probes[0].hp;q.strike(1,true);assert.equal(probes[0].hp,after,'expired umbrella cannot hit');assert(q.CARDS.find(c=>c.id==='umbrella120').ok());
  console.log('PASS: actual impact frame4 held for 60ms, visible billboard recoil/reset without paper tilt, temporary spark cleanup.');
  console.log('PASS: actual shop payment/insufficient funds/duplicate protection, male/female visible swings, precise 90 degree cone and protected passengers, fan matches collision, 120 play seconds with menu/hidden pauses, expiry/save/fists fallback and repurchase.');
+}
+{ // v6.8: 무기 4종(가격 계단) + 남자 넓은 훅 / 여자 풍차 유지
+ const W=q.WEAPONS;assert(W.bag.price<W.umbrella.price&&W.umbrella.price<W.ext.price&&W.ext.price<W.bat.price,'prices are tiered');
+ assert(W.bag.power<W.ext.power&&W.ext.power<W.bat.power);
+ const card=id=>q.CARDS.find(c=>c.id===id);q.SAVE.umbrellaSeconds=0;q.SAVE.weapon='umbrella';
+ q.S.money=1000;let m0=q.S.money;card('w-bag').go();assert.equal(q.SAVE.weapon,'bag');assert.equal(q.SAVE.umbrellaSeconds,90);
+ card('w-bag').go();assert.equal(q.SAVE.umbrellaSeconds,180,'same item adds time');assert.equal(card('w-bag').ok(),false,'capped at 2x');
+ card('w-bat').go();assert.equal(q.SAVE.weapon,'bat');assert.equal(q.SAVE.umbrellaSeconds,120,'switching replaces the item');
+ // 가방 120° 부채꼴: 50°는 맞고 70°는 안 맞음
+ q.SAVE.weapon='bag';q.SAVE.umbrellaSeconds=90;q.setAttackStyle('umbrella');q.hero.pos.set(0,0,0);q.hero.face=0;q.hero.spin=0;q.hero.dead=0;
+ const mk=a=>{const v=q.spawnVillain(new T.Vector3(Math.sin(a)/.72,0,Math.cos(a)),'backpackStand');Object.assign(v.sp,{own:true,old:false,belly:false,backpack:'back'});v.guilty=true;v.tag=node();v.hp=v.max=1e6;return v;};
+ const in50=mk(50*Math.PI/180),out70=mk(70*Math.PI/180);q.strike(1,true);assert(in50.hp<1e6,'bag hits at 50°');assert.equal(out70.hp,1e6,'bag misses at 70°');in50.state=out70.state='gone';
+ // 휘두르는 그림: 가방은 시안 아틀라스 행2, 왼쪽을 보면 좌우 반전
+ q.chooseCharacter('male');q.SAVE.weapon='bag';q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=Math.PI/2;q.pose(q.hero.o,'windmill',0);let a=q.hero.o.userData.art;assert.equal(a.walkKey,'attacks-male');assert.equal(a.walkingRow,2);assert.equal(a.mirrored,false);
+ q.hero.swingFace=-Math.PI/2;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.mirrored,true);assert(q.hero.o.userData.art.rect.z<0,'mirrored via negative UV width');
+ q.SAVE.weapon='bat';q.chooseCharacter('female');q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'attacks-bat');assert.equal(q.hero.o.userData.art.walkingRow,1);
+ // 남자 주먹 = 넓은 훅(시안 행0), 여자 주먹 = 원래 풍차(hero-female)
+ q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.chooseCharacter('male');q.hero.spin=.3;q.hero.duration=.72;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'attacks-male');assert.equal(q.hero.o.userData.art.walkingRow,0);
+ q.chooseCharacter('female');q.hero.spin=.3;q.hero.duration=.36;q.pose(q.hero.o,'windmill',0);assert.notEqual(q.hero.o.userData.art.walkKey,'attacks-female','female keeps the original windmill art');
+ q.hero.spin=0;q.SAVE.weapon='umbrella';q.chooseCharacter('male');
+ console.log('PASS: v6.8 tiered weapons (bag/umbrella/extinguisher/bat), stack vs switch, 120° bag arc, attack art rows + left mirroring, male wide hook / female original windmill.');
 }
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});
  const rendererSource=fs.readFileSync('tests/software-render.cjs','utf8');const cpu={T,fs,createCanvas,urban:false};vm.createContext(cpu);vm.runInContext(rendererSource.slice(rendererSource.indexOf('function renderCPU(')),cpu);

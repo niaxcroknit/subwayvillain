@@ -273,6 +273,16 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 @media(max-height:340px){.sbox .selCard{width:122px;bottom:calc(5% + 54px)}.sbox .selCard img{height:100px}.sbox .selCard .nm{font-size:12px;padding:6px 4px 7px}.sbox .selCard .nm small{font-size:8.5px}.sbox .selCard .ck{width:18px;height:18px}}
 .selecting .leftCol{top:50%;transform:translateY(-50%)}
 .sbox .selectionRules,.selectNote{display:none} /* 선택 화면 작은 안내 글 제거(게임 방법 안내가 대신 설명) */.selecting .mTop{flex-direction:column;align-items:stretch}
+/* v6.8 편의점: 무기 4종은 위 줄(작은 카드), 강화는 아래 줄 */
+.cards{flex-wrap:wrap;row-gap:8px}
+.cbreak{flex-basis:100%;height:0}
+.card.wcard{width:min(168px,calc((96vw - 40px)/4));display:grid!important;grid-template-columns:34px 1fr;column-gap:7px;row-gap:1px;align-items:center;padding:7px 8px 7px!important;text-align:left;border-radius:14px}
+.card.wcard .ic{grid-row:1/3;width:34px!important;height:34px!important;font-size:10px!important}
+.card.wcard .nm{grid-column:2;font-size:12px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card.wcard .ds{grid-column:2;font-size:9px!important;min-height:0!important;text-align:left;line-height:1.25;max-height:24px;overflow:hidden}
+.card.wcard .pr{position:absolute;top:-8px;right:-4px;font-size:11px!important;padding:1px 8px!important;box-shadow:0 2px 0 #0002}
+#shopSub{display:none}
+.cards .card:not(.wcard) .ic{width:min(46px,8vh)!important;height:min(46px,8vh)!important}.cards .card:not(.wcard) .ds{min-height:0!important}
+.card.wcard.on{border-color:#4f9a52;box-shadow:0 0 0 3px #4f9a5244,0 6px 0 #0c2a1c66}
 .dx .tier{font-size:9px;font-weight:900;border-radius:8px;padding:0 6px;color:#fff;background:#9aa89c}.dx .tier.t1{background:#b8723a}.dx .tier.t2{background:#8a9aa8}.dx .tier.t3{background:#d8a020}
 </style>
 
@@ -294,12 +304,12 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   <div id="bossBar" hidden><span id="bossName">보스</span><i><em id="bossFill"></em></i></div>
   <div id="toast"></div><div id="dexNewWrap"></div>
   <div class="bagHud" id="bagHud">수집 <b id="bagCount">0 / 12</b><i><em id="bagFill"></em></i></div>
-  <div class="controls"><button class="styleBtn ultBtn" id="btnUlt" aria-label="한방"><span>한방</span><em id="ultTx">0%</em></button><button class="styleBtn dashBtn" id="btnDash"><span>대시</span>회피</button><button class="styleBtn active" id="btnFists" aria-pressed="true"><span>풍차</span>두 주먹</button><button class="styleBtn" id="btnUmbrella" aria-pressed="false"><span>90° 스윙</span><small id="umbrellaClock">편의점 구매</small></button></div>
+  <div class="controls"><button class="styleBtn ultBtn" id="btnUlt" aria-label="한방"><span>한방</span><em id="ultTx">0%</em></button><button class="styleBtn dashBtn" id="btnDash"><span>대시</span>회피</button><button class="styleBtn active" id="btnFists" aria-pressed="true"><span>풍차</span>두 주먹</button><button class="styleBtn" id="btnUmbrella" aria-pressed="false"><span id="wpnLabel">무기</span><small id="umbrellaClock">편의점 구매</small></button></div>
   <div id="banner" hidden></div>
   <div id="hint">화면을 드래그해서 이동 · 가까이 가면 자동 공격</div>
   <div class="joy" id="joy" hidden><i id="knob"></i></div>
   <div class="start" id="start">
-    <div class="sbox"><h1 class="selectionTitle">주인공 선택</h1><p class="selectionSub">함께 퇴근길의 질서를 지킬 주인공을 골라주세요</p><div class="selCards"><button class="selCard l active" id="chooseMale" aria-pressed="true"><img src="__UI_select-male__" alt=""><span class="nm"><span>최민준<small>풍차 주먹 · 장우산</small></span><i class="ck"></i></span></button><button class="selCard r" id="chooseFemale" aria-pressed="false"><img src="__UI_select-female__" alt=""><span class="nm"><span>이하린<small>풍차 주먹 · 장우산</small></span><i class="ck"></i></span></button></div><div class="selectionRules">퇴근길 질서를 지킬 주인공을 골라주세요 · 둘 다 풍차 주먹·장우산 스윙 사용 가능</div><button id="btnStart">선택하고 시작 ▶</button><div class="selectNote">드래그 또는 WASD 이동 · 가까이 가면 자동 공격</div>
+    <div class="sbox"><h1 class="selectionTitle">주인공 선택</h1><p class="selectionSub">함께 퇴근길의 질서를 지킬 주인공을 골라주세요</p><div class="selCards"><button class="selCard l active" id="chooseMale" aria-pressed="true"><img src="__UI_select-male__" alt=""><span class="nm"><span>최민준<small>넓은 훅 주먹</small></span><i class="ck"></i></span></button><button class="selCard r" id="chooseFemale" aria-pressed="false"><img src="__UI_select-female__" alt=""><span class="nm"><span>이하린<small>풍차 주먹</small></span><i class="ck"></i></span></button></div><div class="selectionRules">퇴근길 질서를 지킬 주인공을 골라주세요 · 둘 다 풍차 주먹·장우산 스윙 사용 가능</div><button id="btnStart">선택하고 시작 ▶</button><div class="selectNote">드래그 또는 WASD 이동 · 가까이 가면 자동 공격</div>
     </div>
   </div>
 </div>
@@ -435,6 +445,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       att: null,
       bossKills: {},
       snd: "mid",
+      weapon: "umbrella",
       dexTier: {},
     },
     SAVE,
@@ -447,6 +458,19 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     SAVE.cos = { umb: "u0", jk: "j0", fx: "f0", own: ["u0", "j0", "f0"] };
   if (!SAVE.att || typeof SAVE.att !== "object") SAVE.att = { last: "", streak: 0 };
   for (const k of ["justice", "laps", "tut"]) if (!Number.isFinite(SAVE[k])) SAVE[k] = 0;
+  // ===== 무기 아이템(편의점): 장우산 + 코덱스 시안 3종. 가격·성능을 계단식으로 =====
+  // 지속 시간은 실제 플레이 시간 기준(편의점·메뉴에선 멈춤). 같은 무기를 또 사면 시간 추가(최대 2배), 다른 무기를 사면 바꿔 듦.
+  // frames: 시안 아틀라스(8칸×행, 384×256 칸, 한 시점) → 왼쪽을 향하면 좌우 반전
+  const WEAPONS = {
+    bag: { nm: "더플백", short: "가방", ic: "가방", col: "#3d4f7a", price: 20, secs: 90, arc: (Math.PI * 2) / 3, power: 2.6, reach: 0, dur: { m: 0.82, f: 0.76 }, gap: 0.06, hitK: 0.45, ds: "가로로 크게 휘두르기 · 전방 120° · 90초", atlas: { m: ["attacks-male", 2, 3], f: ["attacks-female", 2, 3] }, ends: [0.12, 0.25, 0.37, 0.48, 0.61, 0.77, 0.9, 1] },
+    umbrella: { nm: "장우산", short: "우산", ic: "우산", col: "#367fa2", price: 40, secs: 120, arc: Math.PI / 2, power: 1.6, reach: 0.2, dur: { m: 0.44, f: 0.44 }, gap: 0.07, hitK: 0.42, ds: "전방 90° 스윙 · 2분" },
+    ext: { nm: "빨간 소화기", short: "소화기", ic: "소화기", col: "#c8342b", price: 90, secs: 100, arc: Math.PI / 2, power: 3.6, reach: 0.15, kb: 5, smoke: true, stop: 0.08, dur: { m: 1.02, f: 0.94 }, gap: 0.08, hitK: 0.44, ds: "묵직한 한 방 · 밀쳐내기 · 100초", atlas: { m: ["attacks-male", 1, 3], f: ["attacks-female", 1, 3] }, ends: [0.15, 0.28, 0.38, 0.48, 0.62, 0.78, 0.91, 1] },
+    bat: { nm: "야구방망이", short: "방망이", ic: "방망이", col: "#a8743a", price: 180, secs: 120, arc: Math.PI / 2, power: 5, reach: 0.5, crit: 0.3, stop: 0.1, heavy: true, dur: { m: 0.9, f: 0.86 }, gap: 0.08, hitK: 0.42, ds: "가장 강하고 멀리 · 치명타 잦음 · 2분", atlas: { m: ["attacks-bat", 0, 2], f: ["attacks-bat", 1, 2] }, ends: [0.12, 0.27, 0.39, 0.45, 0.61, 0.78, 0.91, 1] },
+  };
+  function curWeapon() {
+    return WEAPONS[SAVE.weapon] || WEAPONS.umbrella;
+  }
+  const fmtClock = sec => Math.floor(Math.ceil(sec) / 60) + ":" + String(Math.ceil(sec) % 60).padStart(2, "0");
   const titleIdx = () => {
     let k = 0;
     TITLES.forEach(([n], i) => {
@@ -1296,6 +1320,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     "swing-female": "__ASSET_swing-female__",
     "carry-male": "__ASSET_carry-male__",
     "carry-female": "__ASSET_carry-female__",
+    "attacks-male": "__ASSET_attacks-male__",
+    "attacks-female": "__ASSET_attacks-female__",
+    "attacks-bat": "__ASSET_attacks-bat__",
   };
   const ART = {};
   for (const [key, url] of Object.entries(SPRITE_DATA)) {
@@ -1440,14 +1467,28 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       walk = walkingArt(g);
     a.held = false;
     const holding = (kind === "idle" || (!!spec.backpack && kind !== "walk")) && !g.userData.incidentView;
+    // 새 무기(가방·소화기·방망이)와 남자 넓은 훅은 코덱스 시안 아틀라스(한 시점)로 휘두르는 순간만 그림
+    const W = curWeapon(),
+      sex = spec.female ? "f" : "m";
+    const attackArt =
+      spec.mop && g === hero.o && hero.spin > 0 && kind === "windmill"
+        ? attackStyle === "umbrella" && SAVE.umbrellaSeconds > 0 && W.atlas
+          ? { key: W.atlas[sex][0], row: W.atlas[sex][1], rows: W.atlas[sex][2], ends: W.ends }
+          : attackStyle === "fists" && !spec.female
+            ? { key: "attacks-male", row: 0, rows: 3, ends: [0.1, 0.19, 0.28, 0.37, 0.49, 0.62, 0.88, 1] }
+            : null
+        : null;
     const umbrellaPose =
       spec.mop &&
       g === hero.o &&
       attackStyle === "umbrella" &&
       SAVE.umbrellaSeconds > 0 &&
+      !W.atlas &&
       kind !== "sit" &&
       kind !== "hurt";
-    const desired = umbrellaPose
+    const desired = attackArt
+      ? ART[attackArt.key]
+      : umbrellaPose
       ? ART[(hero.spin > 0 ? "swing-" : "carry-") + (spec.female ? "female" : "male")]
       : kind === "walk" || holding
         ? ART[walk.key]
@@ -1460,7 +1501,18 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       a.sprite.material.map = desired;
       a.sprite.material.needsUpdate = true;
     }
-    if (umbrellaPose) {
+    if (attackArt) {
+      const k = 1 - hero.spin / hero.duration,
+        frame = S.hitstop > 0 && hero.umbrellaHit ? 4 : Math.max(0, attackArt.ends.findIndex(e => k < e)),
+        left = Math.sin(hero.swingFace ?? hero.face) < -0.05,
+        y = (attackArt.rows - 1 - attackArt.row) / attackArt.rows;
+      if (left) a.rect.set((frame + 1) / 8, y, -1 / 8, 1 / attackArt.rows);
+      else a.rect.set(frame / 8, y, 1 / 8, 1 / attackArt.rows);
+      a.walkKey = attackArt.key;
+      a.walkingRow = attackArt.row;
+      a.mirrored = left;
+      a.sprite.scale.set(3.06, 2.04, 1);
+    } else if (umbrellaPose) {
       const row =
           hero.spin > 0
             ? ((Math.round(
@@ -2544,17 +2596,18 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       dz = v.o.position.z - hero.pos.z,
       L = Math.hypot(dx, dz),
       face = hero.spin > 0 ? (hero.swingFace ?? hero.face) : hero.face;
-    return L < 0.001 || (dx * Math.sin(face) + dz * Math.cos(face)) / L >= Math.SQRT1_2 - 1e-8;
+    return L < 0.001 || (dx * Math.sin(face) + dz * Math.cos(face)) / L >= Math.cos(curWeapon().arc / 2) - 1e-8;
   }
   function strike(power, cone = attackStyle === "umbrella", reach = 0) {
     if (cone && !(SAVE.umbrellaSeconds > 0)) return;
     const st = stats();
     let hits = 0,
       crits = 0;
-    const kd = new THREE.Vector3();
+    const kd = new THREE.Vector3(),
+      W = cone ? curWeapon() : null;
     for (const v of S.villains) {
       if (!targetable(v) || d2(v.o.position, hero.pos) >= st.rad + 0.2 + reach || (cone && !umbrellaArc(v))) continue;
-      const crit = Math.random() < 0.14,
+      const crit = Math.random() < 0.14 + ((W && W.crit) || 0),
         dmg = st.dmg * power * (crit ? 2 : 1) * rnd(0.95, 1.05);
       v.hp -= dmg;
       v.flash = 0.11;
@@ -2565,7 +2618,11 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       dir.normalize();
       v.recoil = 0.18;
       kd.add(dir);
-      if (v.state === "chase" && !v.boss) v.kb.addScaledVector(dir, 1.6);
+      if (v.state === "chase" && !v.boss) v.kb.addScaledVector(dir, (W && W.kb) || 1.6);
+      if (W && W.smoke) {
+        burst(v.o.position, 8, 0xf4f6f8);
+        for (let i = 0; i < 3; i++) puff(v.o.position.x + rnd(-0.4, 0.4), v.o.position.z + rnd(-0.3, 0.3), 0.9);
+      }
       v.o.userData.hitReaction = { left: 0.18, total: 0.18, dx: dir.x * WORLD_X, dz: dir.z };
       impactSpark(v.o.position, cone);
       num(v.o.position, fmt(dmg) + (crit ? "!" : ""), crit ? "crit" : "", crit ? 28 : 21);
@@ -2574,9 +2631,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     if (hits) {
       sfx.hit(hits, cone);
-      shake((cone ? 0.11 : 0.09) + 0.03 * Math.min(hits, 4) + 0.05 * crits, 0.12);
+      shake((cone ? 0.11 : 0.09) + 0.03 * Math.min(hits, 4) + 0.05 * crits + (W && W.heavy ? 0.12 : 0), 0.12);
       kick(kd.normalize(), (cone ? 0.14 : 0.1) + 0.03 * Math.min(hits, 3));
-      S.hitstop = Math.max(S.hitstop, cone ? 0.06 : 0.035, crits ? 0.05 : 0);
+      S.hitstop = Math.max(S.hitstop, cone ? (W && W.stop) || 0.06 : 0.035, crits ? 0.05 : 0);
       if (!S.ultWind) gainUlt(2.5 * hits);
       try {
         if (shakeOn && navigator.vibrate) navigator.vibrate(crits ? 28 : 18);
@@ -3594,30 +3651,41 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       for (const v of S.villains)
         if (targetable(v)) {
           const dv = d2(v.o.position, hero.pos);
-          if (dv < st.rad + 0.2 && dv < aimD) {
+          if (dv < st.rad + 0.2 + (attackStyle === "umbrella" ? curWeapon().reach : 0) && dv < aimD) {
             aimD = dv;
             aim = v;
           }
         }
     const near = !!aim;
-    if (hero.dead <= 0 && near && hero.swingT <= 0 && attackStyle === "umbrella") {
+    // 남자 주먹은 코덱스 시안 '넓은 훅'(한 방씩, 몸을 크게 씀). 여자는 원래 풍차 그대로
+    const maleHook = attackStyle === "fists" && !hero.o.userData.spec.female;
+    if (hero.dead <= 0 && near && hero.swingT <= 0 && (attackStyle === "umbrella" || maleHook)) {
       hero.face = Math.atan2((aim.o.position.x - hero.pos.x) * WORLD_X, aim.o.position.z - hero.pos.z);
       hero.o.rotation.y = hero.face;
     }
     if (hero.dead <= 0 && near && hero.swingT <= 0) {
-      hero.duration = attackStyle === "fists" ? 0.36 : 0.44 / (1 + 0.08 * SAVE.glove);
-      hero.swingT = attackStyle === "fists" ? 0.42 / (1 + 0.12 * SAVE.glove) : hero.duration + 0.07;
+      if (attackStyle === "umbrella") {
+        const W = curWeapon();
+        hero.duration = W.dur[hero.o.userData.spec.female ? "f" : "m"] / (1 + 0.08 * SAVE.glove);
+        hero.swingT = hero.duration + W.gap;
+      } else if (maleHook) {
+        hero.duration = 0.72 / (1 + 0.12 * SAVE.glove);
+        hero.swingT = hero.duration + 0.04;
+      } else {
+        hero.duration = 0.36;
+        hero.swingT = 0.42 / (1 + 0.12 * SAVE.glove);
+      }
       hero.spin = hero.duration;
       hero.swingFace = hero.face;
       hero.umbrellaHit = false;
       hero.combo++;
       sfx.swing();
-      if (attackStyle === "fists") {
+      if (attackStyle === "fists" && !maleHook) {
         strike(0.6, false);
         hero.pulse = 0.16;
       }
       if (hero.combo % 5 === 0)
-        num(hero.pos, attackStyle === "fists" ? "풍차 난타!" : "전방 90° 스윙!", "crit", 24);
+        num(hero.pos, attackStyle === "fists" ? (maleHook ? "넓은 훅!" : "풍차 난타!") : curWeapon().short + " 스윙!", "crit", 24);
     }
     const P = hero.o.userData.P;
     const heroPose =
@@ -3634,7 +3702,16 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       hero.spin = Math.max(0, hero.spin - dt);
       const k = 1 - hero.spin / hero.duration,
         env = Math.sin(k * Math.PI);
-      if (attackStyle === "fists") {
+      if (attackStyle === "fists" && !hero.o.userData.spec.female) {
+        // 남자 넓은 훅: 프레임4(진행 40%)에서 한 번 맞음. 한 방 위력은 여자 풍차와 초당 피해가 같게
+        hero.o.rotation.y = hero.swingFace;
+        ring.material.opacity = 0;
+        fistTrails.forEach(m => (m.visible = false));
+        if (k >= 0.4 && !hero.umbrellaHit) {
+          hero.umbrellaHit = true;
+          strike(2.1, false);
+        }
+      } else if (attackStyle === "fists") {
         hero.o.rotation.y = hero.face + Math.sin(k * Math.PI * 4) * 0.24;
         P.aL.rotation.set(-k * Math.PI * 4, 0, -0.28);
         P.aR.rotation.set(-k * Math.PI * 4 - Math.PI, 0, 0.28);
@@ -3657,13 +3734,14 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         hero.o.rotation.y = hero.swingFace;
         ring.material.opacity = 0;
         fistTrails.forEach(m => (m.visible = false));
-        if (k >= 0.42 && !hero.umbrellaHit) {
+        const W = curWeapon();
+        if (k >= W.hitK && !hero.umbrellaHit) {
           hero.umbrellaHit = true;
-          strike(1.1, true);
+          strike(W.power, true, W.reach);
         }
       }
       ring.rotation.z = -k * Math.PI * 4;
-      ring2.material.opacity = attackStyle === "fists" ? env * 0.65 : 0;
+      ring2.material.opacity = attackStyle === "fists" && hero.o.userData.spec.female ? env * 0.65 : 0;
     } else {
       hero.o.rotation.y +=
         Math.atan2(Math.sin(hero.face - hero.o.rotation.y), Math.cos(hero.face - hero.o.rotation.y)) *
@@ -5010,26 +5088,38 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     openShop(res);
   }
   // 편의점 카드
-  const CARDS = [
-    {
-      id: "umbrella120",
-      ic: "우산",
-      col: "#367fa2",
-      nm: "장우산 · 2분",
-      // 쓰는 중에도 살 수 있음: 사면 2분 추가, 최대 4분. 카드에 남은 시간을 보여줌
+  function weaponCard(k) {
+    const W = WEAPONS[k],
+      active = () => SAVE.umbrellaSeconds > 0 && (SAVE.weapon || "umbrella") === k;
+    return {
+      id: k === "umbrella" ? "umbrella120" : "w-" + k,
+      weapon: true,
+      ic: W.ic,
+      col: W.col,
+      nm: k === "umbrella" ? "장우산 · 2분" : W.nm,
       ds: () =>
-        SAVE.umbrellaSeconds > 0
-          ? `남은 ${Math.floor(Math.ceil(SAVE.umbrellaSeconds) / 60)}:${String(Math.ceil(SAVE.umbrellaSeconds) % 60).padStart(2, "0")} · 사면 +2분(최대 4분)`
-          : "전방 90° 스윙 · 플레이 120초 · 즉시 장착",
-      ok: () => !(SAVE.umbrellaSeconds > 239),
+        active()
+          ? `남은 ${fmtClock(SAVE.umbrellaSeconds)} · 사면 +${fmtClock(W.secs)}`
+          : SAVE.umbrellaSeconds > 0
+            ? `${W.ds} · 지금 무기와 바꿈`
+            : W.ds,
+      ok: () => !(active() && SAVE.umbrellaSeconds > W.secs * 2 - 1),
       lv: () => null,
-      cost: () => 40,
+      cost: () => W.price,
       go: () => {
-        SAVE.umbrellaSeconds = Math.min(240, Math.max(0, SAVE.umbrellaSeconds || 0) + 120);
+        const same = active();
+        SAVE.weapon = k;
+        SAVE.umbrellaSeconds = same ? Math.min(W.secs * 2, SAVE.umbrellaSeconds + W.secs) : W.secs;
         setAttackStyle("umbrella");
         updateUmbrellaClock();
       },
-    },
+    };
+  }
+  const CARDS = [
+    weaponCard("bag"),
+    weaponCard("umbrella"),
+    weaponCard("ext"),
+    weaponCard("bat"),
     {
       id: "mop",
       ic: "훈련",
@@ -5133,13 +5223,25 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     const box = $("cards");
     box.innerHTML = "";
     $("shopMoney").textContent = "보유 " + fmt(S.money) + "원";
+    let brk = false;
     for (const c of CARDS) {
+      if (!c.weapon && !brk) {
+        brk = true;
+        const b = document.createElement("div");
+        b.className = "cbreak";
+        b.innerHTML = "";
+        box.append(b);
+      }
       const avail = c.ok(),
         cost = avail ? c.cost() : 0,
         can = avail && S.money >= cost;
       const lv = c.lv();
       const d = document.createElement("button");
-      d.className = "card" + (avail ? (can ? "" : " no") : " max") + (flash === c.id ? " bought" : "");
+      d.className =
+        "card" +
+        (c.weapon ? " wcard" + (SAVE.umbrellaSeconds > 0 && WEAPONS[SAVE.weapon] && c.id === (SAVE.weapon === "umbrella" ? "umbrella120" : "w-" + SAVE.weapon) ? " on" : "") : "") +
+        (avail ? (can ? "" : " no") : " max") +
+        (flash === c.id ? " bought" : "");
       d.innerHTML = `${lv !== null ? `<span class="lv">Lv ${lv}</span>` : ""}<div class="ic" style="background:${c.col}">${c.ic}</div><div class="nm">${c.nm}</div><div class="ds">${typeof c.ds === "function" ? c.ds() : c.ds}</div><div class="pr">${avail ? (c.price ? c.price() : fmt(cost) + "원") : c.id === "umbrella120" ? "4분 꽉 참" : c.id === "milk" ? "구매 완료" : "최대"}</div>`;
       d.onclick = () => {
         if (!c.ok()) return;
@@ -5376,7 +5478,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
-    { t: "풍차 주먹과 장우산", d: "기본은 풍차 주먹이에요. 역 편의점에서 장우산을 사면 2분 동안 정면 90°로 휘둘러요. 쓰는 중에도 사면 시간이 늘어나요.", el: ["btnFists", "btnUmbrella"] },
+    { t: "주먹과 무기", d: "기본은 주먹이에요(민준은 넓은 훅, 하린은 풍차). 역 편의점에서 가방(20원)·장우산(40원)·소화기(90원)·야구방망이(180원)를 사면 정해진 시간 동안 들고 싸워요. 비쌀수록 세요.", el: ["btnFists", "btnUmbrella"] },
     { t: "구간 미션", d: "역과 역 사이마다 미션 3개가 나와요. 깨면 다음 역에서 별과 돈을 받아요. 누르면 목록이 펼쳐져요.", el: ["segPill"] },
     { t: "메뉴", d: "노선도·빌런 도감·오늘 미션·게임 방법은 여기서 언제든 볼 수 있어요. 시작 전 화면에서도 돼요.", el: ["btnMap", "btnDex", "btnDaily", "btnHelp"] },
     { t: "역과 편의점", d: "떨어진 벌금 딱지는 저절로 주워요. 역에 도착하면 돈으로 바뀌고, 노선도를 본 다음 편의점에서 강화하거나 장우산을 사요.", el: ["bagHud"] },
@@ -6345,7 +6447,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   function setAttackStyle(style) {
     if (style === "umbrella" && SAVE.umbrellaSeconds <= 0) {
-      if (mode === "play") banner("역 편의점에서 장우산을 구매하세요 · 40원 / 2분", 1.8);
+      if (mode === "play") banner("역 편의점에서 무기를 사세요 · 가방 20원부터", 1.8);
       return false;
     }
     attackStyle = style;
@@ -6358,13 +6460,22 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       $(id).classList.toggle("active", style === kind);
       $(id).setAttribute("aria-pressed", String(style === kind));
     }
-    if (mode === "play") banner(style === "fists" ? "두 주먹, 풍차 난타!" : "장우산, 전방 90° 스윙!", 0.9);
+    if (mode === "play")
+      banner(
+        style === "fists"
+          ? hero.o.userData.spec.female
+            ? "두 주먹, 풍차 난타!"
+            : "두 주먹, 넓은 훅!"
+          : curWeapon().nm + ", 전방 " + Math.round((curWeapon().arc * 180) / Math.PI) + "° 스윙!",
+        0.9,
+      );
   }
   let umbrellaSaveT = 0;
   function updateUmbrellaClock() {
     const seconds = Math.ceil(SAVE.umbrellaSeconds);
     $("umbrellaClock").textContent =
       seconds > 0 ? Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0") : "편의점 구매";
+    $("wpnLabel").textContent = seconds > 0 ? curWeapon().short : "무기";
   }
   function tickUmbrella(dt) {
     if (mode !== "play" || document.hidden || !(SAVE.umbrellaSeconds > 0)) return;
@@ -6372,7 +6483,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     umbrellaSaveT += dt;
     if (SAVE.umbrellaSeconds === 0) {
       setAttackStyle("fists");
-      banner("장우산 사용 종료 · 두 주먹으로 전환", 1.6);
+      banner(curWeapon().nm + " 사용 종료 · 두 주먹으로 전환", 1.6);
       persist();
       umbrellaSaveT = 0;
     } else if (umbrellaSaveT >= 1) {
