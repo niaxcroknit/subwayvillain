@@ -14,6 +14,15 @@
 - 타격 반응: 맞은 그림이 짧게 밀렸다 돌아옴(`hitReaction`), 별 모양 섬광(`impactSpark`), 우산 명중 60ms·주먹 35ms 정지. v6 흔들림·킥·한방 게이지와 함께 동작.
 - 앱 아이콘: **사용자가 직접 준 그림**(`assets/icon/icon-source.png`, 크림색 2호선 문이 열리고 안에 주황 좌석·초록 손잡이). 그리지 말고 이 원본에서 `python3 scripts/make_icon.py game/icons`로 크기별 생성.
 
+## v6.3 (2026-11-16, 사용자·친구 피드백)
+
+- 구간 미션은 **A안**: 왼쪽 위 한 줄 알약(별·미션 n/3·질서%) + 작은 동그라미 버튼(노선·도감·오늘·방법). 알약을 누르거나, 구간이 시작되거나, 미션을 깨면 3초만 목록이 펼쳐짐. 예전처럼 큰 상자로 되돌리지 말 것("화면을 너무 가림").
+- 장우산은 쓰는 중에도 살 수 있음: 사면 +2분, 최대 4분. 카드에 남은 시간 표시. ("다 썼는데 사용 중이라 못 삼")
+- 역 도착: 편의점 전에 노선도를 먼저 보여줌(열차 표시가 이번 역으로 이동, 3.6초 뒤 자동 또는 「편의점 가기」). 노선도·빌런 도감·오늘 미션·게임 방법은 **시작 전 화면에서도** 열림.
+- 게임 방법(튜토리얼): 첫 시작에 자동으로 8단계 안내(화면을 어둡게 하고 버튼을 밝게 짚어줌), 「방법」 버튼으로 언제든 다시. 끝나면 `SAVE.coach=1`.
+- 소리: 기본 볼륨을 이전의 약 60%로, 타격음은 더 작게. 「소리」 버튼으로 보통·작게·끔(`SAVE.snd`).
+- 시작 렉: 그림은 WebP로 내장(`assets/atlas-webp/`, `python3 scripts/make-webp.py`로 생성, 게임 파일 22.6MB → 6.6MB). 안 쓰던 옛 보행 그림 5장 제거. 주인공 선택 화면에서 프레임마다 그림 1장씩 GPU에 올리고 셰이더 미리 컴파일·숨은 미리 그리기(`preloadStep`). 시작 버튼에서 한꺼번에 하지 말 것.
+
 ## v6 시스템 (유지)
 
 - 타격·제압 화면 흔들림(충격량 누적식·기울기·킥)과 히트스톱, 「흔들림」 버튼으로 끔.
@@ -44,10 +53,10 @@
 
 - **성능 규칙(v6.2.1, "렉 너무 심함")**: ① 효과용 재질을 매번 새로 만들고 버리지 말 것(셰이더가 지워졌다 다시 컴파일돼 휴대폰에서 끊김). 섬광은 `SPARK_POOL` 재사용. ② 사람의 숨긴 3D 인형 뼈대는 `attachGameArt`에서 장면에서 떼어냄(P 참조만 남음). 다시 붙이지 말 것. ③ 움직이지 않는 객차·좌석·정산기는 시작 시 `mergeStatic`으로 재질별 합침. 새 고정 부품을 더할 땐 합치기 전에 만들 것(문처럼 움직이는 건 `keep`에). ④ 시작 버튼에서 `preloadArt`가 그림 업로드와 셰이더 컴파일을 미리 함. ⑤ 매 프레임 DOM 크기 읽기(getBoundingClientRect) 금지, 캐시해서 쓸 것.
 
-- `source/index.html`을 고친 뒤 `node scripts/build.cjs`로 `game/index.html`(단일 HTML, 이미지 내장)을 만듭니다. 아틀라스 키는 `scripts/build.cjs`의 `keys`에 있습니다(현재 30장). `game/icons/`와 `game/manifest.webmanifest`는 빌드가 만들지 않으므로 직접 관리합니다.
+- `source/index.html`을 고친 뒤 `node scripts/build.cjs`로 `game/index.html`(단일 HTML, 이미지 내장)을 만듭니다. 아틀라스 키는 `scripts/build.cjs`의 `keys`에 있습니다(현재 25장). 원본은 `assets/atlas/*.png`, 게임에 들어가는 건 `assets/atlas-webp/*.webp`(그림을 바꾸면 `python3 scripts/make-webp.py` 후 빌드). `game/icons/`와 `game/manifest.webmanifest`는 빌드가 만들지 않으므로 직접 관리합니다.
 - `source/index.html`의 게임 스크립트는 v6.2 병합 때 prettier(폭 110)로 정리했습니다. 다른 갈래와 합칠 때도 양쪽을 같은 방식으로 정리한 뒤 3자 병합하면 충돌이 적습니다.
 - 외부 스크립트는 고정 버전 CDN(three.js r128)만 씁니다. 폰트는 Google Fonts만 씁니다. 새 외부 이미지 URL은 쓰지 않습니다.
-- localStorage 키는 `line2clash-v1`입니다. 읽기와 쓰기는 모두 try/catch로 감쌉니다. 새 필드(`st`, `lapStart`, `lapSt`, `laps`, `dex`, `notes`, `spd`, `glove`, v6의 `justice`, `cos`, `stamps`, `tut`, `tips`, `daily`, `att`, `bossKills`, `dexTier`, v5.7의 `umbrellaSeconds`)는 기본값과 병합합니다.
+- localStorage 키는 `line2clash-v1`입니다. 읽기와 쓰기는 모두 try/catch로 감쌉니다. 새 필드(`st`, `lapStart`, `lapSt`, `laps`, `dex`, `notes`, `spd`, `glove`, v6의 `justice`, `cos`, `stamps`, `tut`, `tips`, `daily`, `att`, `bossKills`, `dexTier`, v5.7의 `umbrellaSeconds`, v6.3의 `snd`, `coach`)는 기본값과 병합합니다.
 - 테스트용 DOM 대역은 `classList.remove`, `querySelector`, `style.setProperty`가 없습니다. `classList.toggle(이름, 참거짓)`을 쓰고, 없는 기능은 확인 후 호출합니다.
 - `npm test`는 반드시 통과해야 합니다. v6.2 기준 14묶음(v5.7 보행·백팩·우산·타격 검사 포함), 현재 전부 PASS입니다.
 - 보고할 때는 자동 검사·헤드리스 렌더와 실제 폰 검증을 구분합니다. **v5·v5.7·v6는 실제 휴대폰에서 검증하지 않았습니다.**
@@ -68,5 +77,7 @@
 - "백팩 뒤로 매는 애들도 패자, 앞으로 매는 애들 내비두고" → v6.1 백팩 규칙
 - "백팩은 거북이 등딱지처럼 등에" / "백팩 너무 큼" → v6.1의 3D 가방은 버리고 v5.7 백팩 전용 원화로 교체
 - "앱아이콘 단순하게" → 흰 원 '2'+우산 클립아트는 "촌스러움" → 주인공 상반신도 거절 → "지하철 문이 열리는 듯한 그림" → 사용자가 원하는 그림을 직접 줌(`assets/icon/icon-source.png`). 아이콘은 이 원본을 씀
+- "구간미션이 화면을 너무 가림" → 시안 3개(A·B·C)를 이미지로 먼저 보여주고 사용자가 A안 선택. 화면 배치를 크게 바꿀 땐 먼저 시안 이미지로 확인받을 것
+- 친구 피드백: 시작 전 메뉴, 편의점 전 노선도, 튜토리얼, 타격음 큼 → v6.3
 - "백팩이랑 기타등등 디자인 이걸로 엎어줘"(코덱스 v5.7 ZIP) → v6.2 병합. 디자인은 v5.7, 시스템은 v6
 - "팰 때 화면 흔들림 추가해줘" → v6 흔들림. 약하다/세다는 피드백이 오면 `shake` 의 `a*3.2`와 update 안 `.42/.32` 배율을 조정

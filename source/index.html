@@ -215,6 +215,30 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .dItem small{font-size:10px;color:#5b7465;display:block}.dItem .nm{width:170px}
 .dItem button{border:2px solid #fff;border-radius:12px;background:#f3b24f;color:#4a2e00;font:900 12px var(--body);padding:5px 10px;cursor:pointer;min-width:74px}
 .dItem button:disabled{background:#c8d2c4;color:#5b7465}
+/* v6.3 구간 미션 A안: 한 줄 알약 + 작은 동그라미 버튼, 누르거나 미션을 깨면 3초 펼침 */
+.leftCol{top:62px;gap:5px}
+@media(max-height:440px){.leftCol{top:56px}}
+.mTop{display:flex;gap:6px;align-items:center;pointer-events:auto}
+.mPill{white-space:nowrap;background:#fff9e8f0;color:#32523e;border:0;border-radius:16px;padding:5px 11px 5px 9px;font:900 11px var(--body);display:flex;align-items:center;gap:6px;box-shadow:0 2px 0 #0002;cursor:pointer}
+.mPill b{color:#e0a020;font-size:12px;letter-spacing:1px}
+.mPill .ob{display:block;width:44px;height:5px;border-radius:3px;background:#dfe6d6;overflow:hidden}.mPill .ob em{display:block;height:100%;width:0;background:linear-gradient(90deg,#f4b04f,#6fcf6a);transition:width .3s}
+.rb{width:31px;height:31px;border-radius:50%;background:#37654cee;border:2px solid #fff9e8;color:#fff;font:900 9.5px var(--body);display:grid;place-items:center;position:relative;padding:0;cursor:pointer;box-shadow:0 2px 0 #294e3d55}
+.rb b{position:absolute;top:-5px;right:-6px;background:#ff5a4a;color:#fff;font-size:8px;border-radius:7px;padding:0 4px;border:1.5px solid #fff;line-height:1.4}
+.shk{white-space:nowrap}
+@media(max-width:940px){#btnModels{display:none}}
+.rb .f{display:none}
+.selecting .mPill,.selecting .mList{display:none}
+.selecting .rb{width:auto;height:34px;border-radius:17px;padding:0 13px;font-size:12px}.selecting .rb .s{display:none}.selecting .rb .f{display:inline}
+.mList{background:#fff9e8f0;color:#32523e;border-radius:12px;padding:6px 10px;box-shadow:0 2px 0 #0002;animation:cardIn .2s ease-out}
+/* v6.3 게임 방법(튜토리얼): 화면을 어둡게 하고 설명할 버튼만 밝게 */
+#coachOv{position:fixed;inset:0;z-index:70;pointer-events:auto}
+#coachRing{position:absolute;border-radius:18px;box-shadow:0 0 0 3px #ffd84a,0 0 0 9999px #0b1a12c4;transition:all .25s ease-out;pointer-events:none}
+#coachRing.none{box-shadow:0 0 0 9999px #0b1a12c4}
+#coachCard{position:absolute;width:min(360px,82vw);background:#fff9ec;color:#24402f;border-radius:16px;padding:12px 14px 10px;box-shadow:0 6px 0 #0004;font-family:var(--body);transition:top .25s,left .25s}
+#coachCard small{font:900 10px var(--body);color:#c47a12}
+#coachCard h3{margin:2px 0 4px;font:900 16px var(--body)}
+#coachCard p{margin:0 0 10px;font:700 12px/1.6 var(--body);color:#3b5a46}
+#coachCard .ovRow{justify-content:flex-end;gap:6px}#coachCard .ovBtn{padding:6px 12px;font-size:12px}
 .dx .tier{font-size:9px;font-weight:900;border-radius:8px;padding:0 6px;color:#fff;background:#9aa89c}.dx .tier.t1{background:#b8723a}.dx .tier.t2{background:#8a9aa8}.dx .tier.t3{background:#d8a020}
 </style>
 
@@ -226,11 +250,11 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       <div class="box hpw"><small>체력 · <span id="titleTx">신입 순찰</span></small><div class="hpb"><i id="hpBar" style="width:100%"></i></div></div>
       <div class="box wave">다음 역 <b id="stName">건대입구</b> · <b id="trainT">20초</b><b id="evTx"></b></div><b id="waveN" hidden>1</b>
     </div>
-    <div class="hg"><div class="box money"><span class="bill">₩</span><span id="money">0</span></div><button class="shk" id="btnCash">빠른 정산</button><button class="shk" id="btnCharacter">주인공 변경</button><button class="shk" id="btnModels">인물 보기</button><button class="shk" id="btnShake" aria-pressed="true">흔들림</button></div>
+    <div class="hg"><div class="box money"><span class="bill">₩</span><span id="money">0</span></div><button class="shk" id="btnCash">빠른 정산</button><button class="shk" id="btnCharacter">주인공 변경</button><button class="shk" id="btnModels">인물 보기</button><button class="shk" id="btnShake" aria-pressed="true">흔들림</button><button class="shk" id="btnSound" aria-pressed="true">소리</button></div>
   </div>
   <div class="leftCol" id="leftCol">
-  <div class="mission"><b>구간 미션<span id="segStars"></span></b><div id="segList"><div class="mrow"><i>·</i>위반 표시가 있는 가해 승객만 공격</div></div><div class="orderW">질서 회복도 <i><em id="orderFill"></em></i><span id="orderTx">0%</span></div></div>
-  <div class="sideBtns"><button id="btnMap">노선도</button><button id="btnDex">빌런 도감<b id="dexBadge" hidden>N</b></button><button id="btnDaily">오늘 미션<b id="dailyBadge" hidden>!</b></button></div>
+  <div class="mTop"><button class="mPill" id="segPill" aria-expanded="false"><b id="segStars">☆☆☆</b><span id="segCount">미션 0/3</span><i class="ob"><em id="orderFill"></em></i><span id="orderTx">질서 0%</span></button><button class="rb" id="btnMap"><span class="s">노선</span><span class="f">노선도</span></button><button class="rb" id="btnDex"><span class="s">도감</span><span class="f">빌런 도감</span><b id="dexBadge" hidden>N</b></button><button class="rb" id="btnDaily"><span class="s">오늘</span><span class="f">오늘 미션</span><b id="dailyBadge" hidden>!</b></button><button class="rb" id="btnHelp"><span class="s">방법</span><span class="f">게임 방법</span></button></div>
+  <div class="mList" id="segList" hidden></div>
   </div>
   <div id="flashFx"></div>
   <div id="bossBar" hidden><span id="bossName">보스</span><i><em id="bossFill"></em></i></div>
@@ -247,8 +271,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 </div>
 <div class="ov" id="shopOv" hidden><h2 id="shopTitle">건대입구 도착</h2><p class="sub" id="shopSub">문이 열렸어요 · 승강장 편의점에서 하나 고르세요</p><div class="segRes" id="segRes" hidden></div><div class="cards" id="cards"></div><div class="ovRow"><span class="wallet" id="shopMoney">0원</span><button class="ovBtn" id="btnCos">꾸미기</button><button class="ovBtn y" id="btnDepart">출발 ▶</button></div></div>
 <div class="ov" id="cosOv" hidden><h2>꾸미기</h2><p class="sub" id="cosSub">한 번 사면 계속 쓸 수 있어요 · 능력치는 그대로</p><div class="cosWrap" id="cosWrap"></div><div class="ovRow"><span class="wallet" id="cosMoney">0원</span><button class="ovBtn y" id="btnCosClose">편의점으로</button></div></div>
+<div id="coachOv" hidden><div id="coachRing"></div><div id="coachCard"><small id="coachStep">1/8</small><h3 id="coachTitle"></h3><p id="coachText"></p><div class="ovRow"><button class="ovBtn" id="coachSkip">건너뛰기</button><button class="ovBtn" id="coachPrev">이전</button><button class="ovBtn y" id="coachNext">다음 ▶</button></div></div></div>
 <div class="ov" id="dailyOv" hidden><h2>오늘 미션</h2><p class="sub" id="dailySub"></p><div class="dl" id="dailyList"></div><div class="ovRow"><button class="ovBtn" id="btnDailyClose">닫기</button></div></div>
-<div class="ov" id="mapOv" hidden><h2>2호선 순환 노선도</h2><p class="sub" id="mapSub"></p><canvas id="mapCv" width="1520" height="640"></canvas><div class="ovRow"><button class="ovBtn" id="btnMapClose">닫기</button></div></div>
+<div class="ov" id="mapOv" hidden><h2 id="mapTitle">2호선 순환 노선도</h2><p class="sub" id="mapSub"></p><canvas id="mapCv" width="1520" height="640"></canvas><div class="ovRow"><button class="ovBtn" id="btnMapClose">닫기</button><button class="ovBtn y" id="btnMapShop" hidden>편의점 가기 ▶</button></div></div>
 <div class="ov" id="dexOv" hidden><h2>빌런 도감</h2><p class="sub" id="dexSub"></p><div class="dexGrid" id="dexGrid"></div><div class="ovRow"><button class="ovBtn" id="btnDexClose">닫기</button></div></div>
 <div class="rotate" id="rotate"><div class="ph" aria-hidden="true"></div><p>폰을 가로로 돌려주세요</p><button id="btnSkip">그냥 세로로 볼게요</button></div>
 <div id="modelView" hidden style="position:fixed;inset:0;z-index:80;background:#cddbd3"><div style="position:absolute;left:24px;top:20px;color:#234237;font:900 18px var(--body)">2호선 승객들 <small style="display:block;font-size:11px;margin-top:6px">같은 3D 모델 · 드래그해서 회전</small></div><button id="closeModels" style="position:absolute;right:20px;top:20px;border:0;border-radius:20px;padding:10px 18px;background:#214b3b;color:white;font-weight:900;z-index:2">게임으로</button><canvas id="modelCanvas" style="width:100%;height:100%;touch-action:none"></canvas><div style="position:absolute;bottom:20px;width:100%;display:flex;justify-content:space-evenly;color:#234237;font:900 13px var(--body)"><span>남자 주인공</span><span>여자 주인공</span><span>위반 승객</span><span>어르신 · 보호</span></div></div><div id="err" hidden>3D를 불러오지 못했어요. 새로고침해 주세요.</div>
@@ -372,6 +397,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       daily: null,
       att: null,
       bossKills: {},
+      snd: "mid",
       dexTier: {},
     },
     SAVE,
@@ -1201,11 +1227,6 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     guard: "__ASSET_guard__",
     "walk-male": "__ASSET_walk-male__",
     "walk-female": "__ASSET_walk-female__",
-    "walk-civilians": "__ASSET_walk-civilians__",
-    "walk-protected": "__ASSET_walk-protected__",
-    "walk-staff": "__ASSET_walk-staff__",
-    "walk-special": "__ASSET_walk-special__",
-    "walk-incident": "__ASSET_walk-incident__",
     "walk-backpack": "__ASSET_walk-backpack__",
     "walk-backpack-female": "__ASSET_walk-backpack-female__",
     "dir-hero-male": "__ASSET_dir-hero-male__",
@@ -2203,7 +2224,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (slide) o.frequency.exponentialRampToValueAtTime(slide, t0 + d);
     gn.gain.setValueAtTime(vol, t0);
     gn.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
-    o.connect(gn).connect(AC.destination);
+    o.connect(gn).connect(audioOut());
     o.start(t0);
     o.stop(t0 + d + 0.02);
   }
@@ -2222,7 +2243,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       f.frequency.value = freq;
       s.connect(f).connect(gn);
     } else s.connect(gn);
-    gn.connect(AC.destination);
+    gn.connect(audioOut());
     s.start();
   }
   const sfx = {
@@ -2230,8 +2251,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       noise(0.12, 0.12, 2400);
     },
     hit(n, heavy = false) {
-      tone(heavy ? 105 : 140, heavy ? 0.16 : 0.12, "sine", 0.25 + 0.05 * Math.min(n, 4), 0, 45);
-      noise(heavy ? 0.09 : 0.055, heavy ? 0.28 : 0.18, heavy ? 1800 : 1200);
+      tone(heavy ? 105 : 140, heavy ? 0.16 : 0.12, "sine", 0.16 + 0.03 * Math.min(n, 4), 0, 45);
+      noise(heavy ? 0.09 : 0.055, heavy ? 0.18 : 0.11, heavy ? 1800 : 1200);
       if (heavy) {
         tone(72, 0.14, "triangle", 0.16, 0.025, 38);
         tone(780, 0.025, "square", 0.035, 0, 180);
@@ -2264,6 +2285,18 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       noise(1.2, 0.08, 400);
     },
   };
+  // 소리 크기: 친구 피드백 "타격 소리가 커서" → 기본을 '보통'(이전의 약 60%)으로, 「소리」 버튼으로 보통·작게·끔
+  const SND = { mid: 0.6, low: 0.3, off: 0 },
+    SND_NEXT = { mid: "low", low: "off", off: "mid" },
+    SND_LABEL = { mid: "소리", low: "소리 작게", off: "소리 끔" };
+  function audioOut() {
+    if (!AC.__m) {
+      AC.__m = AC.createGain();
+      AC.__m.connect(AC.destination);
+    }
+    AC.__m.gain.value = SND[SAVE.snd] ?? 0.6;
+    return AC.__m;
+  }
   const ensureAudio = () => {
     try {
       AC = AC || new (window.AudioContext || window.webkitAudioContext)();
@@ -4119,6 +4152,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (SAVE.laps > 0) $("titleTx").textContent += " · " + (SAVE.laps + 1) + "바퀴째";
     ultUI();
     renderSeg();
+    segOpenTick(dt);
     tutTick(dt);
     hintTick(dt);
     eventLook(dt);
@@ -4867,7 +4901,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     );
     orderK = k;
     $("orderFill").style.width = Math.round(k * 100) + "%";
-    $("orderTx").textContent = Math.round(k * 100) + "%";
+    $("orderTx").textContent = "질서 " + Math.round(k * 100) + "%";
     if (k >= 1 && !peaceGiven) {
       peaceGiven = true;
       S.money += 40;
@@ -4920,6 +4954,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     persist();
     openShop(res);
+    showArrivalMap(prev);
   }
   // 편의점 카드
   const CARDS = [
@@ -4928,12 +4963,16 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       ic: "우산",
       col: "#367fa2",
       nm: "장우산 · 2분",
-      ds: "전방 90° 스윙 · 플레이 120초 · 즉시 장착",
-      ok: () => SAVE.umbrellaSeconds <= 0,
+      // 쓰는 중에도 살 수 있음: 사면 2분 추가, 최대 4분. 카드에 남은 시간을 보여줌
+      ds: () =>
+        SAVE.umbrellaSeconds > 0
+          ? `남은 ${Math.floor(Math.ceil(SAVE.umbrellaSeconds) / 60)}:${String(Math.ceil(SAVE.umbrellaSeconds) % 60).padStart(2, "0")} · 사면 +2분(최대 4분)`
+          : "전방 90° 스윙 · 플레이 120초 · 즉시 장착",
+      ok: () => !(SAVE.umbrellaSeconds > 239),
       lv: () => null,
       cost: () => 40,
       go: () => {
-        SAVE.umbrellaSeconds = 120;
+        SAVE.umbrellaSeconds = Math.min(240, Math.max(0, SAVE.umbrellaSeconds || 0) + 120);
         setAttackStyle("umbrella");
         updateUmbrellaClock();
       },
@@ -5048,7 +5087,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       const lv = c.lv();
       const d = document.createElement("button");
       d.className = "card" + (avail ? (can ? "" : " no") : " max") + (flash === c.id ? " bought" : "");
-      d.innerHTML = `${lv !== null ? `<span class="lv">Lv ${lv}</span>` : ""}<div class="ic" style="background:${c.col}">${c.ic}</div><div class="nm">${c.nm}</div><div class="ds">${c.ds}</div><div class="pr">${avail ? fmt(cost) + "원" : c.id === "umbrella120" ? "사용 중" : c.id === "milk" ? "구매 완료" : "최대"}</div>`;
+      d.innerHTML = `${lv !== null ? `<span class="lv">Lv ${lv}</span>` : ""}<div class="ic" style="background:${c.col}">${c.ic}</div><div class="nm">${c.nm}</div><div class="ds">${typeof c.ds === "function" ? c.ds() : c.ds}</div><div class="pr">${avail ? (c.price ? c.price() : fmt(cost) + "원") : c.id === "umbrella120" ? "4분 꽉 참" : c.id === "milk" ? "구매 완료" : "최대"}</div>`;
       d.onclick = () => {
         if (!c.ok()) return;
         const cost = c.cost();
@@ -5090,6 +5129,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     $("shopOv").hidden = false;
   }
   $("btnDepart").onclick = () => {
+    if (arrivalMap) closeArrivalMap();
     $("shopOv").hidden = true;
     $("cosOv").hidden = true;
     persist();
@@ -5101,7 +5141,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     newSegment();
   };
   // 노선도
-  function drawMap() {
+  function drawMap(anim) {
     const cv = $("mapCv"),
       c = cv.getContext("2d"),
       Wd = cv.width,
@@ -5227,12 +5267,35 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       Wd / 2,
       Hd / 2 + 30,
     );
+    if (anim) {
+      // 도착 연출: 이전 역에서 이번 역으로 열차 표시가 이동
+      let a = anim.from / NS,
+        b = SAVE.st / NS;
+      if (b < a) b += 1;
+      const [mx, my] = ptAt((a + (b - a) * anim.k) % 1);
+      c.beginPath();
+      c.arc(mx, my, 30, 0, 7);
+      c.fillStyle = "#f3b24f";
+      c.fill();
+      c.lineWidth = 7;
+      c.strokeStyle = "#fff";
+      c.stroke();
+      c.fillStyle = "#4a2e00";
+      c.font = '900 30px "Noto Sans KR",sans-serif';
+      c.fillText("2", mx, my + 2);
+    }
     const sv = Object.values(SAVE.stamps);
     $("mapSub").textContent =
       `${SAVE.laps + 1}바퀴째 · 이번 바퀴 ${SAVE.lapSt} / ${NS}역 · 역 스탬프 ${sv.filter(x => x > 0).length}/${NS} · 별 ${sv.reduce((a, b) => a + b, 0)}/${NS * 3}`;
   }
   let pausedFrom = null;
   function pauseFor(id) {
+    if (mode === "title") {
+      // 시작 전 화면에서도 노선도·도감·오늘 미션·게임 방법을 볼 수 있음(친구 피드백)
+      pausedFrom = "title";
+      $(id).hidden = false;
+      return true;
+    }
     if (mode !== "play") return false;
     pausedFrom = mode;
     mode = "shop";
@@ -5244,13 +5307,138 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   }
   function resume(id) {
     $(id).hidden = true;
+    if (pausedFrom === "title" && mode === "title") {
+      pausedFrom = null;
+      return;
+    }
     mode = "play";
     last = performance.now();
   }
   $("btnMap").onclick = () => {
     if (pauseFor("mapOv")) drawMap();
   };
+  $("btnHelp").onclick = () => openCoach();
+  const COACH = [
+    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
+    { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
+    { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
+    { t: "풍차 주먹과 장우산", d: "기본은 풍차 주먹이에요. 역 편의점에서 장우산을 사면 2분 동안 정면 90°로 휘둘러요. 쓰는 중에도 사면 시간이 늘어나요.", el: ["btnFists", "btnUmbrella"] },
+    { t: "구간 미션", d: "역과 역 사이마다 미션 3개가 나와요. 깨면 다음 역에서 별과 돈을 받아요. 누르면 목록이 펼쳐져요.", el: ["segPill"] },
+    { t: "메뉴", d: "노선도·빌런 도감·오늘 미션·게임 방법은 여기서 언제든 볼 수 있어요. 시작 전 화면에서도 돼요.", el: ["btnMap", "btnDex", "btnDaily", "btnHelp"] },
+    { t: "역과 편의점", d: "떨어진 벌금 딱지는 저절로 주워요. 역에 도착하면 돈으로 바뀌고, 노선도를 본 다음 편의점에서 강화하거나 장우산을 사요.", el: ["bagHud"] },
+  ];
+  let coachI = 0,
+    coachFrom = null;
+  function coachRect(el) {
+    if (!el) return null;
+    if (el === "center") return { x: innerWidth * 0.3, y: innerHeight * 0.3, w: innerWidth * 0.4, h: innerHeight * 0.36 };
+    let r = null;
+    for (const id of el) {
+      const b = $(id).getBoundingClientRect ? $(id).getBoundingClientRect() : null;
+      if (!b || !b.width) continue;
+      r = r
+        ? { x: Math.min(r.x, b.left), y: Math.min(r.y, b.top), x2: Math.max(r.x2, b.right), y2: Math.max(r.y2, b.bottom) }
+        : { x: b.left, y: b.top, x2: b.right, y2: b.bottom };
+    }
+    return r && { x: r.x, y: r.y, w: r.x2 - r.x, h: r.y2 - r.y };
+  }
+  function showCoach() {
+    const st = COACH[coachI],
+      ring = $("coachRing"),
+      card = $("coachCard");
+    $("coachStep").textContent = coachI + 1 + " / " + COACH.length;
+    $("coachTitle").textContent = st.t;
+    $("coachText").textContent = st.d;
+    $("coachPrev").hidden = coachI === 0;
+    $("coachNext").textContent = coachI === COACH.length - 1 ? "시작하기" : "다음 ▶";
+    const r = coachRect(st.el),
+      W = innerWidth,
+      H = innerHeight,
+      cw = card.offsetWidth || 340,
+      ch = card.offsetHeight || 150;
+    if (r) {
+      const p = 6;
+      ring.classList.toggle("none", false);
+      Object.assign(ring.style, { left: r.x - p + "px", top: r.y - p + "px", width: r.w + p * 2 + "px", height: r.h + p * 2 + "px" });
+      const below = r.y + r.h / 2 < H / 2,
+        top = below ? r.y + r.h + 16 : r.y - ch - 16;
+      card.style.left = clamp(r.x + r.w / 2 - cw / 2, 10, W - cw - 10) + "px";
+      card.style.top = clamp(top, 8, H - ch - 8) + "px";
+    } else {
+      ring.classList.toggle("none", true);
+      Object.assign(ring.style, { left: W / 2 + "px", top: H / 2 + "px", width: "0px", height: "0px" });
+      card.style.left = (W - cw) / 2 + "px";
+      card.style.top = (H - ch) / 2 + "px";
+    }
+  }
+  function openCoach() {
+    coachFrom = mode;
+    if (mode === "play") {
+      mode = "shop";
+      joy.on = false;
+      joy.dx = joy.dy = 0;
+      $("joy").hidden = true;
+    }
+    coachI = 0;
+    $("coachOv").hidden = false;
+    showCoach();
+    setTimeout(showCoach, 30); // 카드 크기를 잰 뒤 위치 다시 맞춤
+  }
+  function closeCoach() {
+    $("coachOv").hidden = true;
+    SAVE.coach = 1;
+    SAVE.tut = Math.max(SAVE.tut || 0, 1);
+    persist();
+    if (coachFrom === "play") {
+      mode = "play";
+      last = performance.now();
+    }
+  }
+  $("coachNext").onclick = () => {
+    if (coachI >= COACH.length - 1) return closeCoach();
+    coachI++;
+    showCoach();
+  };
+  $("coachPrev").onclick = () => {
+    if (coachI > 0) coachI--;
+    showCoach();
+  };
+  $("coachSkip").onclick = closeCoach;
   $("btnMapClose").onclick = () => resume("mapOv");
+  // 역 도착: 편의점 전에 노선도를 먼저 보여줌(친구 피드백). 열차 표시가 이번 역으로 이동한 뒤 '편의점 가기'
+  let arrivalMap = null;
+  function showArrivalMap(prev) {
+    const id = {};
+    arrivalMap = id;
+    $("mapTitle").textContent = STATIONS[SAVE.st] + " 도착" + (TRANSFER.has(STATIONS[SAVE.st]) ? " · 환승역" : "");
+    $("btnMapClose").hidden = true;
+    $("btnMapShop").hidden = false;
+    $("mapOv").style.background = "#163a2bfa";
+    $("mapOv").hidden = false;
+    let k = 0;
+    const step = () => {
+      if (arrivalMap !== id) return;
+      k = Math.min(1, k + 0.06);
+      try {
+        drawMap({ from: prev, k: 1 - Math.pow(1 - k, 3) });
+      } catch (e) {}
+      if (k < 1) setTimeout(step, 30);
+    };
+    step();
+    setTimeout(() => {
+      if (arrivalMap === id) closeArrivalMap();
+    }, 3600);
+  }
+  function closeArrivalMap() {
+    arrivalMap = null;
+    $("mapOv").hidden = true;
+    $("mapOv").style.background = "";
+    $("btnMapShop").hidden = true;
+    $("btnMapClose").hidden = false;
+    $("mapTitle").textContent = "2호선 순환 노선도";
+  }
+  $("btnMapShop").onclick = closeArrivalMap;
   $("btnDex").onclick = () => {
     if (!pauseFor("dexOv")) return;
     $("dexBadge").hidden = true;
@@ -5400,6 +5588,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     S.seg = { ms, kills: 0, inc: 0, streak: 0, ult: 0, downs: 0, fails: 0, boss: 0 };
     S.segShown = "";
     renderSeg(true);
+    segExpand(3.5);
   }
   function segCount(v) {
     const g = S.seg;
@@ -5415,6 +5604,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       if (!m.end && !m.done && segVal(m) >= m.goal) {
         m.done = true;
         num(hero.pos, "미션 완료 ★", "note", 20);
+        S.segShown = "";
+        renderSeg(true);
+        segExpand(3);
         tone(880, 0.1, "triangle", 0.06);
         tone(1320, 0.16, "triangle", 0.06, 0.08);
       }
@@ -5467,8 +5659,27 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       S.segShown = html;
       $("segList").innerHTML = html;
       $("segStars").textContent = "★".repeat(stars) + "☆".repeat(3 - stars);
+      $("segCount").textContent = "미션 " + stars + "/3";
     }
   }
+  function segExpand(sec) {
+    $("segList").hidden = false;
+    $("segPill").setAttribute("aria-expanded", "true");
+    S.segOpenT = sec;
+  }
+  function segOpenTick(dt) {
+    if (S.segOpenT > 0) {
+      S.segOpenT -= dt;
+      if (S.segOpenT <= 0) {
+        $("segList").hidden = true;
+        $("segPill").setAttribute("aria-expanded", "false");
+      }
+    }
+  }
+  $("segPill").onclick = () => {
+    if ($("segList").hidden) segExpand(4);
+    else S.segOpenT = 0.001;
+  };
   function segFinish() {
     const g = S.seg;
     if (!g) return null;
@@ -5984,6 +6195,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         m.scale.setScalar(selected ? 1.02 : 0.96);
       });
       renderer.render(ss, cc);
+      preloadStep();
       requestAnimationFrame(loop);
       return;
     }
@@ -6042,6 +6254,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     applyCos();
     if (!S.seg) newSegment();
     attendance();
+    // 첫 시작에는 게임 방법을 자동으로 보여줌(친구 피드백: 한방 등을 오늘 미션 보고서야 알았음). 테스트용 가짜 DOM에서는 건너뜀
+    if (!SAVE.coach && document.body) setTimeout(openCoach, 700);
   };
   function setAttackStyle(style) {
     if (style === "umbrella" && SAVE.umbrellaSeconds <= 0) {
@@ -6163,6 +6377,15 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     shakeOn = !shakeOn;
     $("btnShake").setAttribute("aria-pressed", String(shakeOn));
   };
+  $("btnSound").textContent = SND_LABEL[SAVE.snd] || SND_LABEL.mid;
+  $("btnSound").onclick = () => {
+    SAVE.snd = SND_NEXT[SAVE.snd] || "low";
+    $("btnSound").textContent = SND_LABEL[SAVE.snd];
+    $("btnSound").setAttribute("aria-pressed", String(SAVE.snd !== "off"));
+    ensureAudio();
+    if (AC) audioOut();
+    persist();
+  };
   $("btnSkip").onclick = () => $("rotate").classList.add("skip");
   setInterval(persist, 4000);
 // 성능: 움직이지 않는 객차·좌석·정산기 부품을 재질별로 하나로 합쳐 그리기 호출을 줄임(문짝은 움직이므로 제외)
@@ -6227,12 +6450,39 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       mergeStatic([...roots], keep);
     } catch (e) {}
   }
-  function preloadArt() {
+  // 시작 렉 방지: 주인공 선택 화면이 떠 있는 동안 프레임마다 그림 1장씩 GPU에 올리고, 다 올리면 게임 장면 셰이더를 미리 컴파일.
+  // (시작 버튼을 누를 때 한꺼번에 하면 그 순간 화면이 멈춤)
+  const PRE = { list: null, i: 0, compiled: false };
+  function preloadStep() {
     try {
-      if (renderer.initTexture) for (const tx of Object.values(ART)) if (tx.image) renderer.initTexture(tx);
-      if (renderer.compile) renderer.compile(scene, camera); // 쓰일 셰이더를 시작할 때 미리 컴파일
-    } catch (e) {}
+      if (!renderer.initTexture) return;
+      if (!PRE.list) PRE.list = Object.values(ART);
+      if (PRE.i < PRE.list.length) {
+        const tx = PRE.list[PRE.i];
+        if (!tx.image || !(tx.image.width > 0)) return; // 아직 디코딩 중
+        renderer.initTexture(tx);
+        PRE.i++;
+        return;
+      }
+      if (!PRE.compiled) {
+        PRE.compiled = true;
+        if (renderer.compile) renderer.compile(scene, camera);
+        return;
+      }
+      if (!PRE.warm && THREE.WebGLRenderTarget && renderer.setRenderTarget) {
+        // 보이지 않는 작은 화면에 게임 장면을 한 번 그려 그림자용 셰이더와 글자 텍스처까지 미리 준비
+        PRE.warm = true;
+        const rt = new THREE.WebGLRenderTarget(64, 64);
+        renderer.setRenderTarget(rt);
+        renderer.render(scene, camera);
+        renderer.setRenderTarget(null);
+        rt.dispose();
+      }
+    } catch (e) {
+      PRE.compiled = true;
+    }
   }
+  function preloadArt() {}
 showSelection();
 requestAnimationFrame(loop);
 })();
