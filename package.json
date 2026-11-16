@@ -1,13 +1,14 @@
 {
   "name": "line2-clash",
-  "version": "6.0.0",
+  "version": "6.2.0",
   "private": true,
-  "description": "2호선 격돌 v6 — Claude 타격감·목표·성장 시스템",
+  "description": "2호선 격돌 v6.2 — v6 시스템 + 코덱스 v5.7 디자인",
   "scripts": {
     "build": "node scripts/build.cjs",
     "test": "node tests/smoke.cjs",
     "test:render": "node tests/smoke.cjs --render",
-    "start": "node scripts/serve.cjs"
+    "start": "node scripts/serve.cjs",
+    "pack:directions": "node scripts/pack-directions.cjs"
   },
   "devDependencies": {
     "@napi-rs/canvas": "0.1.80",

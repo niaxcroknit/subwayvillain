@@ -9,7 +9,8 @@
 ## 먼저 읽을 파일 (순서대로)
 
 1. `AGENTS.md`: 현재 확정 규칙과 사용자 피드백 이력
-2. `docs/V6-CHANGES.md`: v6에서 더한 것(흔들림·한방·구간 미션·보스 7종 등), 코드 위치, 남은 과제
+2. `docs/V6-CHANGES.md`: v6~v6.2(흔들림·한방·구간 미션·보스 7종, 코덱스 v5.7 디자인 병합), 코드 위치, 남은 과제
+   `docs/MOTION-2D.md`·`DIRECTION-FIX.md`·`UMBRELLA-120.md`·`IMPACT.md`·`BACKPACK.md`: 코덱스 v5.7 디자인 기준
    `docs/V5-CHANGES.md`: v5에서 바뀐 것, **새로 그려야 할 임시 아트**
 3. `source/index.html`: 수정용 소스(이미지 대신 짧은 자리표시자)
 4. `docs/HANDOFF.md`: v4 기술 인수인계와 v5 작업 로그
