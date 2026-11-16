@@ -26,9 +26,6 @@ cfg={(0,0):(116,166,11)}
 for (r,c),(cx,yh,ang) in cfg.items():
   cell=im.crop((c*256,r*256,c*256+256,r*256+256))
   out.paste(spread(cell,cx,yh,ang),(c*256,r*256))
-# rear view: the visible leg is mirrored under the body so both knees show (wide stance from behind)
-cell=im.crop((0,256,256,512));A=np.array(cell)
-leg=A.copy();leg[:186,:]=0;leg[:,:132]=0
-mir=leg[:,::-1].copy();sh=np.zeros_like(mir);sh[:,6:]=mir[:,:-6]
-out.paste(Image.alpha_composite(Image.fromarray(sh),cell),(0,256))
+# rear view: keep the original two-leg art untouched (a mirrored extra leg made three legs - rejected)
+out.paste(im.crop((0,256,256,512)),(0,256))
 out.save(sys.argv[2])
