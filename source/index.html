@@ -239,6 +239,26 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 #coachCard h3{margin:2px 0 4px;font:900 16px var(--body)}
 #coachCard p{margin:0 0 10px;font:700 12px/1.6 var(--body);color:#3b5a46}
 #coachCard .ovRow{justify-content:flex-end;gap:6px}#coachCard .ovBtn{padding:6px 12px;font-size:12px}
+
+/* v6.4 가로 화면 아래 잘림 방지: 실제로 보이는 높이(--app-h)에 맞춤 */
+#gl,.layer,.ov,#coachOv,.rotate,#modelView{top:var(--app-top,0px)!important;bottom:auto!important;height:var(--app-h,100%)!important}
+.ov{overflow-y:auto;justify-content:flex-start;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(8px,env(safe-area-inset-bottom))}
+.ov>:first-child{margin-top:auto}.ov>:last-child{margin-bottom:auto}
+.ov .ovRow{position:sticky;bottom:0;z-index:2;padding:4px 0}
+@media(max-height:360px){
+ .ov{gap:5px}.ov h2{font-size:18px}.ov .sub{display:none}
+ .segRes{padding:3px 12px;gap:10px}.segRes .stars{font-size:18px}.segRes small{display:none}
+ .card{gap:2px!important;padding:5px 4px 5px!important;border-radius:14px}.card .ic{width:30px!important;height:30px!important;font-size:11px!important}
+ .card .nm{font-size:11px!important}.card .ds{font-size:8.5px!important;min-height:0!important;max-height:22px;overflow:hidden}.card .pr{font-size:12px!important;padding:1px 8px!important}.card .lv{top:4px;right:6px;font-size:8px}
+ .ovBtn{padding:5px 12px;font-size:12px}.wallet{font-size:14px;padding:4px 10px}
+ #mapCv{max-height:58vh}
+ .controls .styleBtn{width:52px;height:52px}.controls .dashBtn{width:60px;height:60px}.controls .ultBtn{width:56px;height:56px}
+ .controls .styleBtn span{font-size:13px}.controls{gap:6px}
+ .hud .box{padding:3px 8px}.money{font-size:20px;min-width:96px}.shk{padding:4px 8px!important;font-size:10px}
+ .bagHud{bottom:8px;padding:5px 10px}
+ #hint.tut{top:calc(var(--app-h,100%) - 100px)}
+ #hint:not(.tut){display:none}
+}
 .dx .tier{font-size:9px;font-weight:900;border-radius:8px;padding:0 6px;color:#fff;background:#9aa89c}.dx .tier.t1{background:#b8723a}.dx .tier.t2{background:#8a9aa8}.dx .tier.t3{background:#d8a020}
 </style>
 
@@ -281,6 +301,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 (() => {
+  // 화면 크기: 폰 브라우저 주소창·툴바를 뺀 '실제로 보이는 영역' 기준(가로 모드에서 아래가 잘리던 문제)
+  const VPW = () => Math.round((window.visualViewport && window.visualViewport.width) || innerWidth);
+  const VPH = () => Math.round((window.visualViewport && window.visualViewport.height) || innerHeight);
   if (!window.THREE) {
     document.getElementById("err").hidden = false;
     return;
@@ -433,7 +456,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   // ---------- 렌더러 ----------
   const canvas = $("gl");
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-  renderer.setPixelRatio(Math.min(innerWidth < 1000 ? 1.25 : 1.5, devicePixelRatio || 1));
+  renderer.setPixelRatio(Math.min(VPW() < 1000 ? 1.25 : 1.5, devicePixelRatio || 1));
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
@@ -458,17 +481,34 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   sun.shadow.normalBias = 0.035;
   scene.add(sun);
   scene.add(sun.target);
-  const CAM_H = () => (innerHeight < 500 ? 3.25 : 3.6);
+  const CAM_H = () => (VPH() < 500 ? 3.25 : 3.6);
   function resize() {
-    renderer.setSize(innerWidth, innerHeight, false);
+    try {
+      const de = document.documentElement,
+        vv = window.visualViewport;
+      if (de && de.style && de.style.setProperty) {
+        de.style.setProperty("--app-h", VPH() + "px");
+        de.style.setProperty("--app-w", VPW() + "px");
+        de.style.setProperty("--app-top", Math.round((vv && vv.offsetTop) || 0) + "px");
+      }
+      if (window.scrollTo) window.scrollTo(0, 0);
+    } catch (e) {}
+    renderer.setSize(VPW(), VPH(), false);
     const VH = CAM_H();
-    camera.left = (-VH * innerWidth) / innerHeight;
-    camera.right = (VH * innerWidth) / innerHeight;
+    camera.left = (-VH * VPW()) / VPH();
+    camera.right = (VH * VPW()) / VPH();
     camera.top = VH;
     camera.bottom = -VH;
     camera.updateProjectionMatrix();
   }
   addEventListener("resize", resize);
+  try {
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", resize);
+      window.visualViewport.addEventListener("scroll", resize);
+    }
+    addEventListener("orientationchange", () => setTimeout(resize, 350));
+  } catch (e) {}
   resize();
   const MC = {};
   const mat = (c, o) => {
@@ -2182,12 +2222,12 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     v3.setFromMatrixPosition(obj.matrixWorld);
     v3.y += y;
     v3.project(camera);
-    return { x: (v3.x * 0.5 + 0.5) * innerWidth, y: (-v3.y * 0.5 + 0.5) * innerHeight, vis: v3.z < 1 };
+    return { x: (v3.x * 0.5 + 0.5) * VPW(), y: (-v3.y * 0.5 + 0.5) * VPH(), vis: v3.z < 1 };
   }
   function scrP(p, y) {
     v3.set(p.x * WORLD_X, y, p.z);
     v3.project(camera);
-    return { x: (v3.x * 0.5 + 0.5) * innerWidth, y: (-v3.y * 0.5 + 0.5) * innerHeight };
+    return { x: (v3.x * 0.5 + 0.5) * VPW(), y: (-v3.y * 0.5 + 0.5) * VPH() };
   }
   function el(cls, html) {
     const d = document.createElement("div");
@@ -4099,7 +4139,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       S.camOff = null;
     }
     // 카메라: 주인공 중심으로 바짝, 객차 끝 밖의 빈 공간은 안 보이게 x를 객차 안으로 제한
-    const halfW = (CAM_H() * innerWidth) / innerHeight,
+    const halfW = (CAM_H() * VPW()) / VPH(),
       carMin = -14 * WORLD_X + halfW * 0.38,
       carMax = (SAVE.zone2 ? CAR + 14 : 14) * WORLD_X - halfW * 0.38;
     const tx = carMin < carMax ? clamp(cx * WORLD_X, carMin, carMax) : (carMin + carMax) / 2,
@@ -4330,8 +4370,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 
   function placeTags() {
     const items = [],
-      W = innerWidth,
-      H = innerHeight;
+      W = VPW(),
+      H = VPH();
     const add = (tag, o, y, r, bad) => {
       if (!tag) return;
       const d = d2(o.position, hero.pos);
@@ -5332,7 +5372,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     coachFrom = null;
   function coachRect(el) {
     if (!el) return null;
-    if (el === "center") return { x: innerWidth * 0.3, y: innerHeight * 0.3, w: innerWidth * 0.4, h: innerHeight * 0.36 };
+    if (el === "center") return { x: VPW() * 0.3, y: VPH() * 0.3, w: VPW() * 0.4, h: VPH() * 0.36 };
     let r = null;
     for (const id of el) {
       const b = $(id).getBoundingClientRect ? $(id).getBoundingClientRect() : null;
@@ -5353,8 +5393,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     $("coachPrev").hidden = coachI === 0;
     $("coachNext").textContent = coachI === COACH.length - 1 ? "시작하기" : "다음 ▶";
     const r = coachRect(st.el),
-      W = innerWidth,
-      H = innerHeight,
+      W = VPW(),
+      H = VPH(),
       cw = card.offsetWidth || 340,
       ch = card.offsetHeight || 150;
     if (r) {
@@ -6088,7 +6128,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     mr.shadowMap.type = THREE.PCFSoftShadowMap;
     const ms = new THREE.Scene();
     ms.background = new THREE.Color(0xcddbd3);
-    const mc = new THREE.PerspectiveCamera(32, innerWidth / innerHeight, 0.1, 50);
+    const mc = new THREE.PerspectiveCamera(32, VPW() / VPH(), 0.1, 50);
     mc.position.set(0, 4.8, 8.7);
     mc.lookAt(0, 0.85, 0);
     ms.add(new THREE.HemisphereLight(0xffffff, 0x557260, 1.2));
@@ -6167,8 +6207,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     if (modelStage) {
       const { mr, ms, mc, models } = modelStage;
-      mr.setSize(innerWidth, innerHeight, false);
-      mc.aspect = innerWidth / innerHeight;
+      mr.setSize(VPW(), VPH(), false);
+      mc.aspect = VPW() / VPH();
       mc.updateProjectionMatrix();
       models.forEach(m => {
         m.rotation.y = modelStage.yaw;
@@ -6180,7 +6220,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     if (mode === "title" && selectionStage) {
       const { ss, cc, models } = selectionStage;
-      const aspect = innerWidth / innerHeight;
+      const aspect = VPW() / VPH();
       cc.left = -1.65 * aspect;
       cc.right = 1.65 * aspect;
       cc.top = 1.65;
@@ -6236,7 +6276,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     preloadArt();
     try {
       const de = document.documentElement;
-      if (innerWidth < 900 && de.requestFullscreen && !document.fullscreenElement) {
+      if (VPW() < 900 && de.requestFullscreen && !document.fullscreenElement) {
         de.requestFullscreen()
           .then(() => {
             try {
