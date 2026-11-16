@@ -2286,12 +2286,13 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     };
   };
   const OFF = {
-    phone: "위반 · 폰겜",
-    buds: "위반 · 못 들은 척",
-    spread: "위반 · 쩍벌",
-    pack: "위반 · 백팩 자리맡기",
-    legs: "희귀 · 다리 꼬기 장인",
-    sleep: "희귀 · 자는 척 고수",
+    // 위반은 '자리 차지'(노약자석·임산부석에 앉은 젊은 사람). 뒤의 말은 그 사람 특징일 뿐, 일반석에서 폰겜·이어폰은 위반 아님
+    phone: "폰겜",
+    buds: "못 들은 척",
+    spread: "쩍벌",
+    pack: "가방 자리맡기",
+    legs: "다리 꼬기 장인",
+    sleep: "자는 척 고수",
   };
   const elderSpec = () =>
     Math.random() < 0.7
@@ -2480,6 +2481,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         z: z + (face === 0 ? 0.05 : -0.05),
         face: face,
         prio: prio || (pinkMid && i === 0),
+        pink: !prio && !!pinkMid && i === 0,
         zone,
         p: null,
         res: null,
@@ -2757,7 +2759,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     v.o.rotation.y = s.face;
     pose(v.o, "sit", t);
     if (!v.tag)
-      v.tag = el("tag bad" + (v.sp.kind === "legs" || v.sp.kind === "sleep" ? " rare" : ""), OFF[v.sp.kind]);
+      v.tag = el(
+        "tag bad" + (v.sp.kind === "legs" || v.sp.kind === "sleep" ? " rare" : ""),
+        (s.pink ? "임산부석 차지" : "노약자석 차지") + (OFF[v.sp.kind] ? " · " + OFF[v.sp.kind] : ""),
+      );
   }
   function standVillain(v) {
     if (v.seat) {
@@ -4715,14 +4720,14 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     setTimeout(() => d.remove(), 3200);
   }
   const DEX = [
-    { k: "phone", n: "폰겜 빌런", d: "노약자석에서 볼륨 최대로 게임 중", a: "passengers", r: 0, c: 0 },
-    { k: "buds", n: "못 들은 척", d: "노이즈캔슬링이 양심까지 캔슬함", a: "passengers", r: 0, c: 1 },
-    { k: "spread", n: "쩍벌", d: "혼자서 두 자리를 쓰는 다리", a: "passengers", r: 0, c: 0 },
-    { k: "pack", n: "백팩 자리맡기", d: "가방도 승객이라고 주장", a: "passengers", r: 0, c: 1 },
+    { k: "phone", n: "노약자석 폰겜족", d: "노약자석·임산부석 차지 · 게임만 하며 모른 척", a: "passengers", r: 0, c: 0 },
+    { k: "buds", n: "노약자석 못 들은 척", d: "노약자석·임산부석 차지 · 이어폰 끼고 모른 척", a: "passengers", r: 0, c: 1 },
+    { k: "spread", n: "노약자석 쩍벌", d: "노약자석·임산부석 차지 · 다리까지 벌려 앉음", a: "passengers", r: 0, c: 0 },
+    { k: "pack", n: "노약자석 가방 자리맡기", d: "노약자석·임산부석 차지 · 가방까지 올려 둠", a: "passengers", r: 0, c: 1 },
     {
       k: "legs",
       n: "다리 꼬기 장인",
-      d: "꼰 다리로 통로를 봉쇄 · 희귀",
+      d: "노약자석·임산부석 차지 · 다리 꼬고 버팀 · 희귀",
       a: "passengers",
       r: 2,
       c: 1,
@@ -4731,7 +4736,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     {
       k: "sleep",
       n: "자는 척 고수",
-      d: "어르신 타는 순간 깊은 잠 · 희귀",
+      d: "노약자석·임산부석 차지 · 어르신 타면 자는 척 · 희귀",
       a: "passengers",
       r: 0,
       c: 0,
@@ -5519,7 +5524,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnHelp").onclick = () => openCoach();
   const COACH = [
-    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
