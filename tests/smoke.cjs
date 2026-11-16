@@ -264,6 +264,10 @@ if(true){
  assert(safetyMoves>0);ctx.innerWidth=844;ctx.innerHeight=390;q.camera.copy(cameraBefore);
  q.hero.spin=0;q.SAVE.weapon='umbrella';q.hero.pos.set(-6,0,.6);q.hero.o.position.copy(q.hero.pos);
  console.log('PASS: v6.9 all 6 item/gender pairs retain visible weapons while walking/stopping; '+checked+' new attack/carry/hook frames, original female frames/12fps, 416 padded frames and '+projected+' landscape edge projections.');
+ {q.chooseCharacter('male');q.SAVE.weapon='ext';q.SAVE.umbrellaSeconds=60;q.setAttackStyle('umbrella');
+  const v=q.S.villains.find(q.targetable);assert(v,'need a target for extinguisher');v.hp=1e6;q.hero.face=q.hero.swingFace=0;q.hero.spin=0;q.hero.pos.copy(v.o.position).add(new T.Vector3(0,0,-.6));q.S.hitstop=0;
+  assert(q.strike(q.WEAPONS.ext.power,true,q.WEAPONS.ext.reach)>=1,'extinguisher hits');assert(q.S.hitstop>=.13,'extinguisher heavier hitstop');assert.equal(v.o.userData.hitReaction.amp,.3);assert(v.o.userData.hitReaction.total>.2);
+  console.log('PASS: v6.9.1 extinguisher impact: longer hitstop, bigger shove reaction, clang sound path.');}
 }
 
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});
