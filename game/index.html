@@ -56,7 +56,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .dmg.crit{color:#ffe14a;text-shadow:0 2px 0 #a8361c}
 .dmg.cash{color:#b8ffb0;text-shadow:0 2px 0 #1d6a1c}
 .dmg.hurt{color:#ff8a7a;text-shadow:0 2px 0 #4a0a0a}
-@keyframes rise{0%{transform:translate(-50%,-50%) scale(1.5);opacity:1}25%{transform:translate(-50%,-80%) scale(1)}100%{transform:translate(-50%,-170%);opacity:0}}
+@keyframes rise{0%{transform:translate(-50%,-50%) scale(1.2);opacity:1}25%{transform:translate(-50%,-80%) scale(1)}100%{transform:translate(-50%,-170%);opacity:0}}
 .start{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(rgba(190,225,255,.35),rgba(30,60,100,.55));pointer-events:auto}
 .sbox{text-align:center;display:grid;gap:10px;padding:20px;max-width:min(92vw,560px)}
 .sbox h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,8vw,64px);margin:0;line-height:1;color:#fff;text-shadow:0 5px 0 #2fb34a,0 9px 0 #1d6a2c,0 0 30px rgba(255,255,255,.6)}
@@ -81,7 +81,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .tag{font-size:10px;border:1.5px solid #fff;border-radius:8px;padding:3px 6px;box-shadow:0 3px 0 #632f3233;letter-spacing:-.3px}
 .tag:after{content:'';position:absolute;bottom:-5px;left:calc(50% - 4px);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #f15b48}
 .tag.bad{background:#f15b48}.tag.ok{background:#67d993;color:#144b31}.tag.ok:after{border-top-color:#67d993}
-#banner{top:26%;font-size:clamp(24px,4.5vw,42px);-webkit-text-stroke:1px #633215;text-shadow:0 4px 0 #7a392a;z-index:5}
+#banner{top:22%;font-size:clamp(16px,3.2vw,26px);-webkit-text-stroke:1px #633215;text-shadow:0 4px 0 #7a392a;z-index:5}
 #hint{bottom:7%;font-size:13px;background:#203c50cc;padding:8px 16px;border-radius:30px;text-shadow:none}
 .controls{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:8px;pointer-events:auto}
 .styleBtn{border:2px solid #ffffffb0;border-radius:15px;background:#243f54e8;color:#d3e3ec;padding:10px 15px;font:900 12px var(--body);box-shadow:0 4px 0 #17364780;cursor:pointer;min-width:92px}
@@ -2255,7 +2255,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     const d = el("dmg " + cls, txt);
     d.style.left = p.x + rnd(-14, 14) + "px";
     d.style.top = p.y + "px";
-    d.style.fontSize = size + "px";
+    d.style.fontSize = Math.round(Math.max(11, size * 0.6)) + "px"; // 화면을 덜 가리게 작게("공격할 때 글자가 너무 커서")
     setTimeout(() => d.remove(), 660);
   }
   function say(obj, txt, ms = 1300) {
@@ -4257,10 +4257,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     S.streakT = 4;
     S.rescueCount++;
     SAVE.rescued = S.rescueCount;
-    if (S.streak > 1) num(v.o.position, S.streak + "명 연속!", "crit", 23);
+    if (S.streak > 2) num(v.o.position, S.streak + "명 연속!", "crit", 23);
     if (S.rescueCount % 3 === 0) {
       S.money += 30;
-      banner("진상 3명 제압! 순찰 보너스 +₩30", 1.4);
+      num(hero.pos, "순찰 보너스 +₩30", "cash", 22);
       sfx.unlock();
     }
     // 날아가는 연출: 한방이면 훨씬 멀리·높이
@@ -4657,11 +4657,11 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (kind === "legs" || kind === "sleep") {
       dropBills(v.o.position, 4);
       addNotes(2, v.o.position);
-      banner("희귀 빌런 제압! 보상 2배", 1.2);
+      num(v.o.position, "희귀 빌런 · 보상 2배", "crit", 22);
       dailyProg("rare", 1);
     }
     if (kind === "spycam") {
-      banner("몰카범 검거! 휴대폰 압수", 1.4);
+      num(v.o.position, "몰카범 검거!", "crit", 22);
       addNotes(2);
       dailyProg("spy", 1);
     }
@@ -5008,7 +5008,6 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     persist();
     openShop(res);
-    showArrivalMap(prev);
   }
   // 편의점 카드
   const CARDS = [
@@ -5447,6 +5446,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (coachFrom === "play") {
       mode = "play";
       last = performance.now();
+      if (!S.routeShown) {
+        S.routeShown = true;
+        showStartMap();
+      }
     }
   }
   $("coachNext").onclick = () => {
@@ -5484,13 +5487,34 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       if (arrivalMap === id) closeArrivalMap();
     }, 3600);
   }
+  function showStartMap() {
+    // 시작할 때 노선도 한 번: 게임을 잠깐 멈추고 지금 역·다음 역을 보여준 뒤 「출발」로 시작
+    mode = "shop";
+    joy.on = false;
+    joy.dx = joy.dy = 0;
+    $("joy").hidden = true;
+    arrivalMap = { start: true };
+    $("mapTitle").textContent = "오늘의 2호선 · " + STATIONS[SAVE.st] + " 출발";
+    $("btnMapClose").hidden = true;
+    $("btnMapShop").textContent = "출발 ▶";
+    $("btnMapShop").hidden = false;
+    $("mapOv").style.background = "#163a2bfa";
+    $("mapOv").hidden = false;
+    drawMap();
+  }
   function closeArrivalMap() {
+    const wasStart = arrivalMap && arrivalMap.start;
     arrivalMap = null;
     $("mapOv").hidden = true;
     $("mapOv").style.background = "";
     $("btnMapShop").hidden = true;
     $("btnMapClose").hidden = false;
     $("mapTitle").textContent = "2호선 순환 노선도";
+    $("btnMapShop").textContent = "편의점 가기 ▶";
+    if (wasStart) {
+      mode = "play";
+      last = performance.now();
+    }
   }
   $("btnMapShop").onclick = closeArrivalMap;
   $("btnDex").onclick = () => {
@@ -6311,6 +6335,13 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     attendance();
     // 첫 시작에는 게임 방법을 자동으로 보여줌(친구 피드백: 한방 등을 오늘 미션 보고서야 알았음). 테스트용 가짜 DOM에서는 건너뜀
     if (!SAVE.coach && document.body) setTimeout(openCoach, 700);
+    else if (!S.routeShown && document.body) {
+      // 노선도는 역마다 말고 게임을 시작할 때 한 번만(사용자 요청)
+      S.routeShown = true;
+      setTimeout(() => {
+        if (mode === "play") showStartMap();
+      }, 500);
+    }
   };
   function setAttackStyle(style) {
     if (style === "umbrella" && SAVE.umbrellaSeconds <= 0) {
