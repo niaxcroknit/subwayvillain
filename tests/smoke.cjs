@@ -35,7 +35,7 @@ const spec={...incoming.sp};incoming.sp.old=true;assert.equal(q.targetable(incom
 const elder=q.S.elders[0],elderPos=elder.o.position.clone();q.hero.pos.copy(elderPos);q.strike(2);assert.notEqual(elder.state,'fly');assert.equal(q.targetable(elder),false);
 // Run combat/drop/bank/upgrade with the female hero and then switch while retaining progress.
 seated.hp=1;q.hero.pos.copy(seated.o.position).add(new T.Vector3(0,0,.8));q.hero.swingT=0;q.strike(1);ticks(100);assert(['fly','gone'].includes(seated.state));
-for(const d of q.S.drops){d.land=true;d.m.position.copy(q.hero.pos).setY(.1)}ticks(100);assert(q.hero.stack.length>0);assert(q.hero.stack.length<=q.stats().cap);
+{const heroAt=q.hero.pos.clone();const v=q.S.villains.find(q.targetable);assert(v,'a target to defeat');const walletBefore=q.S.money,dropsBefore=q.S.drops.length,stackBefore=q.hero.stack.length;v.hp=1;q.hero.lock=null;q.hero.pos.copy(v.o.position).add(new T.Vector3(0,0,.8));q.strike(1);assert(q.S.money>walletBefore,'defeat reward goes straight to the wallet');assert.equal(q.S.drops.length,dropsBefore,'no bills on the floor');assert.equal(q.hero.stack.length,stackBefore,'nothing piles up behind the hero');ticks(100);q.hero.pos.copy(heroAt);}
 // v5: floor pads removed. Station arrival auto-settles the bag and opens the shop.
 {const note=()=>new T.Mesh(new T.BoxGeometry(.1,.1,.1));for(let i=0;i<4;i++)q.hero.stack.push(note());const cash=q.S.money,st=q.SAVE.st;q.arriveStation();assert.equal(q.hero.stack.length,0);assert(q.S.money>=cash+20);assert.equal(q.SAVE.st,(st+1)%q.STATIONS.length);assert.equal(q.getMode(),'shop');nodes.get('btnDepart').onclick();assert.equal(q.getMode(),'play');}
 const card=q.CARDS.find(c=>c.id==='bag'),cap=q.stats().cap;q.S.money=card.cost();q.S.money-=card.cost();card.go();assert.equal(q.stats().cap,cap+8);assert.equal(q.S.pads.length,0);
@@ -273,7 +273,7 @@ if(true){
   if(!m){for(const s of q.seats)if(!s.prio&&s.zone===1&&s.p&&s.p.civ){s.p=null;}m=q.spawnSpreader(true);}
   assert(m,'a manspreader sits on ordinary seats');assert(!m.seat.prio&&!m.seat2.prio,'ordinary seats only');assert.equal(m.seat.p,m);assert.equal(m.seat2.p,m);assert(q.targetable(m),'manspreader is a target');
   assert.equal(m.o.userData.art.sprite.material.map,q.ART.spread,'wide-legs art');q.sitVillain(m,m.seat);assert(Math.abs(m.o.position.x-(m.seat.x+m.seat2.x)/2)<1e-6,'sits between two seats');
-  const civ=q.seats.find(s=>!s.prio&&s.p&&s.p.civ);assert(civ,'ordinary-seat passengers still exist and are not villains');
+  for(const s of q.seats)if(!s.prio&&s.p&&s.p.civ)assert(!q.S.villains.some(v=>v.o===s.p.civ),'ordinary-seat passengers are not villains');
   const s1=m.seat,s2=m.seat2;q.chooseCharacter('male');q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');m.hp=1;q.hero.lock=null;q.hero.pos.copy(m.o.position).add(new T.Vector3(0,0,.7));q.S.hitstop=0;q.strike(5,false);
   assert(['fly','gone'].includes(m.state),'manspreader can be defeated');assert.equal(s1.p,null);assert.equal(s2.p,null);assert(q.SAVE.dex.manspread>=1);
   // 정확도: 휘두를 때 고른 진상은 타격 순간에 부채꼴 밖·조금 먼 곳으로 비켜도 맞음, 고르지 않은 진상은 정밀 판정 그대로

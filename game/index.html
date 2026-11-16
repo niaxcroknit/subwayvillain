@@ -284,6 +284,13 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .cards .card:not(.wcard) .ic{width:min(46px,8vh)!important;height:min(46px,8vh)!important}.cards .card:not(.wcard) .ds{min-height:0!important}
 .card.wcard.on{border-color:#4f9a52;box-shadow:0 0 0 3px #4f9a5244,0 6px 0 #0c2a1c66}
 .dx .tier{font-size:9px;font-weight:900;border-radius:8px;padding:0 6px;color:#fff;background:#9aa89c}.dx .tier.t1{background:#b8723a}.dx .tier.t2{background:#8a9aa8}.dx .tier.t3{background:#d8a020}
+/* v6.9.4 "흰 글씨에 빨간 그림자 글자 빼주기로 했잖아, 아래 가운데에 띄우고 사라지게": 안내 글은 모두 아래 가운데 알약 한 줄로, 잠깐 떴다 사라짐 */
+#banner{top:auto!important;bottom:calc(7% + 42px);font:900 13px var(--body)!important;color:#33563e!important;background:#f9f5e5f2;border:2px solid #fff;border-radius:25px;padding:6px 16px;text-shadow:none!important;-webkit-text-stroke:0!important;box-shadow:0 3px 0 #2f4f3a33;z-index:5;animation:bnUp 1.6s ease-out forwards!important;pointer-events:none}
+@keyframes bnUp{0%{opacity:0;transform:translate(-50%,8px)}12%{opacity:1;transform:translate(-50%,0)}75%{opacity:1}100%{opacity:0}}
+/* 돈은 바로 지갑으로: 수집 가방·빠른 정산 숨김, 지갑이 톡 튀며 +₩ 표시 */
+#bagHud,#btnCash{display:none!important}
+.box.money{position:relative;overflow:visible!important}.box.money.bump{animation:wBump .35s ease-out}@keyframes wBump{40%{transform:scale(1.12)}}
+.walletPop{position:absolute;left:auto;right:6px;top:50%;transform:translateY(-50%);z-index:2;font:900 12px var(--body);font-style:normal;color:#2f7a3a;background:#fff;border-radius:10px;padding:1px 7px;white-space:nowrap;pointer-events:none;animation:wPop .9s ease-out forwards}@keyframes wPop{0%{opacity:0;transform:translateY(-20%)}15%{opacity:1;transform:translateY(-50%)}75%{opacity:1}100%{opacity:0;transform:translateY(-90%)}}
 </style>
 
 <canvas id="gl" aria-label="2호선 격돌 3D 화면"></canvas>
@@ -2343,6 +2350,12 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     return d;
   }
   function num(pos, txt, cls, size) {
+    // 한글 안내(미션 완료·연속·보너스 등)는 사람 위에 띄우지 않고 아래 가운데 알약으로. 사람 위엔 피해 숫자만
+    if (/[가-힣]/.test(txt)) {
+      if (cls === "hurt") return;
+      banner(txt, 1.4);
+      return;
+    }
     const p = scrP(pos, 1.9);
     const d = el("dmg " + cls, txt);
     d.style.left = p.x + rnd(-14, 14) + "px";
@@ -3529,7 +3542,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     b.style.animation = "none";
     void b.offsetWidth;
     b.style.animation = "";
-    bannerT = s;
+    bannerT = Math.min(s, 1.6);
   }
   // v6 흔들림: 누적 충격(trauma)² 비례 위치 흔들림 + 살짝 기울기 + 맞은 방향으로 툭 밀리는 킥
   function shake(a, d) {
@@ -3580,6 +3593,26 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   const bt = new THREE.CanvasTexture(billCv);
   bt.encoding = THREE.sRGBEncoding;
   const BILLM = new THREE.MeshStandardMaterial({ color: 0xffffff, map: bt, roughness: 0.8 });
+  // v6.9.4 "돈도 캐릭터 졸졸 따라다니며 쌓지 말고 상단 지갑에 바로": 제압 보상은 바로 지갑에 더함(바닥 지폐·등 뒤 더미 없음)
+  function payNow(n) {
+    const v = billVal() * n;
+    S.money += v;
+    SAVE.money = S.money;
+    sfx.pick();
+    const box = $("money");
+    if (box && box.parentNode && box.parentNode.classList) {
+      const w = box.parentNode;
+      w.classList.toggle("bump", false);
+      void w.offsetWidth;
+      w.classList.toggle("bump", true);
+      const d = document.createElement("i");
+      d.className = "walletPop";
+      d.textContent = "+₩" + fmt(v);
+      if (w.append) w.append(d);
+      setTimeout(() => d.remove && d.remove(), 900);
+    }
+    return v;
+  }
   function dropBills(pos, n) {
     const val = billVal();
     for (let i = 0; i < n; i++) {
@@ -3812,8 +3845,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         strike(0.6, false);
         hero.pulse = 0.16;
       }
-      if (hero.combo % 5 === 0)
-        num(hero.pos, attackStyle === "fists" ? (maleHook ? "넓은 훅!" : "풍차 난타!") : curWeapon().short + " 스윙!", "crit", 24);
+      // 콤보 외침 글자는 없앰("콤보니 뭐니 글자가 화면을 다 가림")
     }
     const P = hero.o.userData.P;
     const heroPose =
@@ -4495,7 +4527,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     flash(v.o, 0);
     pose(v.o, "hurt", t);
-    dropBills(v.o.position, Math.random() < 0.3 ? 3 : 2);
+    payNow(Math.random() < 0.3 ? 3 : 2);
     sfx.ko();
     burst(v.o.position, 14, 0xffffff);
     // 제압 손맛: 짧은 정지 + 큰 흔들림 + 맞은 방향 킥
@@ -4867,7 +4899,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       }
     }
     if (kind === "legs" || kind === "sleep") {
-      dropBills(v.o.position, 4);
+      payNow(4);
       addNotes(2, v.o.position);
       num(v.o.position, "희귀 빌런 · 보상 2배", "crit", 22);
       dailyProg("rare", 1);
@@ -4880,7 +4912,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (v.boss) {
       const B = v.B || BOSSES["시청"],
         cash = Math.round(60 * rewardMul());
-      dropBills(v.o.position, 10);
+      payNow(10);
       addNotes(10, v.o.position);
       S.money += cash;
       banner("보스 격파! " + B.nm + " 퇴치 +₩" + fmt(cash), 2);
@@ -5282,7 +5314,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       col: "#5aa66a",
       nm: "대형 에코백",
       ds: "벌금 딱지 8장 더 담기",
-      ok: () => SAVE.bag < 6,
+      ok: () => false, // 지갑에 바로 들어가서 가방 용량 강화는 필요 없음(편의점에 안 보임)
       lv: () => SAVE.bag,
       cost: () => Math.round(30 * Math.pow(1.6, SAVE.bag)),
       go: () => SAVE.bag++,
