@@ -1332,7 +1332,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     "carry-bat-male": "__ASSET_carry-bat-male__",
     "swing-bat-female": "__ASSET_swing-bat-female__",
     "carry-bat-female": "__ASSET_carry-bat-female__",
-    "hook-male": "__ASSET_hook-male__"
+    "hook-male": "__ASSET_hook-male__",
+    spread: "__ASSET_spread__"
   };
   const ART = {};
   for (const [key, url] of Object.entries(SPRITE_DATA)) {
@@ -1603,6 +1604,13 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       }
     } else {
       const col = spec.old ? 2 : spec.belly ? 3 : spec.female || spec.long ? 1 : 0;
+      if (spec.manspread) {
+        const want = kind === "sit" ? ART.spread : ART.passengers;
+        if (a.sprite.material.map !== want) {
+          a.sprite.material.map = want;
+          a.sprite.material.needsUpdate = true;
+        }
+      }
       artFrame(g, kind === "sit" ? (rear ? 1 : 0) : rear ? 3 : 2, col);
       const size = kind === "sit" ? 1.56 : 1.94;
       a.sprite.scale.set(size, size, 1);
@@ -2632,6 +2640,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         v.incident.attacker === v &&
         v.incident.victim.o.parent === scene
       );
+    if (v.sp.manspread) return v.state === "sit" && !!v.seat2 && v.seat.p === v && v.seat2.p === v;
     return v.state === "sit" && !!v.seat?.prio && v.seat.p === v;
   }
   function umbrellaArc(v) {
@@ -2641,15 +2650,26 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       face = hero.spin > 0 ? (hero.swingFace ?? hero.face) : hero.face;
     return L < 0.001 || (dx * Math.sin(face) + dz * Math.cos(face)) / L >= Math.cos(curWeapon().arc / 2) - 1e-8;
   }
+  // v6.9.3 정확도 보정: 휘두를 때 고른 진상(hero.lock)은 타격 순간에 조금 멀어졌거나 부채꼴 밖으로 비켜도 맞음.
+  // 다른 진상도 사거리 +0.25 여유. 보호 승객은 targetable에서 걸러지므로 그대로 안전
+  const HIT_GRACE = 0.25,
+    LOCK_GRACE = 0.6;
   function strike(power, cone = attackStyle === "umbrella", reach = 0) {
     if (cone && !(SAVE.umbrellaSeconds > 0)) return;
+    const lock = hero.lock && targetable(hero.lock) ? hero.lock : null;
     const st = stats();
     let hits = 0,
       crits = 0;
     const kd = new THREE.Vector3(),
       W = cone ? curWeapon() : null;
     for (const v of S.villains) {
-      if (!targetable(v) || d2(v.o.position, hero.pos) >= st.rad + 0.2 + reach || (cone && !umbrellaArc(v))) continue;
+      const locked = v === lock;
+      if (
+        !targetable(v) ||
+        d2(v.o.position, hero.pos) >= st.rad + 0.2 + reach + (locked ? LOCK_GRACE : HIT_GRACE) ||
+        (cone && !locked && !umbrellaArc(v))
+      )
+        continue;
       const crit = Math.random() < 0.14 + ((W && W.crit) || 0),
         dmg = st.dmg * power * (crit ? 2 : 1) * rnd(0.95, 1.05);
       v.hp -= dmg;
@@ -2739,7 +2759,55 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     S.villains.push(v);
     return v;
   }
+  // 쩍벌남: 일반석 두 칸 사이에 다리를 벌리고 앉아 두 자리를 혼자 차지(위반). 자리 하나라도 남이 앉았으면 그냥 서 있음
+  function spreadPair(s) {
+    if (!s || s.prio) return null;
+    return seats.find(b => b.bench === s.bench && b.idx === s.idx + 1 && !b.prio) || null;
+  }
+  function freeSpreadPairs(zoneOk) {
+    return seats.filter(s => {
+      const s2 = spreadPair(s);
+      return zoneOk(s) && s2 && !s.p && !s.res && !s2.p && !s2.res && !s.pink && !s2.pink;
+    });
+  }
+  function spawnSpreader(immediate = false) {
+    const active = S.villains.filter(v => v.sp.manspread && !["fly", "gone"].includes(v.state)).length;
+    if (active >= 2) return null;
+    const free = freeSpreadPairs(s => s.zone === 1 || SAVE.zone2);
+    if (!free.length) return null;
+    const s0 = pick(free),
+      s2 = spreadPair(s0);
+    const ex = s0.x < 0 ? -13.6 : SAVE.zone2 && s0.x > CAR / 2 ? CAR + 13.6 : 13.6;
+    const v = spawnVillain(immediate ? new THREE.Vector3(s0.x, 0, s0.z) : new THREE.Vector3(ex, 0, rnd(-0.8, 0.8)), immediate ? "sit" : "rush", s0);
+    Object.assign(v.sp, { manspread: true, kind: "manspread", female: false, long: false });
+    s2.res = v;
+    if (immediate) sitVillain(v, s0);
+    else say(v.o, pick(["두 자리 다 내 거", "아 편하다~", "다리 좀 펴자"]), 1100);
+    return v;
+  }
   function sitVillain(v, s) {
+    if (v.sp.manspread) {
+      const s2 = spreadPair(s);
+      if (!s2 || (s.p && s.p !== v) || (s2.p && s2.p !== v)) {
+        if (s.res === v) s.res = null;
+        if (s2 && s2.res === v) s2.res = null;
+        v.state = "neutral";
+        v.seat = v.seat2 = null;
+        v.guilty = false;
+        return;
+      }
+      v.state = "sit";
+      v.guilty = true;
+      v.seat = s;
+      v.seat2 = s2;
+      s.p = s2.p = v;
+      s.res = s2.res = null;
+      v.o.position.set((s.x + s2.x) / 2, 0, s.z);
+      v.o.rotation.y = s.face;
+      pose(v.o, "sit", t);
+      if (!v.tag) v.tag = el("tag bad", "위반 · 쩍벌 두 자리 차지");
+      return;
+    }
     if (!s.prio || (s.p && s.p !== v)) {
       v.state = "neutral";
       v.seat = null;
@@ -2764,7 +2832,15 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         (s.pink ? "임산부석 차지" : "노약자석 차지") + (OFF[v.sp.kind] ? " · " + OFF[v.sp.kind] : ""),
       );
   }
+  function freeSeat2(v) {
+    if (v.seat2) {
+      if (v.seat2.p === v) v.seat2.p = null;
+      if (v.seat2.res === v) v.seat2.res = null;
+      v.seat2 = null;
+    }
+  }
   function standVillain(v) {
+    freeSeat2(v);
     if (v.seat) {
       if (v.seat.p === v) v.seat.p = null;
       if (v.seat.res === v) v.seat.res = null;
@@ -3166,8 +3242,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       const v = spawnVillain(new THREE.Vector3(s.x, 0, s.z), "sit", s);
       sitVillain(v, s);
     }
+  spawnSpreader(true);
   for (const s of seats)
-    if (!s.prio && s.zone === 1 && Math.random() < 0.75) {
+    if (!s.prio && s.zone === 1 && !s.p && !s.res && Math.random() < 0.75) {
       const o = person({
         skin: pick(SKIN),
         hair: pick([0x2a2420, 0x4a3424, 0x1a1a1a]),
@@ -3381,8 +3458,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   }
   function openZone2() {
     scene.remove(gate2);
+    spawnSpreader(true);
     for (const s of seats)
-      if (s.zone === 2 && !s.prio && Math.random() < 0.75 && !s.p) {
+      if (s.zone === 2 && !s.prio && Math.random() < 0.75 && !s.p && !s.res) {
         const o = person({
           skin: pick(SKIN),
           hair: pick([0x2a2420, 0x4a3424]),
@@ -3727,6 +3805,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       hero.spin = hero.duration;
       hero.swingFace = hero.face;
       hero.umbrellaHit = false;
+      hero.lock = aim;
       hero.combo++;
       sfx.swing();
       if (attackStyle === "fists" && !maleHook) {
@@ -3847,6 +3926,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
             const s0 = v.seat;
             s0.p = null;
             v.seat = null;
+            freeSeat2(v);
             v.state = "chase";
             v.angry = true;
             v.o.position.z = clamp(s0.z, -1.7, 1.7);
@@ -4204,6 +4284,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         const alive = S.villains.filter(v => v.state !== "gone" && v.state !== "fly").length;
         if (alive < 22) {
           if (Math.random() < 0.3) spawnBackpack("back");
+          if (Math.random() < 0.18) spawnSpreader();
           const free = seats.filter(s => s.prio && !s.p && !s.res && (s.zone === 1 || SAVE.zone2));
           if (
             (!free.length || Math.random() < (ev.inc || 0.3)) &&
@@ -4402,6 +4483,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     );
     v.rx = rnd(6, 12) * pw;
     v.rz = rnd(-6, 6);
+    freeSeat2(v);
     if (v.seat) {
       v.seat.p = null;
       v.seat.res = null;
@@ -4462,6 +4544,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     spawnBackpack("back");
     spawnBackpack("front");
     spawnBackpack("front");
+    if (Math.random() < 0.6) spawnSpreader();
     let added = 0;
     for (const kind of ["drunk", "harass", "bully", "spycam"])
       if (Math.random() < 0.75 && spawnIncident(kind, pick([-8.2, 0, 8.2]))) added++;
@@ -4742,6 +4825,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       c: 0,
       rare: 1,
     },
+    { k: "manspread", n: "쩍벌남", d: "일반석 두 자리를 다리 벌려 혼자 차지", a: "spread", r: 0, c: 0 },
     { k: "drunk", n: "취객", d: "남의 어깨를 베개로 씀", a: "incidents", r: 0, c: 0 },
     { k: "harass", n: "추행범", d: "접촉 시도 · 즉시 제압 대상", a: "incidents", r: 0, c: 2 },
     { k: "bully", n: "시비꾼", d: "괜히 시민한테 시비", a: "incidents", r: 2, c: 2 },
@@ -5524,7 +5608,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnHelp").onclick = () => openCoach();
   const COACH = [
-    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
