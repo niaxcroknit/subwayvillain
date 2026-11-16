@@ -1,38 +1,122 @@
 {
   "project": "line2-clash",
-  "version": "5.0.0",
-  "basedOn": "codex v4",
-  "editedBy": "Claude 2026-11-13",
+  "version": "6.9.0",
+  "baseline": "user-provided line2-clash-v6.8-claude.zip",
   "files": [
     {
-      "path": ".gitignore",
-      "bytes": 23,
-      "sha256": "7670cbaf80167bd4fc4f5bed4d58b84e3199235b75e5354471e54dd72092cf82"
-    },
-    {
       "path": "AGENTS.md",
-      "bytes": 4291,
-      "sha256": "27fe3018c8096d38fe3a6a2d16601af426e4ccf57afdf39fd697239679e1ec2e"
+      "bytes": 16899,
+      "sha256": "20eaf9341821c39435a12b5dc4d6b553de970123b4915a7583b0f6811fe3e513"
     },
     {
-      "path": "CODEX-MESSAGE.txt",
-      "bytes": 1726,
-      "sha256": "2bddbe2a1bed02433924b5319651cbd1ba77a47b8d1ee5584f69735255dc30f8"
+      "path": "assets/atlas/attacks-bat.png",
+      "bytes": 465035,
+      "sha256": "b19a99e68b1b5f4523d37ac86807757c8583d5afadb37c9dd40d44c9787f3fb7"
     },
     {
-      "path": "START-HERE.md",
-      "bytes": 1904,
-      "sha256": "4c8f2ac4dd697faf8e8d43100591669b582078864346b6fa18e390a43a3833ec"
+      "path": "assets/atlas/attacks-female.png",
+      "bytes": 810149,
+      "sha256": "e2ed16f376ecf1300090ecfe23d8947e687eef896c2ff3c2f01aa821d0fe4d9f"
+    },
+    {
+      "path": "assets/atlas/attacks-male.png",
+      "bytes": 835141,
+      "sha256": "b55fd952a1cf57ee3e99a8a6bd5240114642347b206d9b6e972b7f2c1e5b9ea0"
     },
     {
       "path": "assets/atlas/boss.png",
-      "bytes": 143247,
-      "sha256": "f7901b86d27645e6a2033437343da50a0d7e9ec64be769994c55eb0b24b2adb7"
+      "bytes": 129944,
+      "sha256": "fc5638b82098c39ecb1bfbedf9461130799502d4bca2af1370605bcd2201420d"
+    },
+    {
+      "path": "assets/atlas/carry-bag-female.png",
+      "bytes": 358424,
+      "sha256": "9ece768e1a4d1b5d245865cecd4923041535b1f5d27a6740151368597314483d"
+    },
+    {
+      "path": "assets/atlas/carry-bag-male.png",
+      "bytes": 338215,
+      "sha256": "22fb83cc6fc0a76eafd18c1d045f837a19780cbf185ef102db968a331b091e11"
+    },
+    {
+      "path": "assets/atlas/carry-bat-female.png",
+      "bytes": 351027,
+      "sha256": "0d0186e67cd1e60dd0d4224c9a9e572542853c1e33063b63222a8cc28268b24c"
+    },
+    {
+      "path": "assets/atlas/carry-bat-male.png",
+      "bytes": 335117,
+      "sha256": "4a1b8b8bb2c4725e4ce3e137c74e134cef63c671a77c5335f79a378e1bc27a04"
+    },
+    {
+      "path": "assets/atlas/carry-ext-female.png",
+      "bytes": 341751,
+      "sha256": "18d5a68e500059ae65de443ab8be1018fa601c719a1328e39983e3a4c5bfefbf"
+    },
+    {
+      "path": "assets/atlas/carry-ext-male.png",
+      "bytes": 319501,
+      "sha256": "9c240d55337db6d26b9f5ffa66225932afaf52d8a89ae35ea5fbe767fc9ac72d"
+    },
+    {
+      "path": "assets/atlas/carry-female.png",
+      "bytes": 1029850,
+      "sha256": "eadcaab068b44b386dc4e7d28f0cf3574cde1308cd0c992312571fe986526860"
+    },
+    {
+      "path": "assets/atlas/carry-male.png",
+      "bytes": 1070587,
+      "sha256": "7adae223dcd780cd202db59c20b02d185c8365a81eb43809cd57012be940224c"
+    },
+    {
+      "path": "assets/atlas/dir-backpack-female.png",
+      "bytes": 661541,
+      "sha256": "c1b1dad9b5ec5cd5f2582cf1ca720ef665eaed9578f08977f365812dbe62412a"
+    },
+    {
+      "path": "assets/atlas/dir-backpack.png",
+      "bytes": 749115,
+      "sha256": "cd7c9309f3611bb5c7f194fbe68f048a169b2e8f1fcdd7df27a0601c34eeddaf"
+    },
+    {
+      "path": "assets/atlas/dir-civilians.png",
+      "bytes": 665927,
+      "sha256": "faef5aa0ebfdfe75d6d22c473e61bbaa2b118584d477653464a4f08ee82c6002"
+    },
+    {
+      "path": "assets/atlas/dir-hero-female.png",
+      "bytes": 291283,
+      "sha256": "a1151770b6fde8a295dcb5f23fde38ddae60341ae3aca9b11793a76033dda266"
+    },
+    {
+      "path": "assets/atlas/dir-hero-male.png",
+      "bytes": 285342,
+      "sha256": "8b62551ec363a142d690b3283208ca34a81f046ed6d2bce7e205e6b0c86212bb"
+    },
+    {
+      "path": "assets/atlas/dir-incident.png",
+      "bytes": 630415,
+      "sha256": "a1b01148a2dd0b2f12d3442bd3795ee4fa9cc0a8de7eb1cf675f06de28cd54a8"
+    },
+    {
+      "path": "assets/atlas/dir-protected.png",
+      "bytes": 739455,
+      "sha256": "e83f2974fca5fcc2bdc74dc5e30cef8dbfa0a71776aaf665569599934ab31594"
+    },
+    {
+      "path": "assets/atlas/dir-special.png",
+      "bytes": 643458,
+      "sha256": "7e53154566db5aa7a8e28a19999aa88d01c828f47dcab583017ff902fa69a702"
+    },
+    {
+      "path": "assets/atlas/dir-staff.png",
+      "bytes": 710492,
+      "sha256": "1520aadf023cf16c87822c9ebba94941459480db2c01be1257026c8569906727"
     },
     {
       "path": "assets/atlas/guard.png",
-      "bytes": 61561,
-      "sha256": "5eaedf1d9a1454a834c19ca1b348044378dd4c22404afb0d6a5146675163a213"
+      "bytes": 133502,
+      "sha256": "ff13c32206fab0aeef851c4b7f4c0cb6de2ccae592340abf8a1f0bbf398310e0"
     },
     {
       "path": "assets/atlas/hero-female.png",
@@ -50,6 +134,11 @@
       "sha256": "bf36043d5e07037b877b801cd33c73cc1c1c2f8008fdc88ea5b933693a57a9c6"
     },
     {
+      "path": "assets/atlas/hook-male.png",
+      "bytes": 356269,
+      "sha256": "a68fadf45f247365f89a5f617097d320f87e4bc4e42f0f619ec1bbc76afd80e3"
+    },
+    {
       "path": "assets/atlas/incidents.png",
       "bytes": 519172,
       "sha256": "c11430a4024a8f1fe235f324190e96a8ef4e1888b904668e562ae358e9074da2"
@@ -61,28 +150,408 @@
     },
     {
       "path": "assets/atlas/spycam.png",
-      "bytes": 135310,
-      "sha256": "d1711bd326dfff905b922a5ce544c72a30c04a1c2a37dde8a1aa69e560fc42d1"
+      "bytes": 119657,
+      "sha256": "b9730535f8b1eae2a1701bbfee1aa70579a7d4e5733190d86cace586f2194b6c"
     },
     {
-      "path": "assets/original/hero-female.png",
-      "bytes": 1185934,
-      "sha256": "fc6d78cc2734c9cd6c85afe0055f82315ac555e0596f4038c7ec41048fa3312b"
+      "path": "assets/atlas/swing-bag-female.png",
+      "bytes": 385620,
+      "sha256": "23830fe05865b16078cebb625ece2603fdcbf94d73487bb550b8092cf9de36a5"
     },
     {
-      "path": "assets/original/hero-male.png",
-      "bytes": 1070759,
-      "sha256": "37f06c0b2743d7fc1c5b07e41b00bb2ed93085bfc55769ae8857f0112ac34869"
+      "path": "assets/atlas/swing-bag-male.png",
+      "bytes": 372532,
+      "sha256": "fee462cc225774af9fc16485f5fcf80dd73ef969cffa19c6e83f487b36f50bc0"
     },
     {
-      "path": "assets/original/incidents.png",
-      "bytes": 1027526,
-      "sha256": "514ff0b7b0c58c4028a2c285e329ddc527e004488b33eb7ff9aad26f256485a3"
+      "path": "assets/atlas/swing-bat-female.png",
+      "bytes": 404688,
+      "sha256": "8a2fa429565ac50ca8919bd7d4fbf5c0fc899b467ee5984eb816d7fa0de9acec"
     },
     {
-      "path": "assets/original/passengers.png",
-      "bytes": 1086620,
-      "sha256": "7322f3105382f37585cc3078479dad06c2ff96c36ba37c8624b654628fcfc29a"
+      "path": "assets/atlas/swing-bat-male.png",
+      "bytes": 366412,
+      "sha256": "e9006169867051a83a7fcaf46ffd4126ccd4d9d4ece57984ae708696f24ecd81"
+    },
+    {
+      "path": "assets/atlas/swing-ext-female.png",
+      "bytes": 430186,
+      "sha256": "e1faa68be8d2b4b59d33bcb406e50b34a1a071ced035859293317728996cd5f7"
+    },
+    {
+      "path": "assets/atlas/swing-ext-male.png",
+      "bytes": 365172,
+      "sha256": "9ada79928ed71cf949cf2f8f2c1638c794007e3eedcad61c194ba7226858f8a5"
+    },
+    {
+      "path": "assets/atlas/swing-female.png",
+      "bytes": 1198818,
+      "sha256": "efa1e5501d410951c27f5bc388f58d517ac383d1cb5d9ff3f282519725f54125"
+    },
+    {
+      "path": "assets/atlas/swing-male.png",
+      "bytes": 1259000,
+      "sha256": "33aa3f4aba96197155fca8f806a12546d621a925f016f2e5056d9e1e6c084ea6"
+    },
+    {
+      "path": "assets/atlas/walk-backpack-female.png",
+      "bytes": 313865,
+      "sha256": "e591db51f2d26ec5d3563c234aba1446b13216d6464e4a6cccba587fce637653"
+    },
+    {
+      "path": "assets/atlas/walk-backpack.png",
+      "bytes": 362261,
+      "sha256": "9ea85d9191b870bb5d066bbf00feeef08e5bf15cb379e4e2e2208b519165c9bf"
+    },
+    {
+      "path": "assets/atlas/walk-civilians.png",
+      "bytes": 287957,
+      "sha256": "c8362d0251add010abf1979d72ec3eb9f42ca5bc009d331297626d23b156028d"
+    },
+    {
+      "path": "assets/atlas/walk-female.png",
+      "bytes": 1006944,
+      "sha256": "f26a2fe9f2ca7cebf22aa90a21965cf399c9a5c1cfdb0fd4d62b03e893d62928"
+    },
+    {
+      "path": "assets/atlas/walk-incident.png",
+      "bytes": 296137,
+      "sha256": "f363b9638c2ad8ee69c87ff8cf5cf0ab8e3cf8cf0f951dab217086de4d45d465"
+    },
+    {
+      "path": "assets/atlas/walk-male.png",
+      "bytes": 962283,
+      "sha256": "865027db6bd31fd73cee4497e52fbbad3cc9f734abb82740977bd2e5c750dd0e"
+    },
+    {
+      "path": "assets/atlas/walk-protected.png",
+      "bytes": 316984,
+      "sha256": "23cca7bdff636d6f50f1c39dd4ecd88733ead6d77ad33d816bab17ff7ca4a005"
+    },
+    {
+      "path": "assets/atlas/walk-special.png",
+      "bytes": 284181,
+      "sha256": "afd35a7387d1555b7ad8e6796e5b83d82455c05bc1aff85c1e082b61a01a8838"
+    },
+    {
+      "path": "assets/atlas/walk-staff.png",
+      "bytes": 317101,
+      "sha256": "26046e16d1bc41284dde01e6848247543b7264a04663c74b57f833335969429d"
+    },
+    {
+      "path": "assets/atlas-webp/attacks-bat.webp",
+      "bytes": 134288,
+      "sha256": "72c4671f6a440a81c435179ba119864e4f87882a95b031905ccd9a082d154e80"
+    },
+    {
+      "path": "assets/atlas-webp/attacks-female.webp",
+      "bytes": 234080,
+      "sha256": "898e593992f028fc8bb85e78018ef08873240e418699afb5bfa8ac8e1341f708"
+    },
+    {
+      "path": "assets/atlas-webp/attacks-male.webp",
+      "bytes": 232882,
+      "sha256": "a866a78f4645c7002446b2afc04d8665025865d40cc09273d75d07e512419cf5"
+    },
+    {
+      "path": "assets/atlas-webp/boss.webp",
+      "bytes": 34138,
+      "sha256": "7b888112f5232441c0164fb8cfaa67728720a24d5cf685c050274c9469144744"
+    },
+    {
+      "path": "assets/atlas-webp/carry-bag-female.webp",
+      "bytes": 157816,
+      "sha256": "d88a714e35e109680d4acb7217a16e8b71ff456e597eb78153fc557d99d5e1d6"
+    },
+    {
+      "path": "assets/atlas-webp/carry-bag-male.webp",
+      "bytes": 146748,
+      "sha256": "b1f1e23f86a64578871aefcce4b49d2f6337a30bafbc61124b105d2293e2c9a4"
+    },
+    {
+      "path": "assets/atlas-webp/carry-bat-female.webp",
+      "bytes": 158570,
+      "sha256": "db1896fcb4b511642ac1ca7e1bf32c8ca66cdf10dd3c82ae0c001f9516586030"
+    },
+    {
+      "path": "assets/atlas-webp/carry-bat-male.webp",
+      "bytes": 146866,
+      "sha256": "a75fc68d93df9feb83b9aee6d9b35642b7bc2f67df4ce0883e509b506b876f4b"
+    },
+    {
+      "path": "assets/atlas-webp/carry-ext-female.webp",
+      "bytes": 153536,
+      "sha256": "9016bc51bf59b868e71768db6e4eeca76e026cadda63512156142c3cc64fc745"
+    },
+    {
+      "path": "assets/atlas-webp/carry-ext-male.webp",
+      "bytes": 137028,
+      "sha256": "dfe8c4e06005ba361645e2ea366b69351a5e7629f57e022835ada3c2b5608fa4"
+    },
+    {
+      "path": "assets/atlas-webp/carry-female.webp",
+      "bytes": 320734,
+      "sha256": "bcd8c64613420a1a8200c20274ee2d310420cb7f585bfa9cf081d30b59b76c4b"
+    },
+    {
+      "path": "assets/atlas-webp/carry-male.webp",
+      "bytes": 333010,
+      "sha256": "8ac9f6b9877acaef08a5f578bbe08e1d10a56aa189534970282e7e77be09a175"
+    },
+    {
+      "path": "assets/atlas-webp/dir-backpack-female.webp",
+      "bytes": 251204,
+      "sha256": "e8d46299dd56aee39f8d3b64c79da5527f6fa55cd5e74f25bfb67732e21cb29e"
+    },
+    {
+      "path": "assets/atlas-webp/dir-backpack.webp",
+      "bytes": 268350,
+      "sha256": "4f90a12bb31199f3965da23fc413b9bb55e1f6c93ca117c34108503602ec6d75"
+    },
+    {
+      "path": "assets/atlas-webp/dir-civilians.webp",
+      "bytes": 231728,
+      "sha256": "24842823c2520c6ef2ab680dbb1024c2815b76e14930a1539e29af57f6545d28"
+    },
+    {
+      "path": "assets/atlas-webp/dir-hero-female.webp",
+      "bytes": 107018,
+      "sha256": "80b21f9251aa5700bf34dddc93a07847783ab079f9ecb31147cdfad430b81a1d"
+    },
+    {
+      "path": "assets/atlas-webp/dir-hero-male.webp",
+      "bytes": 103018,
+      "sha256": "01149daddf3d5cef773a40ee731904016bfb26fe9ec5ab042abf71e6ec39fc1c"
+    },
+    {
+      "path": "assets/atlas-webp/dir-incident.webp",
+      "bytes": 232598,
+      "sha256": "fb6943e897f6ad74d5c5c937e184e0fef309049db9e759d8f5d771f365a6bdac"
+    },
+    {
+      "path": "assets/atlas-webp/dir-protected.webp",
+      "bytes": 258130,
+      "sha256": "55d6c048e60184d1f89300265a8311a84f8ec2bf5f13f10a1abab18fe30bbe48"
+    },
+    {
+      "path": "assets/atlas-webp/dir-special.webp",
+      "bytes": 234360,
+      "sha256": "90e1686e59771fc9aaa8afb120ee9a429559b6bba35a9b36f532d3d53034da4f"
+    },
+    {
+      "path": "assets/atlas-webp/dir-staff.webp",
+      "bytes": 254350,
+      "sha256": "6b3f2e10f4b47040d9c3f7becaa3f1a7c1741b9adb5df3095ab993390980e16e"
+    },
+    {
+      "path": "assets/atlas-webp/guard.webp",
+      "bytes": 25736,
+      "sha256": "f8e47ff611b4ef72fff2fd61e7e1fbae4a54b4c50bfea4a6398224c71d31313a"
+    },
+    {
+      "path": "assets/atlas-webp/hero-female.webp",
+      "bytes": 155338,
+      "sha256": "22c16cce7775c75c4b909da18cce73298ba6b8bb30e466ff915af68580a9034a"
+    },
+    {
+      "path": "assets/atlas-webp/hero-male.webp",
+      "bytes": 145214,
+      "sha256": "f3cef7fc155c400c42bf5c7cb1e8473e0a82925070b279808a29df0320e172b9"
+    },
+    {
+      "path": "assets/atlas-webp/herosit.webp",
+      "bytes": 39694,
+      "sha256": "c17bed1ef8bc5771f9fef224e892606c6ce575720cbb03791cb46a6cd6340923"
+    },
+    {
+      "path": "assets/atlas-webp/hook-male.webp",
+      "bytes": 153338,
+      "sha256": "413a02165493a3b201a8cc64cc84dfe06f50a8cb66bd51c261ec0a6ea7a22a6e"
+    },
+    {
+      "path": "assets/atlas-webp/incidents.webp",
+      "bytes": 114376,
+      "sha256": "692f7d8d479371df6390a6eb35abd7bbe4b2f8331b28b9786870f44b1dda7c88"
+    },
+    {
+      "path": "assets/atlas-webp/passengers.webp",
+      "bytes": 127488,
+      "sha256": "2f3e5bc795e7a95095063f04fb94a9746dae49b510c44f268769f97b2fc08d3c"
+    },
+    {
+      "path": "assets/atlas-webp/spycam.webp",
+      "bytes": 22600,
+      "sha256": "a9f9b6d00ba81cbd2ecf738a527195c89f0a37a7d11eec2646da645ee07db4a9"
+    },
+    {
+      "path": "assets/atlas-webp/swing-bag-female.webp",
+      "bytes": 171356,
+      "sha256": "00cc38a468fdd24bd6e1fb14f45195e74604e8ffea822091f0c622ba8888c11d"
+    },
+    {
+      "path": "assets/atlas-webp/swing-bag-male.webp",
+      "bytes": 158280,
+      "sha256": "6b35fb2a02d634f7d7cf014ca76c35a3803cf29a14d449e84af3b9d9237f9573"
+    },
+    {
+      "path": "assets/atlas-webp/swing-bat-female.webp",
+      "bytes": 186216,
+      "sha256": "be84476a4f61b03c4f1a1863d337722e838d353c3fd2e8b88e58ed8067d62dd7"
+    },
+    {
+      "path": "assets/atlas-webp/swing-bat-male.webp",
+      "bytes": 171142,
+      "sha256": "db47cd001db088578bd3e4788c0194439ec172f0ac9979b4665b08d1a88f196a"
+    },
+    {
+      "path": "assets/atlas-webp/swing-ext-female.webp",
+      "bytes": 179454,
+      "sha256": "6ebb85cda20caf1d9b916f17a9c5f115370a7d716e376a268d4dcf5922f492ed"
+    },
+    {
+      "path": "assets/atlas-webp/swing-ext-male.webp",
+      "bytes": 162468,
+      "sha256": "012b02469f011d14ec634e11dc5eada6c130d6a88fc52f6d9ead274a36926d21"
+    },
+    {
+      "path": "assets/atlas-webp/swing-female.webp",
+      "bytes": 363666,
+      "sha256": "03d9e4fe4395e9564825c531df87bfa870c92bf8772e560499866e0f05261737"
+    },
+    {
+      "path": "assets/atlas-webp/swing-male.webp",
+      "bytes": 380096,
+      "sha256": "6897827aa9137ac865e919356ea56e3cec3fb906dbe3ab694a3ddebaf928a8f9"
+    },
+    {
+      "path": "assets/atlas-webp/walk-backpack-female.webp",
+      "bytes": 110166,
+      "sha256": "ec2fd824ec68ac04aa90c68f52c8d33a09f7f46ecd1babddf531b5034adc7a14"
+    },
+    {
+      "path": "assets/atlas-webp/walk-backpack.webp",
+      "bytes": 121514,
+      "sha256": "cfefcacb7d1dfc73a1ccb8b035736582e845ded152b296a6c8e3904164e1cf07"
+    },
+    {
+      "path": "assets/atlas-webp/walk-civilians.webp",
+      "bytes": 98224,
+      "sha256": "4dbd8b03d37c33b10024a2f53c1ee37c4f2a3f3601b02da726354fb1cf1b30c2"
+    },
+    {
+      "path": "assets/atlas-webp/walk-female.webp",
+      "bytes": 291996,
+      "sha256": "01cf5d1849422adc9fe3e45d85976476960af828c8a8648dd6526b1df538f919"
+    },
+    {
+      "path": "assets/atlas-webp/walk-incident.webp",
+      "bytes": 102046,
+      "sha256": "a8b28402cc955d8df160bd56356a5750e57666fe0b359eb10a69d76fc7bf8259"
+    },
+    {
+      "path": "assets/atlas-webp/walk-male.webp",
+      "bytes": 276444,
+      "sha256": "c8a2444b1bf25308eb081275824dc00ab887f03acf8c7f76520139d02f9a0806"
+    },
+    {
+      "path": "assets/atlas-webp/walk-protected.webp",
+      "bytes": 109180,
+      "sha256": "cb89774e758237041fc5d81be8cdc2f285966457182fca54fa07a515997ebeaf"
+    },
+    {
+      "path": "assets/atlas-webp/walk-special.webp",
+      "bytes": 96346,
+      "sha256": "4dece4c44dfd87e5dcbcc559a6b3a7ce5d2f444da5e60918d79d4aaffe402950"
+    },
+    {
+      "path": "assets/atlas-webp/walk-staff.webp",
+      "bytes": 106998,
+      "sha256": "67a8d6bef99c8a24e95bc41519e900e162b1d9a55385371027a99dd9c448ae20"
+    },
+    {
+      "path": "assets/icon/icon-1024.png",
+      "bytes": 998779,
+      "sha256": "59f6bc91a5c88e61a036cfa6caf67ff1213ff39ccad6ce8536b7e66a26573a19"
+    },
+    {
+      "path": "assets/icon/icon-source.png",
+      "bytes": 1852942,
+      "sha256": "d237762650e46c5431a1659c9c01058402abe3e5d4771dd9180e8a93ebb55884"
+    },
+    {
+      "path": "assets/original/carry-bag-female.png",
+      "bytes": 1200199,
+      "sha256": "0b4d4618ca75bfd81d75791b2ea2656184b9738692c9c03eed9eca404443a0d8"
+    },
+    {
+      "path": "assets/original/carry-bag-male.png",
+      "bytes": 1160026,
+      "sha256": "8bd574eb10c17e6182fa05dbdfe5468456af64a9dd44c41e60e8e690d27d0f4b"
+    },
+    {
+      "path": "assets/original/carry-bat-female.png",
+      "bytes": 2007869,
+      "sha256": "05554259fc699cf7c0e65114ed4b96643fd0676beeef5eb53bbd778a2725200e"
+    },
+    {
+      "path": "assets/original/carry-bat-male.png",
+      "bytes": 1095097,
+      "sha256": "f287276ba335a89940489eb5df5c6ce2007155a4a7c7226b0967239ccfd28827"
+    },
+    {
+      "path": "assets/original/carry-ext-female.png",
+      "bytes": 1487165,
+      "sha256": "b449b8b78f47bda9a386dd3f4f29320aa8a9c03419746a9863cdb0f37ac2e51a"
+    },
+    {
+      "path": "assets/original/carry-ext-male.png",
+      "bytes": 1273711,
+      "sha256": "438bd89b0c62b0a776f01f790cdd278b08ace26035d36eb13bb7e5917fdc540e"
+    },
+    {
+      "path": "assets/original/hook-male.png",
+      "bytes": 1242575,
+      "sha256": "b9aa81f5f9f8303dddfbb4d274435c4f179d4ecb76bf354ab06b4cb91149f5c6"
+    },
+    {
+      "path": "assets/original/swing-bag-female.png",
+      "bytes": 1546375,
+      "sha256": "30e25d7d0de0d43203091f02e1edbbb17537f606de70bda8252b024e048e08c5"
+    },
+    {
+      "path": "assets/original/swing-bag-male.png",
+      "bytes": 2915961,
+      "sha256": "938fa4ebe2ae43f4bb34dd46870fa9d828cef1f47e52532ba4e61238a1ec6906"
+    },
+    {
+      "path": "assets/original/swing-bat-female.png",
+      "bytes": 1388597,
+      "sha256": "64fbbcc3c9bbe794d0616da9aa7b57e36dc28630ec1d9cf9c1ff007cf9507717"
+    },
+    {
+      "path": "assets/original/swing-bat-male.png",
+      "bytes": 1042738,
+      "sha256": "f8b5a9f8a5542f9e3511f81346d88a031e11726bed6047119e7919af518b30b5"
+    },
+    {
+      "path": "assets/original/swing-ext-female.png",
+      "bytes": 3315512,
+      "sha256": "56ce21e50c5feecb81bfd7d3a229381c2a43b462edaafe75a7e5665f0b8eafa0"
+    },
+    {
+      "path": "assets/original/swing-ext-male.png",
+      "bytes": 1459488,
+      "sha256": "e16ced520030df71dfb47e8ad365d15994cb99a88e05dfade86beeb702e10a1c"
+    },
+    {
+      "path": "assets/ui/select-female.webp",
+      "bytes": 10784,
+      "sha256": "18f417b616c5b457c1606c64bdb172cffeb4afe191fcceb377a3f69f296d97a3"
+    },
+    {
+      "path": "assets/ui/select-male.webp",
+      "bytes": 11238,
+      "sha256": "5d59903926403bb93edc952e17e4722b610215839496b55d1a361b290ccd1bfb"
     },
     {
       "path": "assets/v4-atlas/incidents.png",
@@ -90,14 +559,64 @@
       "sha256": "d67349260c4d62f462f182a1a7f586c2213bf704fbc2d998eab444db3569ddf5"
     },
     {
+      "path": "CLAUDE-MESSAGE.txt",
+      "bytes": 826,
+      "sha256": "db348df1cf684e82013589374b4d7690895cfe8513e4498f98b4ca62eca3b113"
+    },
+    {
       "path": "docs/ART-PROMPTS.md",
       "bytes": 3416,
       "sha256": "7c983a7b4c49b90f85a52102cb7c638ebf8083f5963f1c941f5e6649dfe802ab"
     },
     {
-      "path": "docs/HANDOFF.md",
+      "path": "docs/attack-frame-safety.json",
+      "bytes": 23082,
+      "sha256": "60eadc2c61c15918e0c2db90180db0b2f2949ff47249aae3a211cc2d2a071cfa"
+    },
+    {
+      "path": "docs/BACKPACK.md",
+      "bytes": 1541,
+      "sha256": "4b1724e39326a48ff6f7729dfb5718eb81ab8947519c77d4b61d64386d293642"
+    },
+    {
+      "path": "docs/CLAUDE-HANDOFF-codex.md",
+      "bytes": 2903,
+      "sha256": "417eedcd1b4476060590e145a3dd402f6053342b42696573dedbe1bf545f8418"
+    },
+    {
+      "path": "docs/DELIVERY-SHA256.txt",
+      "bytes": 4667,
+      "sha256": "48e3710765748640f375c689b960526b686cd64012fc11aef74c63e656bb1671"
+    },
+    {
+      "path": "docs/DIRECTION-FIX.md",
+      "bytes": 2146,
+      "sha256": "90afb55f25c86bddcbe3635dac09b0238cbb05eade4be9a55e1c25f44e4452cb"
+    },
+    {
+      "path": "docs/HANDOFF-codex-v5.7.md",
       "bytes": 8708,
       "sha256": "c41a4eaac08ed0392ecca0b1cc74459767b95cbe790fbf77de496e282c2679f2"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "bytes": 10002,
+      "sha256": "b86df78e0d74b7460946c1bc85f655c55a9b0a9315794205667003a7941e5c96"
+    },
+    {
+      "path": "docs/IMPACT.md",
+      "bytes": 2133,
+      "sha256": "f5099623461f613364318dcadb22843a1f20a99527ae85dbb60935ef3c0019ae"
+    },
+    {
+      "path": "docs/MOTION-2D.md",
+      "bytes": 3920,
+      "sha256": "3ebd5598b533372ed14026a04ee06202c7c268eef56030bc9c1cf3d6a54ed1dd"
+    },
+    {
+      "path": "docs/MOTION-CHANGES.md",
+      "bytes": 4144,
+      "sha256": "65a913a808f4bd785f9cd05ed6da3ff27d7b9f85c605fef34014e7946e777d63"
     },
     {
       "path": "docs/PLAY-README.md",
@@ -105,114 +624,124 @@
       "sha256": "cc6c51811d48b12b582b0dab3b54a541080430613f5d71c72eaac35e2e576f35"
     },
     {
+      "path": "docs/qa/README.txt",
+      "bytes": 168,
+      "sha256": "a93cb1fdd90347e7d9322a95ca93f46f30f33b05502333a1af4f6eda4fb2efb6"
+    },
+    {
+      "path": "docs/qa/weapon-back-attack-check.png",
+      "bytes": 182816,
+      "sha256": "e5cafbbc709163efa1169960266b3ccdc041679892b7c8764af80370fd7c39c2"
+    },
+    {
+      "path": "docs/qa/weapon-carry-check.png",
+      "bytes": 182731,
+      "sha256": "143ae58677fe1f8e82b641a8ff23f862c170df41fc135d838e736c05fc9d3420"
+    },
+    {
+      "path": "docs/UMBRELLA-120.md",
+      "bytes": 2428,
+      "sha256": "fa77615908257908578c95fa0e9dcbc843578bfdb7e04cdec113cc4baca7dbcc"
+    },
+    {
       "path": "docs/V5-CHANGES.md",
       "bytes": 6677,
       "sha256": "12615ce9965ae146e95f1d9db12ddfb3301d04ea989abcd436c229f549826363"
     },
     {
+      "path": "docs/V6-CHANGES.md",
+      "bytes": 14148,
+      "sha256": "0461b0d777e3fc75df808f7c3d9f06d0657818cf6515ece3c573abd1d727a6f6"
+    },
+    {
+      "path": "docs/WEAPON-4DIR.md",
+      "bytes": 4105,
+      "sha256": "5d50af4e3e3a23f87429033b13b65af289dd3a586beab3f8cfb6aefd3110f7ec"
+    },
+    {
+      "path": "docs/WEAPON-FRAME-SAFETY.json",
+      "bytes": 144972,
+      "sha256": "11567786722a98f14c381a32813e358c370a202f66d14688d550340e7cb0f2dd"
+    },
+    {
+      "path": "game/icons/apple-touch-icon.png",
+      "bytes": 36654,
+      "sha256": "5a753595b345e70d4d2291f643356c6ac5e26e6fce45d658f6e032276e870713"
+    },
+    {
+      "path": "game/icons/favicon-32.png",
+      "bytes": 2507,
+      "sha256": "1cfafdb940821fe4d27f304a9dc5f20706535589c853db508771d5b68ab87f7b"
+    },
+    {
+      "path": "game/icons/favicon-64.png",
+      "bytes": 7691,
+      "sha256": "a7ed90838183101d71035e6b78185412c087e032e0bbed6c5911e22044c84e7b"
+    },
+    {
+      "path": "game/icons/icon-1024.png",
+      "bytes": 998779,
+      "sha256": "59f6bc91a5c88e61a036cfa6caf67ff1213ff39ccad6ce8536b7e66a26573a19"
+    },
+    {
+      "path": "game/icons/icon-192-maskable.png",
+      "bytes": 29980,
+      "sha256": "4d219d1783ad61276e5d1742b14ea4c9bab679a4f54e64ef878188730c3298ac"
+    },
+    {
+      "path": "game/icons/icon-192.png",
+      "bytes": 48014,
+      "sha256": "6c1e1c0b0381edd552ec5818c4802e0a49b20c52ef407dd76ab65c710543153d"
+    },
+    {
+      "path": "game/icons/icon-512-maskable.png",
+      "bytes": 177662,
+      "sha256": "6186a1fae01dca8706f49265b1acb7d81eb0939955594c94706fb6c9ecc06890"
+    },
+    {
+      "path": "game/icons/icon-512.png",
+      "bytes": 306846,
+      "sha256": "dd5e0e60960b6f650771c94650ff677e6e0d5c219ee4fb852f700703a620b0e4"
+    },
+    {
       "path": "game/index.html",
-      "bytes": 3680618,
-      "sha256": "4e2233b3384a62c3495a12edac97117422645fc0a900fb2682cff3badea02850"
+      "bytes": 9468778,
+      "sha256": "c8476582162e4d3256760572803d91a828e374b77f1912f962d0c4ea9c04862a"
     },
     {
-      "path": "outputs/claude-v5/01-camera-tags-pads.png",
-      "bytes": 1107844,
-      "sha256": "a637e17af9e914f9615cb21ab5d94a667f71ee20b40f75efd9e5dd9558d5f4fd"
+      "path": "game/manifest.webmanifest",
+      "bytes": 850,
+      "sha256": "73c8d6197198fc828df0e7000d4c809ac5b7ff0b3df4b712fda42b7d5b7edad2"
     },
     {
-      "path": "outputs/claude-v5/02-first-shop-boss-map-dex.png",
-      "bytes": 994049,
-      "sha256": "e9c1a1555f4cb4b8d1721e75030398febd3dc2c17122af935379d825441317ea"
+      "path": "index.html",
+      "bytes": 594,
+      "sha256": "83e172cf3f06e8163d73632428f2773fa522bc787ee6c769b199cd2a2ded329c"
     },
     {
-      "path": "outputs/claude-v5/03-multibuy-shop-rest-boss-incidents.png",
-      "bytes": 1345768,
-      "sha256": "24401548fa23222ad217895479b07c0dec7e345bd975854568e7916a6a7052cf"
-    },
-    {
-      "path": "outputs/claude-v5/04-movement-dash.png",
-      "bytes": 613053,
-      "sha256": "523cb02fc5fdcfab9abc188879eec759a7c4bcc8eeb2bc664112faf5e687ab6f"
-    },
-    {
-      "path": "outputs/claude-v5/05-feet-fix-guard.png",
-      "bytes": 351933,
-      "sha256": "9d55654f7fd44f1e0c503890eb4d8320e8ed4bb2de42aa7cb198909893303fc3"
-    },
-    {
-      "path": "outputs/claude-v5/06-guard-front-back.png",
-      "bytes": 55896,
-      "sha256": "ae101440d195a2284b5b2fed32abbc5b02da2063b1ec88838976ba3dba53df60"
-    },
-    {
-      "path": "outputs/claude-v5/07-temp-art-boss-herosit.png",
-      "bytes": 272370,
-      "sha256": "ecce0b68257802175aeef217803e6bd846c935a2ba4a0b913c894a5788dd0756"
-    },
-    {
-      "path": "outputs/play-models-check.png",
-      "bytes": 313015,
-      "sha256": "5ecd9b64439cd8b0d7b5976970e3126800da646ae3c5c6ebfe272da36489025b"
-    },
-    {
-      "path": "outputs/selection-models-check.png",
-      "bytes": 98045,
-      "sha256": "fb3e44e847cb4268fc702719d5b410ec3376e09f0d0981535abde7edb60007c0"
+      "path": "package-lock.json",
+      "bytes": 6775,
+      "sha256": "c2df552d4f144653c6f0025a56ca92b6799c780bfddd42b52bbef23d826308ba"
     },
     {
       "path": "package.json",
-      "bytes": 433,
-      "sha256": "a748b8ddcab223283c0cb49cb525271a93886df618ad34cccdff5a0496febf8e"
+      "bytes": 651,
+      "sha256": "12ddc558600e4754bf1e6520682be268275e35b6079a987f04d2be930338bcf4"
     },
     {
-      "path": "references/approved/character-selection.png",
-      "bytes": 1988514,
-      "sha256": "31a1b599b4c532d6e3fed48cb7e60cd954b6e6bf555cded052f9952dd42f8433"
+      "path": "preview/weapons.html",
+      "bytes": 2782178,
+      "sha256": "ab2cef3f48312e8edb6aefd89f2a5ef48109aea261fd373b879c5f989146b18b"
     },
     {
-      "path": "references/approved/style-02.png",
-      "bytes": 1695978,
-      "sha256": "2657120e26bf36031137bdf1a30b153e6b23cb218c804dd165b0f9500df24c0d"
-    },
-    {
-      "path": "references/history/AGENTS-v4.md",
-      "bytes": 2772,
-      "sha256": "4d4027a1f974c345a8af4763529246fa4921e4564ccc483dd8df28b3ac6b6ce8"
-    },
-    {
-      "path": "references/history/CLAUDE-MESSAGE-v4.txt",
-      "bytes": 1552,
-      "sha256": "97bad1280ea2f92046240d8e1b239add9b69198c8e507b70da476c23d48fe82d"
-    },
-    {
-      "path": "references/history/current-version-screenshot.png",
-      "bytes": 959070,
-      "sha256": "2ea2c082bd767650348cc0683c08eefa469e2e80a23fec255a7a744cf1dda35a"
-    },
-    {
-      "path": "references/history/original-AGENTS.md",
-      "bytes": 8239,
-      "sha256": "beb74125af0d3274b41a1eb6e25d7bd82191aef7f1483bc830fd7d1878e81812"
-    },
-    {
-      "path": "references/history/whiteout-ad-base.png",
-      "bytes": 734333,
-      "sha256": "0a0a8ac952d0bdeea891f3811e41e936c1da5d738240ced263626f25e8d9fe32"
-    },
-    {
-      "path": "references/history/whiteout-ad-clash.png",
-      "bytes": 190546,
-      "sha256": "3b738f90bacca494475622f4cb8428374067890d07c08373e8ce29cec1bd1096"
+      "path": "scripts/build-weapon-preview.cjs",
+      "bytes": 4217,
+      "sha256": "16424267c91a434b97adfe46a8668698fbcef81cbfc2293361e6ef2948e6d398"
     },
     {
       "path": "scripts/build.cjs",
-      "bytes": 942,
-      "sha256": "0fe90d8d1eba3802b34cd8ac9f9fe10cee4a8cc77d90c603722ebe940b0527c8"
-    },
-    {
-      "path": "scripts/claude-art/README.md",
-      "bytes": 821,
-      "sha256": "d7ed85125eec5b79b7cc491e1e1570c65efb41aad2ae1f0ba7671a88dd33bea7"
+      "bytes": 1838,
+      "sha256": "dff71277f92589847f23c435644e8c7feaea030fd771a345f649aa2fac9c098f"
     },
     {
       "path": "scripts/claude-art/fixfeet.py",
@@ -230,19 +759,59 @@
       "sha256": "fee37d324f887fb6fd39de160d36423e130bc448b9ea28a7301323bcc55fe71a"
     },
     {
+      "path": "scripts/claude-art/README.md",
+      "bytes": 821,
+      "sha256": "d7ed85125eec5b79b7cc491e1e1570c65efb41aad2ae1f0ba7671a88dd33bea7"
+    },
+    {
+      "path": "scripts/make-webp.py",
+      "bytes": 578,
+      "sha256": "34dfdfe7455acd50ab9104b8d3967b7909d422a47c6bfaa31c2996fab803352b"
+    },
+    {
+      "path": "scripts/make_icon.py",
+      "bytes": 1742,
+      "sha256": "b2a8c32fd379f2da72e44ce403ba0536c754492538167209860c763098bf80d1"
+    },
+    {
+      "path": "scripts/pack-carry.cjs",
+      "bytes": 2457,
+      "sha256": "1f6a0309172e4000fdf22df54c97cb5fe9bba2be4a35cb80a3cc3a41f61c9fbe"
+    },
+    {
+      "path": "scripts/pack-directions.cjs",
+      "bytes": 2817,
+      "sha256": "bf386c8b500c2b9c3cf9551de504e07d8392b1fd89a7daa3f5ce7cc86ae1564c"
+    },
+    {
+      "path": "scripts/pack-swing.cjs",
+      "bytes": 2463,
+      "sha256": "85582c8eee707a9ef9ad101f6bf0875a35470d69bda818a60af6504f20d6606c"
+    },
+    {
+      "path": "scripts/pack-weapon-directions.cjs",
+      "bytes": 4415,
+      "sha256": "cc22369ffbf665f1bc52c42f2445e369fd8fa3eaeea48bace56342f785ba05d5"
+    },
+    {
       "path": "scripts/serve.cjs",
       "bytes": 741,
       "sha256": "dc7dd3000d8bec3fa66647b38bd2f19c2cfcd12d887faedb96d74e3a8c7e2749"
     },
     {
       "path": "source/index.html",
-      "bytes": 124863,
-      "sha256": "8520292963dea3999d3931ee20116bfebb03eafc4e19b7748af6fc9ba6634d0c"
+      "bytes": 258280,
+      "sha256": "40479cd2c67a110c6a5050298ea65e2978102c5e2138ea53d2f060492e4497cd"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 514,
+      "sha256": "007f2256ccca3d476f355b898be340533482519e35ac60ff3cecbf08c559851a"
     },
     {
       "path": "tests/smoke.cjs",
-      "bytes": 14954,
-      "sha256": "911e38d85e9b4f47df183f81fff190ed362046121d07682d1f684935d7d9498b"
+      "bytes": 44114,
+      "sha256": "6b21340154788ce9844251cd2e302109a57972afcc230922ffebc47aff04d93b"
     },
     {
       "path": "tests/software-render.cjs",

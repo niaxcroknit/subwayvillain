@@ -1,8 +1,8 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),T=require('three');
 const {createCanvas,loadImage}=require('@napi-rs/canvas');
 (async()=>{
-const uriFor=k=>{const w='assets/atlas-webp/'+k+'.webp';return fs.existsSync(w)?'data:image/webp;base64,'+fs.readFileSync(w).toString('base64'):uriFor(k);};
-const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female','attacks-male','attacks-female','attacks-bat']){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
+const uriFor=k=>{const w='assets/atlas-webp/'+k+'.webp';return fs.existsSync(w)?'data:image/webp;base64,'+fs.readFileSync(w).toString('base64'):'data:image/png;base64,'+fs.readFileSync('assets/atlas/'+k+'.png').toString('base64');};
+const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female',"swing-bag-male","carry-bag-male","swing-bag-female","carry-bag-female","swing-ext-male","carry-ext-male","swing-ext-female","carry-ext-female","swing-bat-male","carry-bat-male","swing-bat-female","carry-bat-female","hook-male"]){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
 {const cv=decoded.get(uriFor('walk-backpack-female')),d=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let transparent=0;for(let i=3;i<d.length;i+=4)if(d[i]===0)transparent++;assert(transparent>cv.width*cv.height*.5,'female sprite background must be transparent');}
 for(const key of ['hero-male','hero-female','civilians','protected','staff','special','incident','backpack','backpack-female']){const uri=uriFor('dir-'+key),cv=decoded.get(uri);assert.equal(cv.width,1024);assert.equal(cv.height,key.startsWith('hero-')?512:1024);const pixels=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let alpha=0;for(let i=3;i<pixels.length;i+=4)if(pixels[i]===0)alpha++;assert(alpha>cv.width*cv.height*.45,'new directions require clean alpha');}
 const nodes=new Map(),saved=new Map(),events={};let frame,rendered;
@@ -13,7 +13,7 @@ class TextureLoader{load(uri,cb){const canvas=decoded.get(uri);assert(canvas,'Em
 const ctx={THREE:{...T,WebGLRenderer:Renderer,TextureLoader},window:{THREE:T},document:doc,innerWidth:844,innerHeight:390,devicePixelRatio:1,localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},performance:{now:()=>0},requestAnimationFrame:f=>frame=f,addEventListener:(k,f)=>events[k]=f,setInterval(){},setTimeout(){},clearTimeout(){},navigator:{},screen:{},console,Math};
 const gamePath='game/index.html';
 let src=fs.readFileSync(gamePath,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
-src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,WEAPONS,curWeapon':''}};showSelection();\nrequestAnimationFrame(loop);`);
+src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,WEAPONS,curWeapon,keepWeaponInView':''}};showSelection();\nrequestAnimationFrame(loop);`);
 vm.createContext(ctx);vm.runInContext(src,ctx);const q=ctx.qa;
 frame(16);assert(q.getSelection());assert.equal(q.getSelection().models.length,2);
 nodes.get('chooseFemale').onclick();assert.equal(q.hero.o.userData.spec.female,true);assert.equal(q.SAVE.character,'female');assert(nodes.get('chooseFemale').classList.contains('active'));
@@ -216,15 +216,56 @@ if(true){
  const mk=a=>{const v=q.spawnVillain(new T.Vector3(Math.sin(a)/.72,0,Math.cos(a)),'backpackStand');Object.assign(v.sp,{own:true,old:false,belly:false,backpack:'back'});v.guilty=true;v.tag=node();v.hp=v.max=1e6;return v;};
  const in50=mk(50*Math.PI/180),out70=mk(70*Math.PI/180);q.strike(1,true);assert(in50.hp<1e6,'bag hits at 50°');assert.equal(out70.hp,1e6,'bag misses at 70°');in50.state=out70.state='gone';
  // 휘두르는 그림: 가방은 시안 아틀라스 행2, 왼쪽을 보면 좌우 반전
- q.chooseCharacter('male');q.SAVE.weapon='bag';q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=Math.PI/2;q.pose(q.hero.o,'windmill',0);let a=q.hero.o.userData.art;assert.equal(a.walkKey,'attacks-male');assert.equal(a.walkingRow,2);assert.equal(a.mirrored,false);
- q.hero.swingFace=-Math.PI/2;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.mirrored,true);assert(q.hero.o.userData.art.rect.z<0,'mirrored via negative UV width');
- q.SAVE.weapon='bat';q.chooseCharacter('female');q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'attacks-bat');assert.equal(q.hero.o.userData.art.walkingRow,1);
+ q.chooseCharacter('male');q.SAVE.weapon='bag';q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=Math.PI/2;q.pose(q.hero.o,'windmill',0);let a=q.hero.o.userData.art;assert.equal(a.walkKey,'swing-bag-male');assert.equal(a.walkingRow,1);assert.equal(a.mirrored,false);
+ q.hero.swingFace=-Math.PI/2;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.mirrored,false);assert.equal(q.hero.o.userData.art.walkingRow,3);assert(q.hero.o.userData.art.rect.z>0,'left uses its own row, not mirrored UV');
+ q.SAVE.weapon='bat';q.chooseCharacter('female');q.hero.spin=.4;q.hero.duration=.8;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'swing-bat-female');assert.equal(q.hero.o.userData.art.walkingRow,0);
  // 남자 주먹 = 넓은 훅(시안 행0), 여자 주먹 = 원래 풍차(hero-female)
- q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.chooseCharacter('male');q.hero.spin=.3;q.hero.duration=.72;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'attacks-male');assert.equal(q.hero.o.userData.art.walkingRow,0);
- q.chooseCharacter('female');q.hero.spin=.3;q.hero.duration=.36;q.pose(q.hero.o,'windmill',0);assert.notEqual(q.hero.o.userData.art.walkKey,'attacks-female','female keeps the original windmill art');
+ q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.chooseCharacter('male');q.hero.spin=.3;q.hero.duration=.72;q.hero.swingFace=0;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'hook-male');assert.equal(q.hero.o.userData.art.walkingRow,0);
+ q.chooseCharacter('female');q.hero.spin=.3;q.hero.duration=.36;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.sprite.material.map.image,decoded.get(uriFor('hero-female')),'female keeps the original windmill image');
  q.hero.spin=0;q.SAVE.weapon='umbrella';q.chooseCharacter('male');
- console.log('PASS: v6.8 tiered weapons (bag/umbrella/extinguisher/bat), stack vs switch, 120° bag arc, attack art rows + left mirroring, male wide hook / female original windmill.');
+ console.log('PASS: v6.8 tiered weapons (bag/umbrella/extinguisher/bat), stack vs switch, 120° bag arc, independent directional attack rows, male wide hook / female original windmill.');
 }
+{
+ const cameraYaw=Math.atan2(3.4*.72,8.95),safety=JSON.parse(fs.readFileSync('docs/WEAPON-FRAME-SAFETY.json','utf8'));
+ assert.equal(safety.frames.length,416);
+ for(const f of safety.frames)assert(f.margin>=6,'all full item frames have transparent padding');
+ let checked=0,projected=0;
+ function cameraBounds(o){
+  const a=o.userData.art;q.scene.updateMatrixWorld(true);const center=a.sprite.getWorldPosition(new T.Vector3()),scale=a.sprite.getWorldScale(new T.Vector3());
+  for(const [w,h]of [[844,390],[740,290],[932,430]]){
+   const H=3.25,half=H*w/h,carMin=-14*.72+half*.38,carMax=14*.72-half*.38;
+   const tx=Math.max(carMin,Math.min(carMax,o.position.x*.72)),tz=Math.max(-2.4,Math.min(2.2,o.position.z))*.85;
+   for(const sign of [-1,1]){const camera=new T.OrthographicCamera(-half,half,H,-H,.1,120);camera.position.set(tx+3.4*.72,11.8,8.6+tz);camera.lookAt(camera.position.x-3.4*.72,0,camera.position.z-8.95);camera.position.x+=sign*.42;camera.position.z+=sign*.32;camera.updateMatrixWorld(true);
+    const right=new T.Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new T.Vector3(0,1,0).applyQuaternion(camera.quaternion);
+    const frameBounds=safety.frames.find(f=>f.key===a.walkKey&&f.row===a.walkingRow&&f.frame===Math.round(a.rect.x*8)).bounds;for(const x of [frameBounds.minX/192,(frameBounds.maxX+1)/192])for(const y of [1-(frameBounds.maxY+1)/160,1-frameBounds.minY/160]){const p=center.clone().addScaledVector(right,(x-a.sprite.center.x)*scale.x).addScaledVector(up,(y-a.sprite.center.y)*scale.y).project(camera);assert(p.x>=-1&&p.x<=1&&p.y>=-1&&p.y<=1,'all visible weapon pixels fit landscape camera at carriage edge '+JSON.stringify({key:a.walkKey,row:a.walkingRow,w,h,point:p,center,scale,pos:o.position}));projected++;}
+   }
+  }
+ }
+ function projectAllEdges(o){const pos=o.position.clone();for(const x of [-13.2,13.2])for(const z of [-1.95,1.95]){o.position.set(x,0,z);cameraBounds(o);}o.position.copy(pos);}
+ for(const gender of ['male','female'])for(const item of ['bag','ext','bat']){
+  q.chooseCharacter(gender);q.SAVE.weapon=item;q.SAVE.umbrellaSeconds=100;q.setAttackStyle('umbrella');q.S.hitstop=0;
+  const W=q.WEAPONS[item],sex=gender==='female'?'f':'m';assert(W.carry[sex]);
+  for(let direction=0;direction<4;direction++){
+   const face=cameraYaw+direction*Math.PI/2;q.hero.face=q.hero.swingFace=face;q.hero.o.rotation.y=face;q.hero.pos.set(direction%2?13.2:-13.2,0,direction<2?1.95:-1.95);q.hero.o.position.copy(q.hero.pos);q.hero.spin=0;
+   q.pose(q.hero.o,'walk',0);let a=q.hero.o.userData.art;assert.equal(a.walkKey,'carry-'+item+'-'+gender);assert.equal(a.walkingRow,direction);assert.equal(a.mirrored,false);const before=a.rect.x;q.hero.o.position.x+=Math.sin(face)*.34/.72;q.hero.o.position.z+=Math.cos(face)*.34;q.pose(q.hero.o,'walk',.1);assert.notEqual(a.rect.x,before,'held-weapon walking must move legs');
+   q.pose(q.hero.o,'idle',.2);assert.equal(a.walkKey,W.carry[sex]);assert.equal(a.walkingRow,direction);assert(a.held,'standing keeps weapon visible');for(let f=0;f<8;f++){a.motion.distance=(f+.1)/8*1.5;a.motion.last.copy(q.hero.o.position);q.pose(q.hero.o,'walk',0);assert.equal(a.rect.x,f/8);projectAllEdges(q.hero.o);checked++;}q.hero.o.position.set(direction%2?13.2:-13.2,0,direction<2?1.95:-1.95);q.hero.pos.copy(q.hero.o.position);
+   for(let frame=0;frame<8;frame++){
+    const k=((frame?W.ends[frame-1]:0)+W.ends[frame])/2;q.hero.duration=1;q.hero.spin=1-k;q.hero.swingFace=face;q.S.hitstop=0;q.pose(q.hero.o,'windmill',0);a=q.hero.o.userData.art;
+    assert.equal(a.walkKey,'swing-'+item+'-'+gender);assert.equal(a.walkingRow,direction);assert.equal(a.rect.x,frame/8);assert.equal(a.rect.z,1/8);assert.equal(a.rect.w,1/4);assert.equal(a.mirrored,false,'all directions are independently drawn');assert.equal(a.sprite.material.rotation,0);assert.equal(a.sprite.scale.y,2.55);projectAllEdges(q.hero.o);checked++;
+   }
+  }
+ }
+ q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.chooseCharacter('male');q.S.hitstop=0;
+ for(let direction=0;direction<4;direction++)for(let frame=0;frame<8;frame++){const ends=[.1,.19,.28,.37,.49,.62,.88,1],k=((frame?ends[frame-1]:0)+ends[frame])/2;q.hero.face=q.hero.swingFace=cameraYaw+direction*Math.PI/2;q.hero.o.rotation.y=q.hero.face;q.hero.spin=1-k;q.hero.duration=1;q.pose(q.hero.o,'windmill',0);assert.equal(q.hero.o.userData.art.walkKey,'hook-male');assert.equal(q.hero.o.userData.art.walkingRow,direction);assert.equal(q.hero.o.userData.art.rect.x,frame/8);assert.equal(q.hero.o.userData.art.mirrored,false);projectAllEdges(q.hero.o);checked++;}
+ q.chooseCharacter('female');q.hero.duration=.36;q.hero.spin=.3;
+ for(let i=0;i<4;i++){q.pose(q.hero.o,'windmill',(i+.01)/12);const a=q.hero.o.userData.art;assert.equal(a.sprite.material.map.image,decoded.get(uriFor('hero-female')));assert.equal(a.rect.x,i/4);assert.equal(a.rect.y,0);}
+ const cameraBefore=q.camera.clone();q.chooseCharacter('male');q.SAVE.weapon='bat';q.SAVE.umbrellaSeconds=100;q.setAttackStyle('umbrella');q.hero.spin=0;q.hero.face=cameraYaw;q.hero.o.rotation.y=cameraYaw;q.hero.pos.set(13.2,0,-1.95);q.hero.o.position.copy(q.hero.pos);q.pose(q.hero.o,'idle',0);let safetyMoves=0;
+ for(const [w,h]of [[844,390],[740,290],[932,430]])for(const sx of [-1,1])for(const sz of [-1,1]){ctx.innerWidth=w;ctx.innerHeight=h;const H=3.25,half=H*w/h;q.camera.left=-half;q.camera.right=half;q.camera.top=H;q.camera.bottom=-H;q.camera.updateProjectionMatrix();q.camera.position.set(q.hero.pos.x*.72+3.4*.72,11.8,8.6+q.hero.pos.z*.85);q.camera.lookAt(q.camera.position.x-3.4*.72,0,q.camera.position.z-8.95);q.camera.position.x+=sx*1.8;q.camera.position.z+=sz*1.8;q.camera.rotateZ(sx*.08);q.camera.updateMatrixWorld(true);const delta=q.keepWeaponInView();if(delta.length()>.001)safetyMoves++;q.scene.updateMatrixWorld(true);const a=q.hero.o.userData.art,center=a.sprite.getWorldPosition(new T.Vector3()),scale=a.sprite.getWorldScale(new T.Vector3()),right=new T.Vector3(1,0,0).applyQuaternion(q.camera.quaternion),up=new T.Vector3(0,1,0).applyQuaternion(q.camera.quaternion);for(const x of [0,1])for(const y of [0,1]){const p=center.clone().addScaledVector(right,(x-a.sprite.center.x)*scale.x).addScaledVector(up,(y-a.sprite.center.y)*scale.y).project(q.camera);assert(p.x>=-1+24/w-1e-6&&p.x<=1-24/w+1e-6&&p.y>=-1+24/h-1e-6&&p.y<=1-24/h+1e-6,'camera containment leaves 12px around full weapon sprite under extreme kick/roll');}assert(q.keepWeaponInView().length()<1e-6,'containment is stable once safe');}
+ assert(safetyMoves>0);ctx.innerWidth=844;ctx.innerHeight=390;q.camera.copy(cameraBefore);
+ q.hero.spin=0;q.SAVE.weapon='umbrella';q.hero.pos.set(-6,0,.6);q.hero.o.position.copy(q.hero.pos);
+ console.log('PASS: v6.9 all 6 item/gender pairs retain visible weapons while walking/stopping; '+checked+' new attack/carry/hook frames, original female frames/12fps, 416 padded frames and '+projected+' landscape edge projections.');
+}
+
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});
  const rendererSource=fs.readFileSync('tests/software-render.cjs','utf8');const cpu={T,fs,createCanvas,urban:false};vm.createContext(cpu);vm.runInContext(rendererSource.slice(rendererSource.indexOf('function renderCPU(')),cpu);
  q.showSelection();frame(now+=17);cpu.renderCPU(q.getSelection().ss,q.getSelection().cc,'outputs/selection-models-check.png',true);

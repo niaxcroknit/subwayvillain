@@ -1,0 +1,8012 @@
+{
+  "cell": {
+    "width": 192,
+    "height": 160,
+    "footY": 152
+  },
+  "rows": [
+    "front",
+    "right",
+    "back",
+    "left"
+  ],
+  "frames": [
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 79,
+        "y0": 17,
+        "x1": 169,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 51,
+        "minY": 37,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 280,
+        "y0": 17,
+        "x1": 392,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 49,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 493,
+        "y0": 18,
+        "x1": 609,
+        "y1": 213
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 47,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 709,
+        "y0": 18,
+        "x1": 831,
+        "y1": 213
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 75,
+        "minY": 35,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 961,
+        "y0": 16,
+        "x1": 1041,
+        "y1": 213
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 68,
+        "minY": 36,
+        "maxX": 149,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1168,
+        "y0": 18,
+        "x1": 1307,
+        "y1": 213
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1382,
+        "y0": 17,
+        "x1": 1474,
+        "y1": 213
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1600,
+        "y0": 16,
+        "x1": 1684,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 79,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 99,
+        "y0": 237,
+        "x1": 172,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 109,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 301,
+        "y0": 238,
+        "x1": 365,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 56,
+        "minY": 37,
+        "maxX": 111,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 495,
+        "y0": 240,
+        "x1": 588,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 57,
+        "minY": 37,
+        "maxX": 135,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 717,
+        "y0": 240,
+        "x1": 848,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 55,
+        "minY": 37,
+        "maxX": 158,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 925,
+        "y0": 239,
+        "x1": 1101,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 58,
+        "minY": 39,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1149,
+        "y0": 241,
+        "x1": 1324,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1391,
+        "y0": 240,
+        "x1": 1487,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 78,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1618,
+        "y0": 237,
+        "x1": 1691,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 73,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 90,
+        "y0": 454,
+        "x1": 188,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 140,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 310,
+        "y0": 455,
+        "x1": 423,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 142,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 519,
+        "y0": 455,
+        "x1": 642,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 65,
+        "minY": 38,
+        "maxX": 140,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 727,
+        "y0": 457,
+        "x1": 855,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 954,
+        "y0": 456,
+        "x1": 1032,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 149,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1168,
+        "y0": 458,
+        "x1": 1298,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 74,
+        "minY": 39,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1384,
+        "y0": 457,
+        "x1": 1472,
+        "y1": 648
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 74,
+        "minY": 37,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1602,
+        "y0": 456,
+        "x1": 1695,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 66,
+        "minY": 36,
+        "maxX": 111,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 86,
+        "y0": 677,
+        "x1": 163,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 62,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 291,
+        "y0": 678,
+        "x1": 390,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 65,
+        "minY": 37,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 505,
+        "y0": 679,
+        "x1": 608,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 46,
+        "minY": 38,
+        "maxX": 141,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 688,
+        "y0": 680,
+        "x1": 850,
+        "y1": 872
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 32,
+        "minY": 37,
+        "maxX": 136,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 891,
+        "y0": 677,
+        "x1": 1069,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 34,
+        "minY": 37,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1116,
+        "y0": 679,
+        "x1": 1279,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1374,
+        "y0": 678,
+        "x1": 1474,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 111,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1604,
+        "y0": 677,
+        "x1": 1678,
+        "y1": 872
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 70,
+        "y0": 17,
+        "x1": 170,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 292,
+        "y0": 18,
+        "x1": 392,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 514,
+        "y0": 18,
+        "x1": 613,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 735,
+        "y0": 18,
+        "x1": 835,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 958,
+        "y0": 17,
+        "x1": 1058,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1179,
+        "y0": 18,
+        "x1": 1278,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 61,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1399,
+        "y0": 17,
+        "x1": 1500,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 62,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1622,
+        "y0": 18,
+        "x1": 1722,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 69,
+        "y0": 237,
+        "x1": 184,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 64,
+        "minY": 37,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 293,
+        "y0": 237,
+        "x1": 381,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 65,
+        "minY": 37,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 517,
+        "y0": 237,
+        "x1": 602,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 68,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 744,
+        "y0": 237,
+        "x1": 830,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 66,
+        "minY": 36,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 964,
+        "y0": 237,
+        "x1": 1077,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1187,
+        "y0": 237,
+        "x1": 1268,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1422,
+        "y0": 237,
+        "x1": 1490,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 77,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1647,
+        "y0": 237,
+        "x1": 1716,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 84,
+        "y0": 459,
+        "x1": 180,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 307,
+        "y0": 459,
+        "x1": 404,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 529,
+        "y0": 459,
+        "x1": 625,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 751,
+        "y0": 459,
+        "x1": 851,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 972,
+        "y0": 459,
+        "x1": 1073,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1194,
+        "y0": 459,
+        "x1": 1293,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1416,
+        "y0": 459,
+        "x1": 1517,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1638,
+        "y0": 459,
+        "x1": 1738,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 59,
+        "minY": 36,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 53,
+        "y0": 679,
+        "x1": 176,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 72,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 298,
+        "y0": 679,
+        "x1": 397,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 77,
+        "minY": 37,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 529,
+        "y0": 679,
+        "x1": 616,
+        "y1": 872
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 73,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 745,
+        "y0": 679,
+        "x1": 840,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 58,
+        "minY": 36,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 940,
+        "y0": 679,
+        "x1": 1063,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1191,
+        "y0": 679,
+        "x1": 1282,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 77,
+        "minY": 36,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1417,
+        "y0": 679,
+        "x1": 1500,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1637,
+        "y0": 679,
+        "x1": 1729,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 65,
+        "minY": 33,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 99,
+        "y0": 11,
+        "x1": 190,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 52,
+        "minY": 33,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 297,
+        "y0": 11,
+        "x1": 412,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 52,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 516,
+        "y0": 14,
+        "x1": 633,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 44,
+        "minY": 36,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 725,
+        "y0": 16,
+        "x1": 861,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 65,
+        "minY": 34,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 953,
+        "y0": 12,
+        "x1": 1062,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 68,
+        "minY": 35,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1161,
+        "y0": 13,
+        "x1": 1319,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 72,
+        "minY": 34,
+        "maxX": 137,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1390,
+        "y0": 12,
+        "x1": 1502,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 64,
+        "minY": 33,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1589,
+        "y0": 11,
+        "x1": 1683,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 76,
+        "minY": 40,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 99,
+        "y0": 242,
+        "x1": 168,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 62,
+        "minY": 40,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 290,
+        "y0": 242,
+        "x1": 405,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 53,
+        "minY": 40,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 495,
+        "y0": 242,
+        "x1": 618,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 51,
+        "minY": 41,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 707,
+        "y0": 244,
+        "x1": 821,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 65,
+        "minY": 41,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 935,
+        "y0": 244,
+        "x1": 1102,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 66,
+        "minY": 41,
+        "maxX": 167,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1148,
+        "y0": 243,
+        "x1": 1325,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 41,
+        "maxX": 144,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1377,
+        "y0": 243,
+        "x1": 1506,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 77,
+        "minY": 41,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1600,
+        "y0": 242,
+        "x1": 1668,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 73,
+        "minY": 35,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 98,
+        "y0": 456,
+        "x1": 197,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 71,
+        "minY": 35,
+        "maxX": 135,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 323,
+        "y0": 457,
+        "x1": 434,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 66,
+        "minY": 35,
+        "maxX": 136,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 528,
+        "y0": 457,
+        "x1": 649,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 138,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 740,
+        "y0": 459,
+        "x1": 868,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 68,
+        "minY": 35,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 959,
+        "y0": 457,
+        "x1": 1059,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1167,
+        "y0": 458,
+        "x1": 1279,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 57,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1366,
+        "y0": 458,
+        "x1": 1478,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 73,
+        "minY": 35,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1601,
+        "y0": 457,
+        "x1": 1701,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 69,
+        "minY": 40,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 92,
+        "y0": 685,
+        "x1": 175,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 68,
+        "minY": 41,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 308,
+        "y0": 685,
+        "x1": 409,
+        "y1": 876
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 67,
+        "minY": 42,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 525,
+        "y0": 688,
+        "x1": 638,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 70,
+        "minY": 42,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 743,
+        "y0": 688,
+        "x1": 842,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 40,
+        "minY": 42,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 915,
+        "y0": 687,
+        "x1": 1063,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 27,
+        "minY": 42,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1111,
+        "y0": 687,
+        "x1": 1281,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 48,
+        "minY": 43,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1360,
+        "y0": 689,
+        "x1": 1486,
+        "y1": 876
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bag-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 40,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1598,
+        "y0": 685,
+        "x1": 1678,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 64,
+        "minY": 34,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 95,
+        "y0": 16,
+        "x1": 184,
+        "y1": 214
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 317,
+        "y0": 16,
+        "x1": 408,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 62,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 535,
+        "y0": 16,
+        "x1": 629,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 60,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 754,
+        "y0": 16,
+        "x1": 851,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 64,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 981,
+        "y0": 16,
+        "x1": 1072,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 63,
+        "minY": 35,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1202,
+        "y0": 16,
+        "x1": 1295,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 62,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1422,
+        "y0": 16,
+        "x1": 1516,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1646,
+        "y0": 16,
+        "x1": 1738,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 68,
+        "minY": 37,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 91,
+        "y0": 242,
+        "x1": 200,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 315,
+        "y0": 241,
+        "x1": 405,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 548,
+        "y0": 241,
+        "x1": 620,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 770,
+        "y0": 241,
+        "x1": 848,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 982,
+        "y0": 241,
+        "x1": 1087,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1203,
+        "y0": 242,
+        "x1": 1294,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 35,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1428,
+        "y0": 241,
+        "x1": 1521,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 68,
+        "minY": 35,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1645,
+        "y0": 241,
+        "x1": 1741,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 74,
+        "minY": 34,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 103,
+        "y0": 461,
+        "x1": 198,
+        "y1": 658
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 74,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 327,
+        "y0": 461,
+        "x1": 421,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 74,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 550,
+        "y0": 461,
+        "x1": 642,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 75,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 773,
+        "y0": 461,
+        "x1": 866,
+        "y1": 653
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 75,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 992,
+        "y0": 462,
+        "x1": 1085,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 74,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1215,
+        "y0": 461,
+        "x1": 1310,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 75,
+        "minY": 37,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1437,
+        "y0": 461,
+        "x1": 1533,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 75,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1658,
+        "y0": 462,
+        "x1": 1754,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 58,
+        "minY": 36,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 80,
+        "y0": 683,
+        "x1": 193,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 66,
+        "minY": 35,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 318,
+        "y0": 683,
+        "x1": 413,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 547,
+        "y0": 683,
+        "x1": 629,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 65,
+        "minY": 35,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 762,
+        "y0": 684,
+        "x1": 846,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 58,
+        "minY": 35,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 971,
+        "y0": 683,
+        "x1": 1078,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1202,
+        "y0": 684,
+        "x1": 1302,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 68,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1431,
+        "y0": 684,
+        "x1": 1518,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bag-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 66,
+        "minY": 35,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1648,
+        "y0": 684,
+        "x1": 1742,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 68,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 88,
+        "y0": 16,
+        "x1": 175,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 295,
+        "y0": 16,
+        "x1": 390,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 66,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 499,
+        "y0": 18,
+        "x1": 610,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 58,
+        "minY": 38,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 721,
+        "y0": 19,
+        "x1": 844,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 143,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 937,
+        "y0": 22,
+        "x1": 1084,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 60,
+        "minY": 39,
+        "maxX": 147,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1159,
+        "y0": 22,
+        "x1": 1307,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 63,
+        "minY": 37,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1386,
+        "y0": 18,
+        "x1": 1489,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1612,
+        "y0": 16,
+        "x1": 1700,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 80,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 95,
+        "y0": 237,
+        "x1": 167,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 71,
+        "minY": 36,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 298,
+        "y0": 238,
+        "x1": 389,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 68,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 511,
+        "y0": 238,
+        "x1": 600,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 52,
+        "minY": 39,
+        "maxX": 138,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 704,
+        "y0": 241,
+        "x1": 849,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 38,
+        "minY": 40,
+        "maxX": 150,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 917,
+        "y0": 243,
+        "x1": 1108,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 53,
+        "minY": 41,
+        "maxX": 155,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1150,
+        "y0": 244,
+        "x1": 1322,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 71,
+        "minY": 39,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1397,
+        "y0": 241,
+        "x1": 1496,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 80,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1629,
+        "y0": 237,
+        "x1": 1699,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 72,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 83,
+        "y0": 456,
+        "x1": 165,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 302,
+        "y0": 459,
+        "x1": 396,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 63,
+        "minY": 39,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 509,
+        "y0": 460,
+        "x1": 611,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 59,
+        "minY": 40,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 717,
+        "y0": 461,
+        "x1": 839,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 49,
+        "minY": 39,
+        "maxX": 135,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 933,
+        "y0": 461,
+        "x1": 1078,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 142,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1156,
+        "y0": 461,
+        "x1": 1299,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 66,
+        "minY": 38,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1391,
+        "y0": 460,
+        "x1": 1497,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 73,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1615,
+        "y0": 456,
+        "x1": 1696,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 79,
+        "y0": 677,
+        "x1": 156,
+        "y1": 869
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 62,
+        "minY": 38,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 283,
+        "y0": 678,
+        "x1": 383,
+        "y1": 869
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 62,
+        "minY": 41,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 491,
+        "y0": 679,
+        "x1": 612,
+        "y1": 865
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 51,
+        "minY": 42,
+        "maxX": 138,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 692,
+        "y0": 682,
+        "x1": 839,
+        "y1": 866
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 32,
+        "minY": 42,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 879,
+        "y0": 682,
+        "x1": 1071,
+        "y1": 866
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 37,
+        "minY": 43,
+        "maxX": 139,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1111,
+        "y0": 683,
+        "x1": 1285,
+        "y1": 865
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 62,
+        "minY": 41,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1371,
+        "y0": 681,
+        "x1": 1481,
+        "y1": 866
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 67,
+        "minY": 38,
+        "maxX": 114,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1613,
+        "y0": 678,
+        "x1": 1690,
+        "y1": 869
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 71,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 94,
+        "y0": 12,
+        "x1": 176,
+        "y1": 216
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 321,
+        "y0": 14,
+        "x1": 404,
+        "y1": 216
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 70,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 547,
+        "y0": 12,
+        "x1": 631,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 769,
+        "y0": 12,
+        "x1": 853,
+        "y1": 214
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 986,
+        "y0": 12,
+        "x1": 1069,
+        "y1": 216
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1211,
+        "y0": 14,
+        "x1": 1294,
+        "y1": 216
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1435,
+        "y0": 12,
+        "x1": 1518,
+        "y1": 216
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1655,
+        "y0": 12,
+        "x1": 1736,
+        "y1": 215
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 61,
+        "minY": 36,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 72,
+        "y0": 234,
+        "x1": 198,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 68,
+        "minY": 38,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 313,
+        "y0": 236,
+        "x1": 400,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 71,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 545,
+        "y0": 234,
+        "x1": 628,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 79,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 780,
+        "y0": 234,
+        "x1": 852,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 66,
+        "minY": 37,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 971,
+        "y0": 234,
+        "x1": 1088,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1212,
+        "y0": 235,
+        "x1": 1293,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 79,
+        "minY": 37,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1447,
+        "y0": 235,
+        "x1": 1515,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 80,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1666,
+        "y0": 235,
+        "x1": 1736,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 92,
+        "y0": 454,
+        "x1": 174,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 319,
+        "y0": 456,
+        "x1": 400,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 74,
+        "minY": 39,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 545,
+        "y0": 456,
+        "x1": 626,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 74,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 767,
+        "y0": 455,
+        "x1": 848,
+        "y1": 656
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 988,
+        "y0": 455,
+        "x1": 1070,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1209,
+        "y0": 456,
+        "x1": 1291,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1433,
+        "y0": 457,
+        "x1": 1514,
+        "y1": 656
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1656,
+        "y0": 456,
+        "x1": 1736,
+        "y1": 656
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 59,
+        "minY": 37,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 67,
+        "y0": 678,
+        "x1": 195,
+        "y1": 879
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 38,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 313,
+        "y0": 679,
+        "x1": 411,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 538,
+        "y0": 679,
+        "x1": 624,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 761,
+        "y0": 679,
+        "x1": 835,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 58,
+        "minY": 37,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 954,
+        "y0": 680,
+        "x1": 1084,
+        "y1": 879
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1201,
+        "y0": 680,
+        "x1": 1288,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1427,
+        "y0": 680,
+        "x1": 1502,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 72,
+        "minY": 38,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1648,
+        "y0": 679,
+        "x1": 1723,
+        "y1": 878
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 72,
+        "minY": 29,
+        "maxX": 118,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 84,
+        "y0": 10,
+        "x1": 160,
+        "y1": 214
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 67,
+        "minY": 27,
+        "maxX": 120,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 296,
+        "y0": 10,
+        "x1": 383,
+        "y1": 217
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 65,
+        "minY": 27,
+        "maxX": 122,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 513,
+        "y0": 10,
+        "x1": 606,
+        "y1": 217
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 67,
+        "minY": 27,
+        "maxX": 122,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 736,
+        "y0": 10,
+        "x1": 827,
+        "y1": 217
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 68,
+        "minY": 28,
+        "maxX": 138,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 958,
+        "y0": 13,
+        "x1": 1074,
+        "y1": 219
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 66,
+        "minY": 29,
+        "maxX": 146,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1175,
+        "y0": 13,
+        "x1": 1308,
+        "y1": 218
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 71,
+        "minY": 29,
+        "maxX": 122,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1403,
+        "y0": 12,
+        "x1": 1485,
+        "y1": 217
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 27,
+        "maxX": 119,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1622,
+        "y0": 9,
+        "x1": 1700,
+        "y1": 217
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 76,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 72,
+        "y0": 242,
+        "x1": 161,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 74,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 289,
+        "y0": 242,
+        "x1": 382,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 135,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 502,
+        "y0": 243,
+        "x1": 606,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 63,
+        "minY": 39,
+        "maxX": 151,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 707,
+        "y0": 242,
+        "x1": 852,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 52,
+        "minY": 41,
+        "maxX": 165,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 908,
+        "y0": 248,
+        "x1": 1097,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 166,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1137,
+        "y0": 247,
+        "x1": 1321,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 74,
+        "minY": 38,
+        "maxX": 142,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1386,
+        "y0": 246,
+        "x1": 1500,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 76,
+        "minY": 36,
+        "maxX": 132,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1615,
+        "y0": 242,
+        "x1": 1707,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 72,
+        "minY": 35,
+        "maxX": 119,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 71,
+        "y0": 461,
+        "x1": 148,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 35,
+        "maxX": 125,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 291,
+        "y0": 461,
+        "x1": 380,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 66,
+        "minY": 34,
+        "maxX": 125,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 512,
+        "y0": 461,
+        "x1": 608,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 70,
+        "minY": 34,
+        "maxX": 131,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 733,
+        "y0": 461,
+        "x1": 833,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 34,
+        "maxX": 124,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 957,
+        "y0": 462,
+        "x1": 1043,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 53,
+        "minY": 34,
+        "maxX": 124,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1149,
+        "y0": 462,
+        "x1": 1267,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 34,
+        "maxX": 122,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1397,
+        "y0": 462,
+        "x1": 1483,
+        "y1": 657
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 72,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1624,
+        "y0": 461,
+        "x1": 1701,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 60,
+        "minY": 37,
+        "maxX": 117,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 65,
+        "y0": 684,
+        "x1": 159,
+        "y1": 875
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 52,
+        "minY": 38,
+        "maxX": 117,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 275,
+        "y0": 685,
+        "x1": 382,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 53,
+        "minY": 40,
+        "maxX": 120,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 497,
+        "y0": 687,
+        "x1": 608,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 37,
+        "minY": 40,
+        "maxX": 127,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 695,
+        "y0": 687,
+        "x1": 845,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 26,
+        "minY": 40,
+        "maxX": 132,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 898,
+        "y0": 686,
+        "x1": 1076,
+        "y1": 872
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 25,
+        "minY": 39,
+        "maxX": 129,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1114,
+        "y0": 685,
+        "x1": 1289,
+        "y1": 872
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 56,
+        "minY": 39,
+        "maxX": 116,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1383,
+        "y0": 687,
+        "x1": 1483,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-ext-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 59,
+        "minY": 37,
+        "maxX": 116,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1612,
+        "y0": 684,
+        "x1": 1706,
+        "y1": 875
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 74,
+        "minY": 33,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 107,
+        "y0": 10,
+        "x1": 177,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 75,
+        "minY": 33,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 330,
+        "y0": 10,
+        "x1": 401,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 74,
+        "minY": 34,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 551,
+        "y0": 10,
+        "x1": 622,
+        "y1": 209
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 75,
+        "minY": 35,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 774,
+        "y0": 9,
+        "x1": 844,
+        "y1": 207
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 75,
+        "minY": 33,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 995,
+        "y0": 10,
+        "x1": 1065,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 74,
+        "minY": 33,
+        "maxX": 116,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1216,
+        "y0": 10,
+        "x1": 1287,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 75,
+        "minY": 34,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1438,
+        "y0": 11,
+        "x1": 1509,
+        "y1": 209
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 76,
+        "minY": 34,
+        "maxX": 117,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1662,
+        "y0": 10,
+        "x1": 1731,
+        "y1": 208
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 67,
+        "minY": 37,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 86,
+        "y0": 239,
+        "x1": 196,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 312,
+        "y0": 239,
+        "x1": 410,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 546,
+        "y0": 239,
+        "x1": 632,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 77,
+        "minY": 37,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 770,
+        "y0": 239,
+        "x1": 852,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 977,
+        "y0": 240,
+        "x1": 1079,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1202,
+        "y0": 239,
+        "x1": 1298,
+        "y1": 433
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 74,
+        "minY": 35,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1429,
+        "y0": 239,
+        "x1": 1520,
+        "y1": 436
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 77,
+        "minY": 36,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1657,
+        "y0": 239,
+        "x1": 1741,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 76,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 109,
+        "y0": 457,
+        "x1": 183,
+        "y1": 653
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 331,
+        "y0": 458,
+        "x1": 405,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 76,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 553,
+        "y0": 457,
+        "x1": 627,
+        "y1": 653
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 76,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 775,
+        "y0": 457,
+        "x1": 849,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 997,
+        "y0": 458,
+        "x1": 1071,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1218,
+        "y0": 458,
+        "x1": 1293,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1440,
+        "y0": 458,
+        "x1": 1515,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 76,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1662,
+        "y0": 458,
+        "x1": 1736,
+        "y1": 652
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 57,
+        "minY": 34,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 77,
+        "y0": 679,
+        "x1": 193,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 311,
+        "y0": 679,
+        "x1": 407,
+        "y1": 875
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 533,
+        "y0": 679,
+        "x1": 624,
+        "y1": 875
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 65,
+        "minY": 36,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 754,
+        "y0": 678,
+        "x1": 839,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 62,
+        "minY": 34,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 972,
+        "y0": 679,
+        "x1": 1082,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1196,
+        "y0": 679,
+        "x1": 1301,
+        "y1": 875
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 65,
+        "minY": 34,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1420,
+        "y0": 679,
+        "x1": 1516,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-ext-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 65,
+        "minY": 34,
+        "maxX": 115,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1642,
+        "y0": 679,
+        "x1": 1726,
+        "y1": 877
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 63,
+        "minY": 35,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 70,
+        "y0": 23,
+        "x1": 160,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 32,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 288,
+        "y0": 17,
+        "x1": 381,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 59,
+        "minY": 27,
+        "maxX": 139,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 484,
+        "y0": 9,
+        "x1": 607,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 29,
+        "minY": 41,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 675,
+        "y0": 31,
+        "x1": 835,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 60,
+        "minY": 38,
+        "maxX": 169,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 945,
+        "y0": 27,
+        "x1": 1114,
+        "y1": 199
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 60,
+        "minY": 39,
+        "maxX": 176,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1168,
+        "y0": 28,
+        "x1": 1345,
+        "y1": 199
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 62,
+        "minY": 38,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1393,
+        "y0": 27,
+        "x1": 1496,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 38,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1620,
+        "y0": 26,
+        "x1": 1708,
+        "y1": 199
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 64,
+        "minY": 30,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 65,
+        "y0": 239,
+        "x1": 152,
+        "y1": 423
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 72,
+        "minY": 34,
+        "maxX": 134,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 286,
+        "y0": 245,
+        "x1": 381,
+        "y1": 423
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 66,
+        "minY": 30,
+        "maxX": 138,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 494,
+        "y0": 237,
+        "x1": 604,
+        "y1": 422
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 55,
+        "minY": 39,
+        "maxX": 136,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 714,
+        "y0": 250,
+        "x1": 837,
+        "y1": 422
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 56,
+        "minY": 37,
+        "maxX": 171,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 936,
+        "y0": 248,
+        "x1": 1113,
+        "y1": 422
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 58,
+        "minY": 35,
+        "maxX": 169,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1168,
+        "y0": 244,
+        "x1": 1337,
+        "y1": 421
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 62,
+        "minY": 36,
+        "maxX": 143,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1391,
+        "y0": 247,
+        "x1": 1516,
+        "y1": 422
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 67,
+        "minY": 34,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1621,
+        "y0": 245,
+        "x1": 1702,
+        "y1": 423
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 66,
+        "minY": 33,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 69,
+        "y0": 461,
+        "x1": 157,
+        "y1": 641
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 63,
+        "minY": 32,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 282,
+        "y0": 460,
+        "x1": 380,
+        "y1": 641
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 60,
+        "minY": 29,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 494,
+        "y0": 456,
+        "x1": 606,
+        "y1": 642
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 62,
+        "minY": 40,
+        "maxX": 151,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 707,
+        "y0": 472,
+        "x1": 844,
+        "y1": 641
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 60,
+        "minY": 38,
+        "maxX": 164,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 935,
+        "y0": 470,
+        "x1": 1094,
+        "y1": 642
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 56,
+        "minY": 37,
+        "maxX": 170,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1153,
+        "y0": 468,
+        "x1": 1329,
+        "y1": 642
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 65,
+        "minY": 39,
+        "maxX": 139,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1388,
+        "y0": 470,
+        "x1": 1500,
+        "y1": 641
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 66,
+        "minY": 34,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1620,
+        "y0": 462,
+        "x1": 1708,
+        "y1": 641
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 67,
+        "minY": 35,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 72,
+        "y0": 686,
+        "x1": 160,
+        "y1": 863
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 65,
+        "minY": 38,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 288,
+        "y0": 689,
+        "x1": 384,
+        "y1": 861
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 50,
+        "minY": 32,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 499,
+        "y0": 680,
+        "x1": 620,
+        "y1": 861
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 36,
+        "minY": 40,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 689,
+        "y0": 691,
+        "x1": 832,
+        "y1": 860
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 21,
+        "minY": 39,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 891,
+        "y0": 688,
+        "x1": 1059,
+        "y1": 860
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 13,
+        "minY": 38,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1106,
+        "y0": 688,
+        "x1": 1277,
+        "y1": 861
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 39,
+        "minY": 39,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1368,
+        "y0": 689,
+        "x1": 1498,
+        "y1": 860
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1623,
+        "y0": 689,
+        "x1": 1708,
+        "y1": 863
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 74,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 91,
+        "y0": 23,
+        "x1": 165,
+        "y1": 208
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 73,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 312,
+        "y0": 23,
+        "x1": 386,
+        "y1": 208
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 73,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 535,
+        "y0": 22,
+        "x1": 609,
+        "y1": 204
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 74,
+        "minY": 34,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 758,
+        "y0": 20,
+        "x1": 830,
+        "y1": 207
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 74,
+        "minY": 35,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 979,
+        "y0": 23,
+        "x1": 1052,
+        "y1": 208
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 74,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1201,
+        "y0": 23,
+        "x1": 1274,
+        "y1": 208
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 74,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1424,
+        "y0": 23,
+        "x1": 1496,
+        "y1": 207
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 73,
+        "minY": 36,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1646,
+        "y0": 22,
+        "x1": 1718,
+        "y1": 207
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 57,
+        "minY": 34,
+        "maxX": 136,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 63,
+        "y0": 242,
+        "x1": 191,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 61,
+        "minY": 35,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 293,
+        "y0": 243,
+        "x1": 391,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 69,
+        "minY": 35,
+        "maxX": 118,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 528,
+        "y0": 242,
+        "x1": 607,
+        "y1": 428
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 72,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 756,
+        "y0": 243,
+        "x1": 832,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 58,
+        "minY": 35,
+        "maxX": 134,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 956,
+        "y0": 243,
+        "x1": 1077,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 66,
+        "minY": 35,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1190,
+        "y0": 243,
+        "x1": 1274,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 72,
+        "minY": 35,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1422,
+        "y0": 243,
+        "x1": 1496,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 72,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1643,
+        "y0": 243,
+        "x1": 1720,
+        "y1": 429
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 90,
+        "y0": 467,
+        "x1": 169,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 313,
+        "y0": 467,
+        "x1": 393,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 70,
+        "minY": 38,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 535,
+        "y0": 467,
+        "x1": 615,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 756,
+        "y0": 465,
+        "x1": 836,
+        "y1": 649
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 977,
+        "y0": 467,
+        "x1": 1057,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1200,
+        "y0": 467,
+        "x1": 1280,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1422,
+        "y0": 467,
+        "x1": 1501,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1643,
+        "y0": 467,
+        "x1": 1723,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 53,
+        "minY": 37,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 55,
+        "y0": 688,
+        "x1": 182,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 67,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 299,
+        "y0": 689,
+        "x1": 401,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 524,
+        "y0": 688,
+        "x1": 611,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 746,
+        "y0": 688,
+        "x1": 832,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 56,
+        "minY": 37,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 946,
+        "y0": 688,
+        "x1": 1070,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1192,
+        "y0": 688,
+        "x1": 1274,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1412,
+        "y0": 688,
+        "x1": 1497,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1635,
+        "y0": 688,
+        "x1": 1720,
+        "y1": 871
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 63,
+        "minY": 27,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 79,
+        "y0": 22,
+        "x1": 166,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 63,
+        "minY": 27,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 297,
+        "y0": 22,
+        "x1": 396,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 58,
+        "minY": 33,
+        "maxX": 138,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 495,
+        "y0": 32,
+        "x1": 616,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 63,
+        "minY": 38,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 731,
+        "y0": 39,
+        "x1": 837,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 153,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 953,
+        "y0": 36,
+        "x1": 1089,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 61,
+        "minY": 36,
+        "maxX": 166,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1168,
+        "y0": 38,
+        "x1": 1328,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 135,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1398,
+        "y0": 37,
+        "x1": 1505,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 63,
+        "minY": 27,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1614,
+        "y0": 22,
+        "x1": 1703,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 67,
+        "minY": 26,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 79,
+        "y0": 243,
+        "x1": 166,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 65,
+        "minY": 32,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 298,
+        "y0": 253,
+        "x1": 397,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 64,
+        "minY": 39,
+        "maxX": 135,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 505,
+        "y0": 262,
+        "x1": 613,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 63,
+        "minY": 40,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 726,
+        "y0": 264,
+        "x1": 874,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 65,
+        "minY": 40,
+        "maxX": 177,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 943,
+        "y0": 264,
+        "x1": 1113,
+        "y1": 431
+      },
+      "recoveredAcrossCell": true
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 65,
+        "minY": 41,
+        "maxX": 168,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1165,
+        "y0": 264,
+        "x1": 1323,
+        "y1": 430
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 62,
+        "minY": 39,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1393,
+        "y0": 263,
+        "x1": 1494,
+        "y1": 431
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 68,
+        "minY": 27,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1614,
+        "y0": 244,
+        "x1": 1702,
+        "y1": 432
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 70,
+        "minY": 28,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 76,
+        "y0": 465,
+        "x1": 166,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 67,
+        "minY": 32,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 293,
+        "y0": 471,
+        "x1": 394,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 60,
+        "minY": 35,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 504,
+        "y0": 476,
+        "x1": 613,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 734,
+        "y0": 478,
+        "x1": 833,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 37,
+        "minY": 35,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 914,
+        "y0": 476,
+        "x1": 1050,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 31,
+        "minY": 35,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1127,
+        "y0": 476,
+        "x1": 1282,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 58,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1384,
+        "y0": 477,
+        "x1": 1495,
+        "y1": 650
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 28,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1617,
+        "y0": 465,
+        "x1": 1705,
+        "y1": 651
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 66,
+        "minY": 29,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 73,
+        "y0": 688,
+        "x1": 163,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 59,
+        "minY": 32,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 287,
+        "y0": 692,
+        "x1": 389,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 509,
+        "y0": 704,
+        "x1": 622,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 31,
+        "minY": 40,
+        "maxX": 134,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 682,
+        "y0": 705,
+        "x1": 839,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 19,
+        "minY": 39,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 892,
+        "y0": 704,
+        "x1": 1058,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 23,
+        "minY": 39,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1123,
+        "y0": 704,
+        "x1": 1283,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1383,
+        "y0": 704,
+        "x1": 1490,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "swing-bat-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 66,
+        "minY": 29,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1615,
+        "y0": 688,
+        "x1": 1701,
+        "y1": 873
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 71,
+        "minY": 31,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 116,
+        "y0": 31,
+        "x1": 188,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 72,
+        "minY": 31,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 339,
+        "y0": 31,
+        "x1": 411,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 72,
+        "minY": 32,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 560,
+        "y0": 33,
+        "x1": 632,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 71,
+        "minY": 34,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 779,
+        "y0": 34,
+        "x1": 853,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 33,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1001,
+        "y0": 34,
+        "x1": 1075,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 71,
+        "minY": 33,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1222,
+        "y0": 34,
+        "x1": 1297,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 70,
+        "minY": 34,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1445,
+        "y0": 34,
+        "x1": 1519,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 34,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1667,
+        "y0": 34,
+        "x1": 1741,
+        "y1": 210
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 68,
+        "minY": 34,
+        "maxX": 134,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 96,
+        "y0": 251,
+        "x1": 195,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 67,
+        "minY": 35,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 318,
+        "y0": 251,
+        "x1": 403,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 539,
+        "y0": 253,
+        "x1": 625,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 67,
+        "minY": 35,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 761,
+        "y0": 251,
+        "x1": 847,
+        "y1": 426
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 68,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 983,
+        "y0": 253,
+        "x1": 1076,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1204,
+        "y0": 254,
+        "x1": 1290,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1426,
+        "y0": 254,
+        "x1": 1513,
+        "y1": 428
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1648,
+        "y0": 253,
+        "x1": 1739,
+        "y1": 427
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 71,
+        "minY": 35,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 105,
+        "y0": 473,
+        "x1": 179,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 70,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 326,
+        "y0": 473,
+        "x1": 401,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 71,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 549,
+        "y0": 473,
+        "x1": 623,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 71,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 771,
+        "y0": 474,
+        "x1": 845,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 71,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 991,
+        "y0": 475,
+        "x1": 1066,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 70,
+        "minY": 37,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1212,
+        "y0": 475,
+        "x1": 1287,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 71,
+        "minY": 40,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1434,
+        "y0": 476,
+        "x1": 1509,
+        "y1": 643
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 71,
+        "minY": 36,
+        "maxX": 120,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1657,
+        "y0": 474,
+        "x1": 1731,
+        "y1": 647
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 55,
+        "minY": 34,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 76,
+        "y0": 690,
+        "x1": 184,
+        "y1": 867
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 65,
+        "minY": 35,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 313,
+        "y0": 691,
+        "x1": 406,
+        "y1": 865
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 65,
+        "minY": 36,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 535,
+        "y0": 691,
+        "x1": 628,
+        "y1": 865
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 65,
+        "minY": 36,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 757,
+        "y0": 691,
+        "x1": 850,
+        "y1": 864
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 60,
+        "minY": 35,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 971,
+        "y0": 692,
+        "x1": 1072,
+        "y1": 866
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 65,
+        "minY": 37,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1201,
+        "y0": 693,
+        "x1": 1293,
+        "y1": 865
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1422,
+        "y0": 692,
+        "x1": 1515,
+        "y1": 866
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "carry-bat-female",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 63,
+        "minY": 35,
+        "maxX": 127,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1642,
+        "y0": 691,
+        "x1": 1738,
+        "y1": 866
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 67,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 66,
+        "y0": 16,
+        "x1": 157,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 65,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 286,
+        "y0": 17,
+        "x1": 381,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 60,
+        "minY": 39,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 490,
+        "y0": 19,
+        "x1": 607,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 57,
+        "minY": 39,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 717,
+        "y0": 19,
+        "x1": 830,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 56,
+        "minY": 39,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 938,
+        "y0": 19,
+        "x1": 1052,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 54,
+        "minY": 39,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1162,
+        "y0": 19,
+        "x1": 1290,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 61,
+        "minY": 38,
+        "maxX": 119,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1392,
+        "y0": 19,
+        "x1": 1492,
+        "y1": 212
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 68,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1619,
+        "y0": 16,
+        "x1": 1710,
+        "y1": 211
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 67,
+        "minY": 37,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 63,
+        "y0": 238,
+        "x1": 154,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 64,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 281,
+        "y0": 239,
+        "x1": 377,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 62,
+        "minY": 37,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 487,
+        "y0": 239,
+        "x1": 604,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 57,
+        "minY": 37,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 715,
+        "y0": 239,
+        "x1": 828,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 52,
+        "minY": 37,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 934,
+        "y0": 239,
+        "x1": 1066,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 54,
+        "minY": 37,
+        "maxX": 140,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1165,
+        "y0": 239,
+        "x1": 1312,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 66,
+        "minY": 37,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1396,
+        "y0": 239,
+        "x1": 1491,
+        "y1": 434
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 72,
+        "minY": 36,
+        "maxX": 121,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1622,
+        "y0": 239,
+        "x1": 1705,
+        "y1": 435
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 68,
+        "minY": 36,
+        "maxX": 124,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 66,
+        "y0": 458,
+        "x1": 161,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 284,
+        "y0": 458,
+        "x1": 389,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 62,
+        "minY": 36,
+        "maxX": 130,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 502,
+        "y0": 459,
+        "x1": 619,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 61,
+        "minY": 36,
+        "maxX": 129,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 721,
+        "y0": 459,
+        "x1": 837,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 62,
+        "minY": 36,
+        "maxX": 131,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 944,
+        "y0": 459,
+        "x1": 1061,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 63,
+        "minY": 36,
+        "maxX": 133,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1169,
+        "y0": 459,
+        "x1": 1289,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 67,
+        "minY": 36,
+        "maxX": 126,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1394,
+        "y0": 459,
+        "x1": 1495,
+        "y1": 655
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 69,
+        "minY": 37,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1617,
+        "y0": 458,
+        "x1": 1713,
+        "y1": 654
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 68,
+        "minY": 38,
+        "maxX": 123,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 63,
+        "y0": 682,
+        "x1": 158,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 65,
+        "minY": 38,
+        "maxX": 125,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 283,
+        "y0": 682,
+        "x1": 385,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 63,
+        "minY": 38,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 507,
+        "y0": 682,
+        "x1": 618,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 66,
+        "minY": 38,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 728,
+        "y0": 682,
+        "x1": 841,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 59,
+        "minY": 39,
+        "maxX": 132,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 933,
+        "y0": 682,
+        "x1": 1058,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 51,
+        "minY": 39,
+        "maxX": 136,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1140,
+        "y0": 682,
+        "x1": 1286,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 67,
+        "minY": 38,
+        "maxX": 128,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1393,
+        "y0": 682,
+        "x1": 1496,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    },
+    {
+      "key": "hook-male",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 66,
+        "minY": 38,
+        "maxX": 122,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1617,
+        "y0": 681,
+        "x1": 1712,
+        "y1": 874
+      },
+      "recoveredAcrossCell": false
+    }
+  ],
+  "sheets": [
+    {
+      "key": "swing-bag-male",
+      "referenceBodyHeight": 194,
+      "scale": 1.1546391752577319,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-bag-male",
+      "referenceBodyHeight": 193,
+      "scale": 1.160621761658031,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "swing-bag-female",
+      "referenceBodyHeight": 198,
+      "scale": 1.1313131313131313,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-bag-female",
+      "referenceBodyHeight": 192,
+      "scale": 1.1666666666666667,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "swing-ext-male",
+      "referenceBodyHeight": 193,
+      "scale": 1.160621761658031,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-ext-male",
+      "referenceBodyHeight": 200,
+      "scale": 1.12,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "swing-ext-female",
+      "referenceBodyHeight": 192,
+      "scale": 1.1666666666666667,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-ext-female",
+      "referenceBodyHeight": 194,
+      "scale": 1.1546391752577319,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "swing-bat-male",
+      "referenceBodyHeight": 173,
+      "scale": 1.2826647564469904,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-bat-male",
+      "referenceBodyHeight": 183,
+      "scale": 1.2240437158469946,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "swing-bat-female",
+      "referenceBodyHeight": 173,
+      "scale": 1.2947976878612717,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "carry-bat-female",
+      "referenceBodyHeight": 173,
+      "scale": 1.2947976878612717,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    },
+    {
+      "key": "hook-male",
+      "referenceBodyHeight": 195,
+      "scale": 1.1487179487179486,
+      "gameWidth": 1536,
+      "gameHeight": 640
+    }
+  ]
+}
