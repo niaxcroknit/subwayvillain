@@ -407,12 +407,12 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   // ---------- 렌더러 ----------
   const canvas = $("gl");
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-  renderer.setPixelRatio(Math.min(1.5, devicePixelRatio || 1));
+  renderer.setPixelRatio(Math.min(innerWidth < 1000 ? 1.25 : 1.5, devicePixelRatio || 1));
   renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.0;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   const scene = new THREE.Scene();
   scene.scale.x = WORLD_X;
   scene.background = new THREE.Color(0x8fd0ff);
@@ -1281,6 +1281,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     g.traverse(o => {
       if (o.isMesh && o.material !== shadowMat) o.visible = false;
     });
+    // 성능: 숨긴 인형 뼈대(사람당 ~40개)를 장면에서 떼어냄. 매 프레임 행렬 계산 대상에서 빠짐(P 참조는 남아 pose()는 그대로 동작)
+    for (const c of g.children.slice()) if (!(c.isMesh && c.material === shadowMat)) g.remove(c);
     g.add(sprite);
     g.userData.art = { sprite, tex, key, rect, kind: "idle" };
     setGameArtPose(g, "idle", 0);
@@ -1499,25 +1501,35 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     return new THREE.CanvasTexture(cv);
   })();
   const impactSparks = [];
-  function impactSpark(p, heavy) {
+  // 성능: 섬광 스프라이트를 미리 16개 만들어 돌려씀. 매번 새 재질을 만들고 버리면 셰이더가 지워졌다가
+  // 다음 타격 때 다시 컴파일돼 휴대폰에서 끊김이 생김. 쉬는 섬광은 투명도 0으로 장면에 남겨 셰이더를 유지.
+  const SPARK_POOL = [];
+  for (let i = 0; i < 16; i++) {
     const m = new THREE.Sprite(
-      new THREE.SpriteMaterial({
-        map: impactTexture,
-        transparent: true,
-        depthTest: false,
-        depthWrite: false,
-      }),
+      new THREE.SpriteMaterial({ map: impactTexture, transparent: true, depthTest: false, depthWrite: false, opacity: 0 }),
     );
+    m.renderOrder = 80;
+    m.position.set(0, -50, 0);
+    m.userData.sparkPool = true;
+    scene.add(m);
+    SPARK_POOL.push(m);
+  }
+  function releaseSpark(m) {
+    m.material.opacity = 0;
+    m.position.y = -50;
+    if (m.parent !== scene) scene.add(m);
+  }
+  function impactSpark(p, heavy) {
+    let m = SPARK_POOL.find(x => !impactSparks.some(a => a.m === x));
+    if (!m) {
+      const a = impactSparks.shift();
+      m = a.m;
+    }
+    if (m.parent !== scene) scene.add(m);
     m.position.set(p.x, 1.05, p.z);
     m.scale.setScalar(heavy ? 0.68 : 0.42);
-    m.renderOrder = 80;
-    scene.add(m);
+    m.material.opacity = 1;
     impactSparks.push({ m, left: 0.13, total: 0.13, size: heavy ? 0.68 : 0.42 });
-    while (impactSparks.length > 16) {
-      const a = impactSparks.shift();
-      scene.remove(a.m);
-      a.m.material.dispose();
-    }
   }
   function tickImpactSparks(dt) {
     if (S.hitstop > 0) return;
@@ -1525,8 +1537,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       const a = impactSparks[i];
       a.left -= dt;
       if (a.left <= 0) {
-        scene.remove(a.m);
-        a.m.material.dispose();
+        releaseSpark(a.m);
         impactSparks.splice(i, 1);
       } else {
         a.m.material.opacity = a.left / a.total;
@@ -3489,14 +3500,23 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       hero.pulse -= dt;
       if (hero.pulse <= 0 && hero.dead <= 0) strike(0.55);
     }
-    const near =
-      !hero.seat &&
-      S.villains.some(
-        v =>
-          targetable(v) &&
-          d2(v.o.position, hero.pos) < st.rad + 0.2 &&
-          (attackStyle !== "umbrella" || umbrellaArc(v)),
-      );
+    // 우산: 범위 안 진상이 몸 옆·뒤에 있어도 그쪽으로 몸을 돌려 휘두름(맞는 판정은 정면 90° 그대로)
+    let aim = null,
+      aimD = 1e9;
+    if (!hero.seat)
+      for (const v of S.villains)
+        if (targetable(v)) {
+          const dv = d2(v.o.position, hero.pos);
+          if (dv < st.rad + 0.2 && dv < aimD) {
+            aimD = dv;
+            aim = v;
+          }
+        }
+    const near = !!aim;
+    if (hero.dead <= 0 && near && hero.swingT <= 0 && attackStyle === "umbrella") {
+      hero.face = Math.atan2((aim.o.position.x - hero.pos.x) * WORLD_X, aim.o.position.z - hero.pos.z);
+      hero.o.rotation.y = hero.face;
+    }
     if (hero.dead <= 0 && near && hero.swingT <= 0) {
       hero.duration = attackStyle === "fists" ? 0.36 : 0.44 / (1 + 0.08 * SAVE.glove);
       hero.swingT = attackStyle === "fists" ? 0.42 / (1 + 0.12 * SAVE.glove) : hero.duration + 0.07;
@@ -4297,15 +4317,18 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     items.sort((a, b) => a.d - b.d);
     const placed = [];
     let words = 0;
-    let lcB = 190,
-      lcR = 300;
-    try {
-      const r = $("leftCol").getBoundingClientRect();
-      if (r && r.bottom) {
-        lcB = r.bottom + 8;
-        lcR = r.right + 20;
-      }
-    } catch (e) {}
+    if (!S.lcRect || t - S.lcRect.t > 1) {
+      S.lcRect = { t, b: 190, r: 300 };
+      try {
+        const r = $("leftCol").getBoundingClientRect();
+        if (r && r.bottom) {
+          S.lcRect.b = r.bottom + 8;
+          S.lcRect.r = r.right + 20;
+        }
+      } catch (e) {}
+    }
+    const lcB = S.lcRect.b,
+      lcR = S.lcRect.r;
     for (const it of items) {
       // 가장 가까운 3명만 글씨, 나머지는 동그란 아이콘
       const full = (words < 3 && it.d < 5.2) || it.tag.classList.contains("boss");
@@ -5998,6 +6021,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   }
   $("btnStart").onclick = () => {
     ensureAudio();
+    preloadArt();
     try {
       const de = document.documentElement;
       if (innerWidth < 900 && de.requestFullscreen && !document.fullscreenElement) {
@@ -6141,6 +6165,74 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnSkip").onclick = () => $("rotate").classList.add("skip");
   setInterval(persist, 4000);
+// 성능: 움직이지 않는 객차·좌석·정산기 부품을 재질별로 하나로 합쳐 그리기 호출을 줄임(문짝은 움직이므로 제외)
+  function mergeStatic(roots, keep) {
+    scene.updateMatrixWorld(true);
+    const inv = new THREE.Matrix4().copy(scene.matrixWorld).invert(),
+      buckets = new Map(),
+      victims = [];
+    for (const r of roots)
+      r.traverse(o => {
+        if (!o.isMesh || !o.visible) return;
+        for (let p = o; p; p = p.parent) if (keep.has(p)) return;
+        victims.push(o);
+      });
+    for (const o of victims) {
+      const g = o.geometry.index ? o.geometry.toNonIndexed() : o.geometry.clone();
+      g.applyMatrix4(new THREE.Matrix4().multiplyMatrices(inv, o.matrixWorld));
+      const key = o.material.uuid + "|" + (o.castShadow ? 1 : 0) + (o.receiveShadow ? 1 : 0);
+      if (!buckets.has(key)) buckets.set(key, { m: o.material, cast: o.castShadow, recv: o.receiveShadow, geos: [] });
+      buckets.get(key).geos.push(g);
+      o.parent.remove(o);
+    }
+    for (const b of buckets.values()) {
+      let n = 0;
+      for (const g of b.geos) n += g.attributes.position.count;
+      const pos = new Float32Array(n * 3),
+        nor = new Float32Array(n * 3),
+        uv = new Float32Array(n * 2);
+      let i = 0;
+      for (const g of b.geos) {
+        const c = g.attributes.position.count;
+        pos.set(g.attributes.position.array, i * 3);
+        if (g.attributes.normal) nor.set(g.attributes.normal.array, i * 3);
+        if (g.attributes.uv) uv.set(g.attributes.uv.array, i * 2);
+        i += c;
+        g.dispose();
+      }
+      const mg = new THREE.BufferGeometry();
+      mg.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+      mg.setAttribute("normal", new THREE.BufferAttribute(nor, 3));
+      mg.setAttribute("uv", new THREE.BufferAttribute(uv, 2));
+      mg.computeBoundingSphere();
+      const mm = new THREE.Mesh(mg, b.m);
+      mm.castShadow = b.cast;
+      mm.receiveShadow = b.recv;
+      mm.userData.merged = true;
+      scene.add(mm);
+    }
+    return victims.length;
+  }
+  {
+    const keep = new Set(),
+      roots = new Set();
+    for (const d of W.doors) {
+      keep.add(d.L);
+      keep.add(d.Rr);
+      if (d.L.parent) roots.add(d.L.parent);
+    }
+    for (const st of seats) if (st.bench) roots.add(st.bench);
+    if (W.booth) roots.add(W.booth);
+    try {
+      mergeStatic([...roots], keep);
+    } catch (e) {}
+  }
+  function preloadArt() {
+    try {
+      if (renderer.initTexture) for (const tx of Object.values(ART)) if (tx.image) renderer.initTexture(tx);
+      if (renderer.compile) renderer.compile(scene, camera); // 쓰일 셰이더를 시작할 때 미리 컴파일
+    } catch (e) {}
+  }
 showSelection();
 requestAnimationFrame(loop);
 })();
