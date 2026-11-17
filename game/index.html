@@ -3715,9 +3715,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     if (keys.KeyD || keys.ArrowRight) ix += 1;
     if (keys.KeyW || keys.ArrowUp) iz -= 1;
     if (keys.KeyS || keys.ArrowDown) iz += 1;
-    const inputX = ix;
-    ix = ix * 0.934 + iz * 0.357;
-    iz = iz * 0.934 - inputX * 0.357;
+    // v6.9.5 "앞뒤 그림이 있는데 사선으로 슬라이딩하듯 걸음": 입력을 화면 기준으로 20° 돌리던 보정을 없앰.
+    // 위/아래 = 객차 안쪽/바깥쪽(정면·뒷모습 그대로 곧게), 좌/우 = 객차 길이 방향. 벽에 닿아도 옆으로 미끄러지지 않음
     const il = Math.hypot(ix, iz);
     if (il > 1) {
       ix /= il;
@@ -3739,8 +3738,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     } else {
       const input = Math.hypot(ix, iz) > 0.1,
         k = 1 - Math.exp(-dt * (input ? 16 : 24));
-      hero.vel.x += (ix * st.speed - hero.vel.x) * k;
-      hero.vel.z += (iz * st.speed - hero.vel.z) * k;
+      // 휘두르는 동안(발이 땅에 붙은 공격 그림)은 거의 멈춰 서서 침 → 공격 자세로 바닥을 미끄러지듯 가는 현상 방지
+      const plant = hero.spin > 0 ? 0.22 : 1;
+      hero.vel.x += (ix * st.speed * plant - hero.vel.x) * k;
+      hero.vel.z += (iz * st.speed * plant - hero.vel.z) * k;
       if (!input && Math.hypot(hero.vel.x, hero.vel.z) < 0.08) hero.vel.set(0, 0, 0);
     }
     hero.pos.x += (hero.vel.x * dt) / WORLD_X;
