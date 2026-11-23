@@ -2921,7 +2921,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   S.incidents = [];
   const INCIDENT_NAMES = {
     drunk: "취객 · 어깨 기대기",
-    harass: "추행 · 접촉 시도",
+    harass: "성희롱 발언 · 위협",
     bully: "시비 · 시민 위협",
     spycam: "위반 · 몰카 촬영",
   };
@@ -4860,7 +4860,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     },
     { k: "manspread", n: "쩍벌남", d: "일반석 두 자리를 다리 벌려 혼자 차지", a: "spread", r: 0, c: 0 },
     { k: "drunk", n: "취객", d: "남의 어깨를 베개로 씀", a: "incidents", r: 0, c: 0 },
-    { k: "harass", n: "추행범", d: "접촉 시도 · 즉시 제압 대상", a: "incidents", r: 0, c: 2 },
+    { k: "harass", n: "성희롱범", d: "피해 승객에게 불쾌한 말로 위협 · 즉시 제압 대상", a: "incidents", r: 0, c: 2 },
     { k: "bully", n: "시비꾼", d: "괜히 시민한테 시비", a: "incidents", r: 2, c: 2 },
     { k: "spycam", n: "몰카범", d: "몰래 촬영 시도 · 휴대폰 압수", a: "spycam", r: 2, c: 0 },
     {
@@ -5641,7 +5641,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnHelp").onclick = () => openCoach();
   const COACH = [
-    { t: "메트로펑크에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "메트로펑크에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 성희롱범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
