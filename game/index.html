@@ -2,7 +2,7 @@
 <html lang="ko">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>2호선 격돌 · 객차 순찰</title>
+<title>메트로펑크 METRO PUNK</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="icons/favicon-64.png">
@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#5b9450">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="2호선 격돌">
+<meta name="apple-mobile-web-app-title" content="메트로펑크">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -293,7 +293,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 .walletPop{position:absolute;left:auto;right:6px;top:50%;transform:translateY(-50%);z-index:2;font:900 12px var(--body);font-style:normal;color:#2f7a3a;background:#fff;border-radius:10px;padding:1px 7px;white-space:nowrap;pointer-events:none;animation:wPop .9s ease-out forwards}@keyframes wPop{0%{opacity:0;transform:translateY(-20%)}15%{opacity:1;transform:translateY(-50%)}75%{opacity:1}100%{opacity:0;transform:translateY(-90%)}}
 </style>
 
-<canvas id="gl" aria-label="2호선 격돌 3D 화면"></canvas>
+<canvas id="gl" aria-label="메트로펑크 3D 화면"></canvas>
 <div class="layer" id="world"></div>
 <div class="layer selecting" id="ui">
   <div class="hud">
@@ -5641,7 +5641,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnHelp").onclick = () => openCoach();
   const COACH = [
-    { t: "2호선 격돌에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "메트로펑크에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 추행범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
