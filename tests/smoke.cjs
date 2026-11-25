@@ -299,19 +299,19 @@ if(true){
   const inf=q.S.villains.filter(v=>v.sp.infected&&v.state==='chase');assert(inf.length>0);for(const v of inf){assert(q.targetable(v));assert(v.tag,'red tag');}
   assert(!q.S.villains.some(v=>v.sp.infected&&elders.includes(v.o)),'elders never infected');
   assert(inf.length<=12,'max 12 alive');
-  // 한 방·한방 게이지로 안 쓰러짐
+  // 100명 전에는 무적(한방 게이지 포함)
   q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.hero.pos.copy(k.o.position);q.hero.pos.z+=.5;k.hurtT=0;
   for(const v of q.S.villains)if(v.sp.infected)v.o.position.x+=300;
-  let hp=k.hp;q.S.hitstop=0;q.strike(999,false);assert(k.hp>0&&hp-k.hp<=k.max*.06+1e-6,'single hit capped at 6%');
-  hp=k.hp;q.S.ultHit=true;q.strike(999,false);q.S.ultHit=false;assert(k.hp>0&&hp-k.hp<=k.max*.15+1e-6,'ult capped at 15%');
+  assert.equal(q.targetable(k),false,'invulnerable before 100');let hp=k.hp;q.S.hitstop=0;q.strike(999,false);q.S.ultHit=true;q.strike(999,false);q.S.ultHit=false;assert.equal(k.hp,hp,'no damage before 100');
   for(const v of q.S.villains)if(v.sp.infected&&v.o.position.x>200)v.o.position.x-=300;
   // 100명 제압으로 정리
-  let guard=0;while(q.S.vk&&!q.S.vk.cleared&&guard++<4000){for(const v of q.S.villains.filter(v=>v.sp.infected&&v.state==='chase')){v.hp=1;q.killVillain(v,new T.Vector3(1,0,0));}up(3,1/20);}
-  assert(guard<4000,'event cleared');assert(q.S.vk.kills>=q.VK_TOTAL,'cleared by 100 kills');assert.equal(k.phase,'down','boss collapses');
+  let guard=0;while(q.S.vk&&!q.S.vk.weak&&guard++<4000){for(const v of q.S.villains.filter(v=>v.sp.infected&&v.state==='chase')){v.hp=1;q.killVillain(v,new T.Vector3(1,0,0));}up(3,1/20);}
+  assert(guard<4000,'all 100 down');assert(q.S.vk.kills>=q.VK_TOTAL);assert(q.S.vk.weak,'boss is exhausted');assert(q.targetable(k),'now hittable');
+  q.hero.pos.copy(k.o.position);q.hero.pos.z+=.5;q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.S.hitstop=0;q.strike(0.01,false);assert.equal(k.phase,'down','one tap finishes him');assert(q.S.vk.cleared);
   assert(q.seats.filter(s=>s.p&&s.p.civ&&!s.p.civ.userData.hidden).length>=civSeats-1,'converted passengers return to their seats');
   up(200);assert.equal(q.S.vk,null,'event finished, green faded');up(2);assert(q.S.trainT<trainT,'train timer resumes');
   assert(q.SAVE.dex.vk>=1&&q.SAVE.dex.infected>=1);
-  console.log('PASS: villain king: entry/odor/conversion, 12 alive cap, protected passengers safe, 6%/15% damage caps, 100-kill clear restores passengers and train.');}
+  console.log('PASS: villain king: entry/odor/conversion, 12 alive cap, protected passengers safe, invulnerable until 100 infected down, then one tap; clear restores passengers and train.');}
 }
 
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});

@@ -2685,7 +2685,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     return m;
   });
   function targetable(v) {
-    if (v?.vk) return v.state === "vk" && v.phase !== "enter" && v.phase !== "down" && v.hp > 0;
+    if (v?.vk) return v.state === "vk" && v.phase !== "enter" && v.phase !== "down" && v.hp > 0 && !!S.vk?.weak;
     if (v?.sp?.backpack === "front") return false;
     if (v?.sp?.backpack === "back")
       return v.state === "backpackStand" && v.guilty && v.sp.own && !v.sp.old && !v.sp.belly && !!v.tag;
@@ -2730,7 +2730,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         continue;
       const crit = Math.random() < 0.14 + ((W && W.crit) || 0),
         dmg0 = st.dmg * power * (crit ? 2 : 1) * rnd(0.95, 1.05),
-        dmg = v.vk ? Math.min(dmg0, v.max * (S.ultHit ? VK_ULT_CAP : VK_HIT_CAP)) : dmg0;
+        dmg = v.vk ? v.hp : dmg0; // 감염 승객 100명을 다 제압해 지친 빌런왕은 한 대면 끝
       v.hp -= dmg;
       if (v.vk) v.hurtT = 0.55;
       v.flash = 0.11;
@@ -4544,11 +4544,11 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     );
   }
   function killVillain(v, dir) {
-    if (!targetable(v)) return;
     if (v.vk) {
-      vkDown(v);
+      if (S.vk?.weak) vkDown(v);
       return;
     }
+    if (!targetable(v)) return;
     onDefeat(v);
     if (v.sp.infected && S.vk) {
       S.vk.kills++;
@@ -5214,11 +5214,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   }
   // ================= 빌런왕 (2026-11-25, 코덱스 원화 proposals/villain-king) =================
   // 입장 → 팔 벌려 냄새 방출 → 화면 전체 초록빛 → 객차 승객이 차례로 감염 → 옆 칸에서도 감염 승객이 몰려옴
-  // 동시 최대 12명, 누적 100명 제압 또는 빌런왕 제압으로 끝. 빌런왕은 한 번(한방 포함)에 체력의 일부만 깎임
+  // 동시 최대 12명. 감염 승객 100명을 다 제압하기 전까지 빌런왕은 공격이 안 통함(무적), 100명을 채우면 지쳐서 한 대에 쓰러짐
   const VK_TOTAL = 100,
     VK_MAX_ALIVE = 12,
-    VK_HIT_CAP = 0.06,
-    VK_ULT_CAP = 0.15,
     VK_H = 2.5;
   function removeActor(v) {
     if (v.tag) {
@@ -5257,8 +5255,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   function vkBar() {
     const K = S.vk;
     if (!K) return;
-    $("bossName").textContent = "빌런왕 · 감염 승객 제압 " + Math.min(K.kills, VK_TOTAL) + "/" + VK_TOTAL;
-    $("bossFill").style.width = Math.max(0, (K.v.hp / K.v.max) * 100) + "%";
+    $("bossName").textContent = K.weak
+      ? "빌런왕 · 지쳤어요! 한 대면 끝"
+      : "빌런왕 무적 · 감염 승객 제압 " + Math.min(K.kills, VK_TOTAL) + "/" + VK_TOTAL;
+    $("bossFill").style.width = (K.weak ? 4 : Math.max(4, (1 - K.kills / VK_TOTAL) * 100)) + "%";
   }
   function startVK() {
     if (S.vk) return null;
@@ -5285,7 +5285,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       atkPh: 9,
       flash: 0,
       kb: new THREE.Vector3(),
-      tag: el("tag bad boss", "빌런왕"),
+      tag: el("tag bad boss", "빌런왕 · 무적"),
       ehp: null,
       guilty: true,
       spd: 1.4,
@@ -5389,6 +5389,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       return;
     }
     // fight
+    if (K.weak) {
+      vkFrame(v, "vk-hurt", 0, 3 + (Math.floor(v.t * 5) % 3));
+      return;
+    }
     K.odorT -= dt;
     if (K.odorT <= 0 && v.hurtT <= 0) {
       v.phase = "odor";
@@ -5474,10 +5478,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     K.converted = [];
     $("bossBar").hidden = true;
-    if (K.v.phase !== "down") {
-      // 100명을 다 제압하면 빌런왕도 기운이 빠져 쓰러짐
-      vkDown(K.v);
-    }
+    if (K.v.phase !== "down") vkDown(K.v);
   }
   function vkUpdate(dt) {
     if (S.vkPending > 0 && trainState === "away" && mode === "play") {
@@ -5533,7 +5534,17 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       const ex = pick(ends);
       spawnInfected(new THREE.Vector3(ex, 0, rnd(-1.2, 1.2)), Math.random() < 0.45);
     }
-    if (K.kills >= VK_TOTAL) vkClear(K);
+    if (K.kills >= VK_TOTAL && !K.weak) {
+      K.weak = true;
+      const v = K.v;
+      if (v.tag) v.tag.remove();
+      v.tag = el("tag bad boss", "빌런왕 · 지금!");
+      v.phase = "fight";
+      v.atkPh = 9;
+      banner("빌런왕이 지쳤어요! 한 대만 때리면 끝", 2);
+      say(v.o, pick(["헉… 헉… 냄새가 다 떨어졌어", "잠깐, 잠깐만…"]), 1500);
+      vkBar();
+    }
     if (Math.random() < dt * 2) vkBar();
   }
   function bossTick(dt) {
