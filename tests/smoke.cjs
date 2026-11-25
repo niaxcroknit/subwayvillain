@@ -2,7 +2,7 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),T=requir
 const {createCanvas,loadImage}=require('@napi-rs/canvas');
 (async()=>{
 const uriFor=k=>{const w='assets/atlas-webp/'+k+'.webp';return fs.existsSync(w)?'data:image/webp;base64,'+fs.readFileSync(w).toString('base64'):'data:image/png;base64,'+fs.readFileSync('assets/atlas/'+k+'.png').toString('base64');};
-const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female',"swing-bag-male","carry-bag-male","swing-bag-female","carry-bag-female","swing-ext-male","carry-ext-male","swing-ext-female","carry-ext-female","swing-bat-male","carry-bat-male","swing-bat-female","carry-bat-female","hook-male","spread"]){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
+const decoded=new Map();for(const key of['hero-male','hero-female','passengers','incidents','spycam','boss','herosit','guard','walk-male','walk-female','walk-backpack','walk-backpack-female',"dir-hero-male","dir-hero-female","dir-civilians","dir-protected","dir-staff","dir-special","dir-incident","dir-backpack","dir-backpack-female",'swing-male','swing-female','carry-male','carry-female',"swing-bag-male","carry-bag-male","swing-bag-female","carry-bag-female","swing-ext-male","carry-ext-male","swing-ext-female","carry-ext-female","swing-bat-male","carry-bat-male","swing-bat-female","carry-bat-female","hook-male","spread","vk-idle","vk-walk","vk-odor","vk-attack","vk-hurt","vk-defeat","infected-attack"]){const webp='assets/atlas-webp/'+key+'.webp',file=fs.existsSync(webp)?webp:'assets/atlas/'+key+'.png',im=await loadImage(fs.readFileSync(file)),cv=createCanvas(im.width,im.height);cv.getContext('2d').drawImage(im,0,0);decoded.set((file===webp?'data:image/webp;base64,':'data:image/png;base64,')+fs.readFileSync(file).toString('base64'),cv);}
 {const cv=decoded.get(uriFor('walk-backpack-female')),d=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let transparent=0;for(let i=3;i<d.length;i+=4)if(d[i]===0)transparent++;assert(transparent>cv.width*cv.height*.5,'female sprite background must be transparent');}
 for(const key of ['hero-male','hero-female','civilians','protected','staff','special','incident','backpack','backpack-female']){const uri=uriFor('dir-'+key),cv=decoded.get(uri);assert.equal(cv.width,1024);assert.equal(cv.height,key.startsWith('hero-')?512:1024);const pixels=cv.getContext('2d').getImageData(0,0,cv.width,cv.height).data;let alpha=0;for(let i=3;i<pixels.length;i+=4)if(pixels[i]===0)alpha++;assert(alpha>cv.width*cv.height*.45,'new directions require clean alpha');}
 const nodes=new Map(),saved=new Map(),events={};let frame,rendered;
@@ -13,7 +13,7 @@ class TextureLoader{load(uri,cb){const canvas=decoded.get(uri);assert(canvas,'Em
 const ctx={THREE:{...T,WebGLRenderer:Renderer,TextureLoader},window:{THREE:T},document:doc,innerWidth:844,innerHeight:390,devicePixelRatio:1,localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)},performance:{now:()=>0},requestAnimationFrame:f=>frame=f,addEventListener:(k,f)=>events[k]=f,setInterval(){},setTimeout(){},clearTimeout(){},navigator:{},screen:{},console,Math};
 const gamePath='game/index.html';
 let src=fs.readFileSync(gamePath,'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
-src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,WEAPONS,curWeapon,keepWeaponInView,spawnSpreader,killVillain,ART':''}};showSelection();\nrequestAnimationFrame(loop);`);
+src=src.replace('showSelection();\nrequestAnimationFrame(loop);',`globalThis.qa={hero,S,SAVE,stats,scene,camera,person,pose,seats,actors,d2,dropBills,locomotionSample,setGameArtPose,walkingArt,steer,spawnBackpack,umbrellaFrame,impactSparks,tickImpactSparks,applyHitReaction,umbrellaArc,tickUmbrella,updateUmbrellaFan,umbrellaFan,chooseCharacter,showSelection,getSelection:()=>selectionStage,targetable,strike,standVillain,sitVillain,spawnVillain,spawnWave,setAttackStyle,update,openModels,closeModels${true?',spawnIncident,activateIncident,updateIncidents,deposits,arriveStation,CARDS,spawnBoss,dash,STATIONS,getMode:()=>mode,activateUlt,failIncident,newSegment,segFinish,BOSSES,applyCos,dailyProg,ensureDaily,billVal,COS,orderTick,getOrder:()=>orderK,WEAPONS,curWeapon,keepWeaponInView,spawnSpreader,killVillain,ART,startVK,spawnInfected,vkUpdate,VK_TOTAL,getTrainState:()=>trainState':''}};showSelection();\nrequestAnimationFrame(loop);`);
 vm.createContext(ctx);vm.runInContext(src,ctx);const q=ctx.qa;
 frame(16);assert(q.getSelection());assert.equal(q.getSelection().models.length,2);
 nodes.get('chooseFemale').onclick();assert.equal(q.hero.o.userData.spec.female,true);assert.equal(q.SAVE.character,'female');assert(nodes.get('chooseFemale').classList.contains('active'));
@@ -285,6 +285,33 @@ if(true){
   q.hero.lock=v;q.strike(W.power,true,W.reach);assert(v.hp<hp,'locked target is hit despite drifting out of the cone and range');
   for(const o of q.S.villains)if(o.o.position.x>300)o.o.position.x-=500;q.hero.lock=null;q.hero.spin=0;q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');
   console.log('PASS: v6.9.3 manspreader takes two ordinary seats (target, wide-legs art, both seats freed, dex) and locked-target hit forgiveness.');}
+ {// 빌런왕: 입장 → 냄새 → 승객 감염 → 옆 칸 감염 승객, 한 방에 안 쓰러짐, 100명 제압 또는 빌런왕 제압으로 정리
+  const up=(n,dt=1/30)=>{for(let k=0;k<n;k++){q.S.hitstop=0;q.hero.hp=100;q.hero.dead=0;q.update(dt);}};
+  for(const v of q.S.villains)if(v.state==='chase'&&!v.boss){v.o.position.x+=300;}
+  if(q.S.boss){q.S.boss.hp=0;}
+  for(const st of q.seats.filter(s=>!s.prio&&!s.p&&!s.res&&s.zone===1).slice(0,4)){const o=q.person({skin:0xf0c8a5,top:0x6596aa,pants:0x3a4a6a,long:false});o.position.set(st.x,0,st.z);q.scene.add(o);st.p={civ:o};}
+  const civSeats=q.seats.filter(s=>s.p&&s.p.civ&&!s.p.civ.userData.hidden).length;assert(civSeats>0);
+  const elders=q.S.elders.map(e=>e.o);const trainT=q.S.trainT;
+  const k=q.startVK();assert(k&&k.vk);assert.equal(q.targetable(k),false,'entering boss is not yet hittable');
+  up(200);assert(['odor','fight'].includes(k.phase),'boss reached the car and released odor: '+k.phase);
+  up(120);assert(q.S.vk.started,'odor started');assert(q.S.vk.converted.length>0,'seated passengers converted');
+  assert(Math.abs(q.S.trainT-trainT)<1e-6,'train does not stop at a station during the event');
+  const inf=q.S.villains.filter(v=>v.sp.infected&&v.state==='chase');assert(inf.length>0);for(const v of inf){assert(q.targetable(v));assert(v.tag,'red tag');}
+  assert(!q.S.villains.some(v=>v.sp.infected&&elders.includes(v.o)),'elders never infected');
+  assert(inf.length<=12,'max 12 alive');
+  // 한 방·한방 게이지로 안 쓰러짐
+  q.SAVE.umbrellaSeconds=0;q.setAttackStyle('fists');q.hero.pos.copy(k.o.position);q.hero.pos.z+=.5;k.hurtT=0;
+  for(const v of q.S.villains)if(v.sp.infected)v.o.position.x+=300;
+  let hp=k.hp;q.S.hitstop=0;q.strike(999,false);assert(k.hp>0&&hp-k.hp<=k.max*.06+1e-6,'single hit capped at 6%');
+  hp=k.hp;q.S.ultHit=true;q.strike(999,false);q.S.ultHit=false;assert(k.hp>0&&hp-k.hp<=k.max*.15+1e-6,'ult capped at 15%');
+  for(const v of q.S.villains)if(v.sp.infected&&v.o.position.x>200)v.o.position.x-=300;
+  // 100명 제압으로 정리
+  let guard=0;while(q.S.vk&&!q.S.vk.cleared&&guard++<4000){for(const v of q.S.villains.filter(v=>v.sp.infected&&v.state==='chase')){v.hp=1;q.killVillain(v,new T.Vector3(1,0,0));}up(3,1/20);}
+  assert(guard<4000,'event cleared');assert(q.S.vk.kills>=q.VK_TOTAL,'cleared by 100 kills');assert.equal(k.phase,'down','boss collapses');
+  assert(q.seats.filter(s=>s.p&&s.p.civ&&!s.p.civ.userData.hidden).length>=civSeats-1,'converted passengers return to their seats');
+  up(200);assert.equal(q.S.vk,null,'event finished, green faded');up(2);assert(q.S.trainT<trainT,'train timer resumes');
+  assert(q.SAVE.dex.vk>=1&&q.SAVE.dex.infected>=1);
+  console.log('PASS: villain king: entry/odor/conversion, 12 alive cap, protected passengers safe, 6%/15% damage caps, 100-kill clear restores passengers and train.');}
 }
 
 if(process.argv.includes('--render')){fs.mkdirSync('outputs',{recursive:true});

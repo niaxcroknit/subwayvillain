@@ -1,0 +1,632 @@
+{
+  "cell": {
+    "width": 256,
+    "height": 160,
+    "footY": 152
+  },
+  "directions": [
+    "front",
+    "right",
+    "back",
+    "left"
+  ],
+  "sharedFit": 1,
+  "frames": [
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 89,
+        "minY": 45,
+        "maxX": 154,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 88,
+        "y0": 61,
+        "x1": 179,
+        "y1": 209
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 91,
+        "minY": 45,
+        "maxX": 158,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 307,
+        "y0": 62,
+        "x1": 401,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 98,
+        "minY": 46,
+        "maxX": 166,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 527,
+        "y0": 63,
+        "x1": 622,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 81,
+        "minY": 50,
+        "maxX": 171,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 729,
+        "y0": 70,
+        "x1": 857,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 79,
+        "minY": 51,
+        "maxX": 174,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 938,
+        "y0": 71,
+        "x1": 1073,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 82,
+        "minY": 57,
+        "maxX": 174,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1154,
+        "y0": 81,
+        "x1": 1285,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 81,
+        "minY": 49,
+        "maxX": 151,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1383,
+        "y0": 70,
+        "x1": 1480,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 85,
+        "minY": 47,
+        "maxX": 153,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1607,
+        "y0": 66,
+        "x1": 1702,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 99,
+        "minY": 46,
+        "maxX": 169,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 83,
+        "y0": 278,
+        "x1": 181,
+        "y1": 425
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 98,
+        "minY": 44,
+        "maxX": 163,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 307,
+        "y0": 278,
+        "x1": 398,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 91,
+        "minY": 44,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 518,
+        "y0": 278,
+        "x1": 614,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 83,
+        "minY": 49,
+        "maxX": 173,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 709,
+        "y0": 284,
+        "x1": 836,
+        "y1": 426
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 82,
+        "minY": 50,
+        "maxX": 177,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 918,
+        "y0": 286,
+        "x1": 1054,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 83,
+        "minY": 58,
+        "maxX": 179,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1137,
+        "y0": 298,
+        "x1": 1273,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 102,
+        "minY": 48,
+        "maxX": 172,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1387,
+        "y0": 284,
+        "x1": 1485,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 100,
+        "minY": 47,
+        "maxX": 170,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1605,
+        "y0": 282,
+        "x1": 1703,
+        "y1": 427
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 93,
+        "minY": 45,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 86,
+        "y0": 493,
+        "x1": 175,
+        "y1": 642
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 95,
+        "minY": 45,
+        "maxX": 161,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 307,
+        "y0": 494,
+        "x1": 400,
+        "y1": 642
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 99,
+        "minY": 46,
+        "maxX": 167,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 527,
+        "y0": 495,
+        "x1": 622,
+        "y1": 642
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 83,
+        "minY": 48,
+        "maxX": 172,
+        "maxY": 149
+      },
+      "margin": 10,
+      "source": {
+        "x0": 729,
+        "y0": 499,
+        "x1": 854,
+        "y1": 643
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 79,
+        "minY": 50,
+        "maxX": 174,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 940,
+        "y0": 501,
+        "x1": 1073,
+        "y1": 642
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 82,
+        "minY": 57,
+        "maxX": 176,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1154,
+        "y0": 511,
+        "x1": 1287,
+        "y1": 642
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 85,
+        "minY": 49,
+        "maxX": 154,
+        "maxY": 149
+      },
+      "margin": 10,
+      "source": {
+        "x0": 1384,
+        "y0": 500,
+        "x1": 1481,
+        "y1": 643
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 87,
+        "minY": 48,
+        "maxX": 154,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1608,
+        "y0": 498,
+        "x1": 1703,
+        "y1": 643
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 98,
+        "minY": 49,
+        "maxX": 167,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 82,
+        "y0": 711,
+        "x1": 178,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 98,
+        "minY": 49,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 306,
+        "y0": 711,
+        "x1": 391,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 91,
+        "minY": 49,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 514,
+        "y0": 711,
+        "x1": 608,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 81,
+        "minY": 51,
+        "maxX": 172,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 705,
+        "y0": 715,
+        "x1": 833,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 82,
+        "minY": 52,
+        "maxX": 175,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 922,
+        "y0": 715,
+        "x1": 1054,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 84,
+        "minY": 59,
+        "maxX": 179,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1137,
+        "y0": 725,
+        "x1": 1272,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 101,
+        "minY": 51,
+        "maxX": 168,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1388,
+        "y0": 715,
+        "x1": 1483,
+        "y1": 854
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "infected-attack",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 98,
+        "minY": 49,
+        "maxX": 165,
+        "maxY": 149
+      },
+      "margin": 10,
+      "source": {
+        "x0": 1606,
+        "y0": 713,
+        "x1": 1701,
+        "y1": 855
+      },
+      "crossedCell": false
+    }
+  ],
+  "motions": [
+    {
+      "key": "infected-attack",
+      "frames": 8,
+      "rows": 4,
+      "scale": 1.3935483870967742
+    }
+  ]
+}

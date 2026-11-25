@@ -1,0 +1,5 @@
+Tool: built-in image_gen (two passes), transparent_background=true.
+Reference: assets/scene/dir-civilians.png.
+Pass 1: Transparent 8 columns ×4 rows,32 full-body poses matching gray hoodie male and red jacket female civilians. Rows male right / male left / female right / female left. Eight planted-foot infected civilian shove/claw frames: ready, anticipation elbows retract, twisting shoulder, fast weight shift and two-arm thrust, contact extension, follow-through, retract torso, return ready. Preserve faces/clothes/style/height; transparent margins; no weapons/gore/fog/text.
+Pass 2: Correct sheet margins; preserve all32 poses and 8×4 layout. Restore complete bottom-row feet/shoes, scale figures down inside each cell, generous internal transparent padding, uniform floor baseline, remove detached flecks, maintain proportions and design.
+Selected source: assets/original/infected-attack.png.

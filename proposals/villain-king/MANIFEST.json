@@ -1,0 +1,224 @@
+{
+  "files": [
+    {
+      "size": 11057,
+      "sha256": "46caa52b692ebe71ecc944e679888c77c1b72dc538cdc6510aa47c043c1b5522",
+      "path": "ATTACK-FRAME-SAFETY.json"
+    },
+    {
+      "size": 2137068,
+      "sha256": "a0bcdb238bea5a90c47870f767572c03be73e97cce920c2bbaa911f188e57977",
+      "path": "character-design.png"
+    },
+    {
+      "size": 187,
+      "sha256": "b3158f98402d6d3b6ee0ee8c411bfc8f8da0dca7f1a26615c215f22755b221c7",
+      "path": "CLAUDE-MESSAGE.txt"
+    },
+    {
+      "size": 99221,
+      "sha256": "6c639ae9487f6663c255a95ad74f5114ab681f71dfaf39493057c7910eb84678",
+      "path": "conversion-scene.png"
+    },
+    {
+      "size": 63493,
+      "sha256": "09970f48c9321207bc2b5aa11a2d63fb556fcb7fc4079d75b6e04edf05cf822b",
+      "path": "FRAME-SAFETY.json"
+    },
+    {
+      "size": 904,
+      "sha256": "619f6184ea8fd525dcc7182b7647a26af4d3fb8632c796ea563fe058ca455067",
+      "path": "IMAGE-PROMPTS.txt"
+    },
+    {
+      "size": 2717273,
+      "sha256": "87452824560a2269f42a60715d3a370795ae66ce8b749174fe3bf3d62d4f547c",
+      "path": "index.html"
+    },
+    {
+      "size": 171938,
+      "sha256": "f86ed57c0c8923273edc7885a21d2c4980b12d0c69811e587cbfd2002230834b",
+      "path": "motion-still.png"
+    },
+    {
+      "size": 4513616,
+      "sha256": "e1a6cac577e59ffad682af5a3dbec3f0ba8a74b89c2efe93558f34f3d14421df",
+      "path": "motions.gif"
+    },
+    {
+      "size": 286,
+      "sha256": "17f366c3ed3b36d89a456687ff28052f3a60c0d1935a09131d23c3345f104135",
+      "path": "package.json"
+    },
+    {
+      "size": 271113,
+      "sha256": "589d7c8665e8f3e7e1be181542ed377a823e507e67298316cb7cd4ea09c688be",
+      "path": "sequence-preview.png"
+    },
+    {
+      "size": 4093,
+      "sha256": "75d299fbb6ec175b81654a7acbb1185efdff57bc0bf66f2aa5c199bc1e420ecb",
+      "path": "START-HERE.md"
+    },
+    {
+      "size": 1352,
+      "sha256": "86f3499bea14ec09c60de0ce5f13a05facb3f556d2fcc70901e8b038bfe1d718",
+      "path": "UPDATE-ATTACK.md"
+    },
+    {
+      "size": 1317,
+      "sha256": "f63b776b6edb35cac6d836d8655ade431861607b07a46602f61abc2a05851d49",
+      "path": "UPDATE-HORDE.md"
+    },
+    {
+      "size": 1302578,
+      "sha256": "a6f7efe674bcf015630352c1de51f39d0ffd9346f57349897b54e677bd5fabf8",
+      "path": "villain-king-portrait.png"
+    },
+    {
+      "size": 361570,
+      "sha256": "f91301b13edc5ed6a9c4ef1ce3610d39e4b0b56d56b280a9eba28d570afa51c2",
+      "path": "assets/atlas/attack.png"
+    },
+    {
+      "size": 329643,
+      "sha256": "7fbe4ec355c916fe1f38f7a3817efb7b4d05c874bac169b7be6bd0230edad7b0",
+      "path": "assets/atlas/defeat.png"
+    },
+    {
+      "size": 341085,
+      "sha256": "847ad7f931122b41a7b7a5bb43688bfd619e94066c602f4d57ed8a230533fa9d",
+      "path": "assets/atlas/hurt.png"
+    },
+    {
+      "size": 349061,
+      "sha256": "b10422f39ad745a10027e4a363454dea0073adf6b16f2d349b8dd80b61b6d413",
+      "path": "assets/atlas/idle.png"
+    },
+    {
+      "size": 421517,
+      "sha256": "e89c1b4a19fe073c2c4ddb35aff08ff422b4ca6d2b0203152774361201c25512",
+      "path": "assets/atlas/infected-attack.png"
+    },
+    {
+      "size": 469568,
+      "sha256": "afcc5edef98125389c267e77aea80c69ffa4702b2118548e11187aae12ffe50a",
+      "path": "assets/atlas/odor.png"
+    },
+    {
+      "size": 340158,
+      "sha256": "19238eee6798af2c9dae67741840ea2217ebb91487e3514966c5c0095833b88e",
+      "path": "assets/atlas/walk.png"
+    },
+    {
+      "size": 151168,
+      "sha256": "994d6d7f070103d4fee8028829c23e1b1e8cfdb187e856ffe697e9cc957fa939",
+      "path": "assets/atlas-webp/attack.webp"
+    },
+    {
+      "size": 131616,
+      "sha256": "7c60fb6577673b447f05a7aad3ff4f91b3e67557abe7c1258865386b9ed1dcf3",
+      "path": "assets/atlas-webp/defeat.webp"
+    },
+    {
+      "size": 143466,
+      "sha256": "b5f9793a0200c235d855838bf31b623c915ac7c56b9d647c835cf8205b28e42d",
+      "path": "assets/atlas-webp/hurt.webp"
+    },
+    {
+      "size": 141420,
+      "sha256": "3bcde5632cf9e626af9b28762ff8e20c89eae0c92f5987c712d6f96ec602e894",
+      "path": "assets/atlas-webp/idle.webp"
+    },
+    {
+      "size": 171386,
+      "sha256": "3265d95a1144ff9ada03da9b6d971404609a1c38e555a8a826c7c731ca2ba10c",
+      "path": "assets/atlas-webp/infected-attack.webp"
+    },
+    {
+      "size": 194446,
+      "sha256": "b6efbd8606b2f412684d3139f641d77b4d66018f38d0bf789cacfcf5637d3b2f",
+      "path": "assets/atlas-webp/odor.webp"
+    },
+    {
+      "size": 142204,
+      "sha256": "f51a05a403ec789300d28e2acbd6019a32e38a02a69308c0f17692e260a6c2ed",
+      "path": "assets/atlas-webp/walk.webp"
+    },
+    {
+      "size": 1448453,
+      "sha256": "68f7f82e8d60a376f458a7ea50a679f1664b0d5d30b805fd38f066e0f12d59c9",
+      "path": "assets/original/attack.png"
+    },
+    {
+      "size": 1417256,
+      "sha256": "82de31ce26e850dd651eda5ab3f5157c3bc133e338ae688203ccdae06469d6ff",
+      "path": "assets/original/defeat.png"
+    },
+    {
+      "size": 1202532,
+      "sha256": "c8bbcbaf1b7e3aa7806b987c1831a94e0d85f0ec52f152764c268ed8ccb6932b",
+      "path": "assets/original/hurt.png"
+    },
+    {
+      "size": 1690825,
+      "sha256": "a48b62ca44a1125d2cbed646217e62ac581a1098aa12a3a0e80bb211943cb276",
+      "path": "assets/original/idle.png"
+    },
+    {
+      "size": 926186,
+      "sha256": "ba04fa357a0ba5a58615a5db7e9368a827a835cd95f1970c50f83e26935db075",
+      "path": "assets/original/infected-attack.png"
+    },
+    {
+      "size": 1344520,
+      "sha256": "791c6feca28e90c8a6550f59eed20060e38b9cdab9ca696fc73059fc0106d2f9",
+      "path": "assets/original/odor.png"
+    },
+    {
+      "size": 1693020,
+      "sha256": "4a3e0b3c9eea251b4063b50e336c7675ecbcf05d12bbfb4c2acc2cb03fd0f12a",
+      "path": "assets/original/walk.png"
+    },
+    {
+      "size": 665927,
+      "sha256": "faef5aa0ebfdfe75d6d22c473e61bbaa2b118584d477653464a4f08ee82c6002",
+      "path": "assets/scene/dir-civilians.png"
+    },
+    {
+      "size": 285342,
+      "sha256": "8b62551ec363a142d690b3283208ca34a81f046ed6d2bce7e205e6b0c86212bb",
+      "path": "assets/scene/dir-hero-male.png"
+    },
+    {
+      "size": 171386,
+      "sha256": "3265d95a1144ff9ada03da9b6d971404609a1c38e555a8a826c7c731ca2ba10c",
+      "path": "assets/scene/infected-attack.webp"
+    },
+    {
+      "size": 4093,
+      "sha256": "75d299fbb6ec175b81654a7acbb1185efdff57bc0bf66f2aa5c199bc1e420ecb",
+      "path": "docs/DESIGN-AND-INTEGRATION.md"
+    },
+    {
+      "size": 17064,
+      "sha256": "191aff7e7115f9a99ea5c6b505a6d43a72b34ad1ba83120ef0eb278a04c5c808",
+      "path": "scripts/build-preview.cjs"
+    },
+    {
+      "size": 1921,
+      "sha256": "7d37571cc747e49f12222bac346f724448ba05cff3bc7e410400bf574e1f2eb6",
+      "path": "scripts/gif-motion-encoder.cjs"
+    },
+    {
+      "size": 3806,
+      "sha256": "2e599acc4248c1100d1a195f8bbf599685eb9c5f84113cac861903e6ee4904de",
+      "path": "scripts/pack-infected-attack.cjs"
+    },
+    {
+      "size": 3825,
+      "sha256": "aab261bfdcaf03234f68f50017d2d6abc1fac47a41a5333192153632fc60c028",
+      "path": "scripts/pack.cjs"
+    }
+  ]
+}

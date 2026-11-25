@@ -1,0 +1,1 @@
+UPDATE-ATTACK.md → UPDATE-HORDE.md 순서로 읽으세요. 감염 승객 남녀 좌우 공격 총32프레임을 index.html 시연에 연결했습니다. 실게임 적용 전입니다.

@@ -291,6 +291,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 #bagHud,#btnCash{display:none!important}
 .box.money{position:relative;overflow:visible!important}.box.money.bump{animation:wBump .35s ease-out}@keyframes wBump{40%{transform:scale(1.12)}}
 .walletPop{position:absolute;left:auto;right:6px;top:50%;transform:translateY(-50%);z-index:2;font:900 12px var(--body);font-style:normal;color:#2f7a3a;background:#fff;border-radius:10px;padding:1px 7px;white-space:nowrap;pointer-events:none;animation:wPop .9s ease-out forwards}@keyframes wPop{0%{opacity:0;transform:translateY(-20%)}15%{opacity:1;transform:translateY(-50%)}75%{opacity:1}100%{opacity:0;transform:translateY(-90%)}}
+/* 빌런왕 냄새: 화면 전체 초록빛(opacity는 스크립트가 조절) */
+#stench{position:fixed;inset:0;pointer-events:none;z-index:3;opacity:0;background:radial-gradient(ellipse at 50% 60%,rgba(150,190,40,.10),rgba(96,140,24,.34) 70%,rgba(70,110,20,.5));mix-blend-mode:multiply}
 </style>
 
 <canvas id="gl" aria-label="메트로펑크 3D 화면"></canvas>
@@ -308,6 +310,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   <div class="mList" id="segList" hidden></div>
   </div>
   <div id="flashFx"></div>
+  <div id="stench"></div>
   <div id="bossBar" hidden><span id="bossName">보스</span><i><em id="bossFill"></em></i></div>
   <div id="toast"></div><div id="dexNewWrap"></div>
   <div class="bagHud" id="bagHud">수집 <b id="bagCount">0 / 12</b><i><em id="bagFill"></em></i></div>
@@ -1340,7 +1343,14 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     "swing-bat-female": "__ASSET_swing-bat-female__",
     "carry-bat-female": "__ASSET_carry-bat-female__",
     "hook-male": "__ASSET_hook-male__",
-    spread: "__ASSET_spread__"
+    spread: "__ASSET_spread__",
+    "vk-idle": "__ASSET_vk-idle__",
+    "vk-walk": "__ASSET_vk-walk__",
+    "vk-odor": "__ASSET_vk-odor__",
+    "vk-attack": "__ASSET_vk-attack__",
+    "vk-hurt": "__ASSET_vk-hurt__",
+    "vk-defeat": "__ASSET_vk-defeat__",
+    "infected-attack": "__ASSET_infected-attack__"
   };
   const ART = {};
   for (const [key, url] of Object.entries(SPRITE_DATA)) {
@@ -1497,6 +1507,35 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     const gait = locomotionSample(g),
       walk = walkingArt(g);
     a.held = false;
+    if (spec.vk) {
+      applyHitReaction(g);
+      a.kind = kind;
+      return;
+    }
+    if (spec.infected && kind === "hit") {
+      // 냄새 감염 승객 전용 밀치기(남/여 × 오른쪽/왼쪽 8프레임). 행: 남오른쪽, 남왼쪽, 여오른쪽, 여왼쪽
+      const tex = ART["infected-attack"];
+      if (a.sprite.material.map !== tex) {
+        a.sprite.material.map = tex;
+        a.sprite.material.needsUpdate = true;
+      }
+      const row = (spec.female ? 2 : 0) + (hero.pos.x < g.position.x ? 1 : 0),
+        fr = Math.floor(time * 11 + (g.userData.ph || 0) * 1.3) % 8;
+      a.rect.set(fr / 8, (3 - row) / 4, 1 / 8, 1 / 4);
+      a.walkKey = "infected-attack";
+      a.walkingRow = row;
+      a.mirrored = false;
+      a.sprite.center.set(0.5, 8 / 160);
+      a.sprite.scale.set(2.05 * 1.6, 2.05, 1); // 웅크린 자세라 걷기 그림과 머리 크기가 맞도록
+      a.baseWidth = a.sprite.scale.x;
+      a.sprite.scale.x /= Math.hypot(WORLD_X * Math.cos(g.rotation.y), Math.sin(g.rotation.y));
+      a.sprite.position.set(0, 0.025, 0);
+      a.sprite.material.rotation = 0;
+      applyHitReaction(g);
+      a.kind = kind;
+      return;
+    }
+    if (spec.infected) a.sprite.center.set(0.5, 0.052);
     const holding = (kind === "idle" || (!!spec.backpack && kind !== "walk")) && !g.userData.incidentView;
     // New items and male hook use front/right/back/left independent attack rows.
     const W = curWeapon(),
@@ -2278,7 +2317,12 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   function flash(g, k) {
     for (const m of g.userData.mats) m.emissive.setRGB(k, k * 0.9, k * 0.85);
     if (g.userData.art) {
-      g.userData.art.sprite.material.color.setRGB(1, 1 - k * 0.35, 1 - k * 0.35);
+      const tn = g.userData.tint;
+      g.userData.art.sprite.material.color.setRGB(
+        tn ? tn[0] : 1,
+        (1 - k * 0.35) * (tn ? tn[1] : 1),
+        (1 - k * 0.35) * (tn ? tn[2] : 1),
+      );
       g.userData.art.sprite.material.rotation = k * 0.04;
     }
   }
@@ -2641,6 +2685,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     return m;
   });
   function targetable(v) {
+    if (v?.vk) return v.state === "vk" && v.phase !== "enter" && v.phase !== "down" && v.hp > 0;
     if (v?.sp?.backpack === "front") return false;
     if (v?.sp?.backpack === "back")
       return v.state === "backpackStand" && v.guilty && v.sp.own && !v.sp.old && !v.sp.belly && !!v.tag;
@@ -2684,8 +2729,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       )
         continue;
       const crit = Math.random() < 0.14 + ((W && W.crit) || 0),
-        dmg = st.dmg * power * (crit ? 2 : 1) * rnd(0.95, 1.05);
+        dmg0 = st.dmg * power * (crit ? 2 : 1) * rnd(0.95, 1.05),
+        dmg = v.vk ? Math.min(dmg0, v.max * (S.ultHit ? VK_ULT_CAP : VK_HIT_CAP)) : dmg0;
       v.hp -= dmg;
+      if (v.vk) v.hurtT = 0.55;
       v.flash = 0.11;
       hits++;
       if (crit) crits++;
@@ -3944,6 +3991,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         v.flash -= dt;
       }
       flash(v.o, v.flash > 0 ? 0.8 : 0);
+      if (v.state === "vk") {
+        vkTick(v, dt);
+        continue;
+      }
       v.o.position.addScaledVector(v.kb, dt);
       v.kb.multiplyScalar(Math.pow(0.004, dt));
       if (v.state === "sit") {
@@ -4036,8 +4087,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
           pose(v.o, "hit", t);
           v.atkT -= dt;
           if (v.atkT <= 0 && hero.dead <= 0 && !(hero.inv > 0)) {
-            v.atkT = 1.1;
-            const dmg = Math.round((5 + S.wave * 0.8) * (v.boss ? 1.6 : 1) * lapDmg());
+            v.atkT = v.sp.infected ? 1.5 : 1.1;
+            const dmg = Math.round((5 + S.wave * 0.8) * (v.boss ? 1.6 : v.sp.infected ? 0.5 : 1) * lapDmg());
             hero.hp -= dmg;
             num(hero.pos, "-" + dmg, "hurt", 18);
             sfx.hurt();
@@ -4309,7 +4360,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       }
     }
     // 달리는 중에도 옆 칸에서 진상이 계속 넘어옴
-    if (trainState === "away") {
+    if (trainState === "away" && !S.vk) {
       S.trickT = (S.trickT ?? 3) - dt;
       if (S.trickT <= 0) {
         const ev = S.event || {};
@@ -4337,7 +4388,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       }
     }
     // 열차
-    S.trainT -= dt;
+    if (!S.vk) S.trainT -= dt; // 빌런왕 사태 중에는 다음 역에 서지 않음(정리될 때까지 달림)
     if (trainState === "away" && S.trainT <= 0) trainArrive();
     if (trainState === "in") {
       trainT += dt;
@@ -4426,6 +4477,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     rim.position.x = cx + 4;
     // UI
     bossTick(dt);
+    vkUpdate(dt);
     orderTick(dt);
     orderLook(dt);
     $("stName").textContent = STATIONS[(SAVE.st + 1) % NS];
@@ -4493,14 +4545,22 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   }
   function killVillain(v, dir) {
     if (!targetable(v)) return;
+    if (v.vk) {
+      vkDown(v);
+      return;
+    }
     onDefeat(v);
+    if (v.sp.infected && S.vk) {
+      S.vk.kills++;
+      vkBar();
+    }
     resolveIncident(v);
     S.streak = S.streakT > 0 ? S.streak + 1 : 1;
     S.streakT = 4;
     S.rescueCount++;
     SAVE.rescued = S.rescueCount;
-    if (S.streak > 2) num(v.o.position, S.streak + "명 연속!", "crit", 23);
-    if (S.rescueCount % 3 === 0) {
+    if (S.streak > 2 && !v.sp.infected) num(v.o.position, S.streak + "명 연속!", "crit", 23);
+    if (S.rescueCount % 3 === 0 && !v.sp.infected) {
       S.money += 30;
       num(hero.pos, "순찰 보너스 +₩30", "cash", 22);
       sfx.unlock();
@@ -4528,7 +4588,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     flash(v.o, 0);
     pose(v.o, "hurt", t);
-    payNow(Math.random() < 0.3 ? 3 : 2);
+    payNow(v.sp.infected ? 1 : Math.random() < 0.3 ? 3 : 2);
     sfx.ko();
     burst(v.o.position, 14, 0xffffff);
     // 제압 손맛: 짧은 정지 + 큰 흔들림 + 맞은 방향 킥
@@ -4858,6 +4918,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       c: 0,
       rare: 1,
     },
+    { k: "vk", n: "빌런왕", d: "안 씻은 냄새로 멀쩡한 승객까지 빌런으로 만듦 · 한 방에 안 쓰러짐", a: "vk-idle", r: 0, c: 0, cols: 8, boss: 1 },
+    { k: "infected", n: "냄새 감염 승객", d: "빌런왕 냄새에 정신을 잃고 달려듦 · 제압하면 정신 차림", a: "infected-attack", r: 0, c: 4, cols: 8 },
     { k: "manspread", n: "쩍벌남", d: "일반석 두 자리를 다리 벌려 혼자 차지", a: "spread", r: 0, c: 0 },
     { k: "drunk", n: "취객", d: "남의 어깨를 베개로 씀", a: "incidents", r: 0, c: 0 },
     { k: "harass", n: "성희롱범", d: "피해 승객에게 불쾌한 말로 위협 · 즉시 제압 대상", a: "incidents", r: 0, c: 2 },
@@ -5149,6 +5211,330 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     say(v.o, B.intro, 1600);
     shake(0.2, 0.3);
     for (let i = 0; i < (B.followers || 0); i++) spawnMinion(v.o.position);
+  }
+  // ================= 빌런왕 (2026-11-25, 코덱스 원화 proposals/villain-king) =================
+  // 입장 → 팔 벌려 냄새 방출 → 화면 전체 초록빛 → 객차 승객이 차례로 감염 → 옆 칸에서도 감염 승객이 몰려옴
+  // 동시 최대 12명, 누적 100명 제압 또는 빌런왕 제압으로 끝. 빌런왕은 한 번(한방 포함)에 체력의 일부만 깎임
+  const VK_TOTAL = 100,
+    VK_MAX_ALIVE = 12,
+    VK_HIT_CAP = 0.06,
+    VK_ULT_CAP = 0.15,
+    VK_H = 2.5;
+  function removeActor(v) {
+    if (v.tag) {
+      v.tag.remove();
+      v.tag = null;
+    }
+    scene.remove(v.o);
+    const ai = actors.indexOf(v.o);
+    if (ai >= 0) actors.splice(ai, 1);
+    disposeGameArt(v.o);
+    for (const m of v.o.userData.mats) m.dispose();
+    v.state = "gone";
+  }
+  function vkFrame(v, key, row, frame) {
+    const a = v.o.userData.art,
+      tex = ART[key];
+    if (a.sprite.material.map !== tex) {
+      a.sprite.material.map = tex;
+      a.sprite.material.needsUpdate = true;
+    }
+    a.rect.set(frame / 8, (3 - row) / 4, 1 / 8, 1 / 4);
+    a.walkKey = key;
+    a.walkingRow = row;
+    a.mirrored = false;
+    a.sprite.center.set(0.5, 8 / 160);
+    v.o.rotation.y = 0;
+    a.sprite.scale.set((VK_H * 1.6) / WORLD_X, VK_H, 1);
+    a.baseWidth = VK_H * 1.6;
+    a.sprite.position.set(0, 0.025, 0);
+    a.sprite.material.rotation = 0;
+    applyHitReaction(v.o);
+  }
+  function vkDir(dx, dz) {
+    return attackDirection(Math.atan2(dx * WORLD_X, dz));
+  }
+  function vkBar() {
+    const K = S.vk;
+    if (!K) return;
+    $("bossName").textContent = "빌런왕 · 감염 승객 제압 " + Math.min(K.kills, VK_TOTAL) + "/" + VK_TOTAL;
+    $("bossFill").style.width = Math.max(0, (K.v.hp / K.v.max) * 100) + "%";
+  }
+  function startVK() {
+    if (S.vk) return null;
+    const ds = W.doors.filter(d => SAVE.zone2 || d.x < CAR / 2).map(d => d.x),
+      want = clamp(hero.pos.x + (hero.pos.x > 0 ? -6 : 6), -11, SAVE.zone2 ? CAR + 11 : 11);
+    let dx = ds[0];
+    for (const x of ds) if (Math.abs(x - want) < Math.abs(dx - want)) dx = x;
+    const sp = { skin: 0xe2bf98, hair: 0x161616, top: 0x5b4672, pants: 0x5c5a4a, own: true, vk: true, kind: "vk" };
+    const o = person(sp);
+    o.position.set(dx, 0, -ZW - 0.7);
+    scene.add(o);
+    const hp = 28 * (1 + (S.wave - 1) * 0.14) * lapHard() * 30;
+    const v = {
+      o,
+      sp,
+      hp,
+      max: hp,
+      state: "vk",
+      vk: true,
+      phase: "enter",
+      t: 0,
+      seat: null,
+      atkT: 1.2,
+      atkPh: 9,
+      flash: 0,
+      kb: new THREE.Vector3(),
+      tag: el("tag bad boss", "빌런왕"),
+      ehp: null,
+      guilty: true,
+      spd: 1.4,
+      dist: 0,
+      target: new THREE.Vector3(dx, 0, 0.2),
+    };
+    S.villains.push(v);
+    S.vk = { v, kills: 0, spawned: 0, spawnT: 0, odorT: 9, green: 0, started: false, cleared: false, convQ: [], convT: 0, converted: [], endT: 0 };
+    $("bossBar").hidden = false;
+    vkBar();
+    banner("빌런왕 등장! 냄새 조심", 1.6);
+    say(o, pick(["흐흐… 다들 내 냄새 맡아봐", "씻는 건 사치야", "이 칸은 이제 내 거야"]), 1600);
+    shake(0.2, 0.3);
+    return v;
+  }
+  function spawnInfected(pos, female) {
+    const sp = {
+      skin: pick(SKIN),
+      hair: 0x2a2420,
+      top: female ? 0x9a3030 : 0x6a6a6e,
+      pants: 0x4a4a5a,
+      female,
+      long: female,
+      own: true,
+      infected: true,
+      kind: "infected",
+    };
+    const o = person(sp);
+    o.position.copy(pos);
+    o.userData.tint = [0.8, 1, 0.7];
+    o.userData.ph = Math.random() * 8;
+    scene.add(o);
+    const hp = 28 * (1 + (S.wave - 1) * 0.14) * lapHard() * 0.55;
+    const v = {
+      o,
+      sp,
+      hp,
+      max: hp,
+      state: "chase",
+      angry: true,
+      guilty: true,
+      seat: null,
+      atkT: rnd(0.6, 1.4),
+      flash: 0,
+      kb: new THREE.Vector3(),
+      tag: el("tag bad", "냄새 감염"),
+      ehp: null,
+      spd: rnd(2.0, 2.6),
+      reach: 0.8,
+    };
+    S.villains.push(v);
+    if (S.vk) S.vk.spawned++;
+    return v;
+  }
+  function vkTick(v, dt) {
+    const K = S.vk;
+    v.t += dt;
+    v.hurtT = Math.max(0, (v.hurtT || 0) - dt);
+    const dx = hero.pos.x - v.o.position.x,
+      dz = hero.pos.z - v.o.position.z,
+      L = Math.hypot(dx * WORLD_X, dz);
+    if (v.phase === "enter") {
+      const tx = v.target.x - v.o.position.x,
+        tz = v.target.z - v.o.position.z,
+        d = Math.hypot(tx * WORLD_X, tz);
+      if (d < 0.06) {
+        v.phase = "odor";
+        v.t = 0;
+      } else {
+        const st = Math.min(d, v.spd * dt);
+        v.o.position.x += (tx / d) * st;
+        v.o.position.z += (tz / d) * st;
+        v.dist += st;
+      }
+      vkFrame(v, "vk-walk", vkDir(tx, tz), Math.floor((v.dist / 0.9) * 8) % 8);
+      return;
+    }
+    if (v.phase === "down") {
+      vkFrame(v, "vk-defeat", 0, Math.min(7, Math.floor((v.t / 1.2) * 8)));
+      if (v.t > 2.6) removeActor(v);
+      return;
+    }
+    if (v.phase === "odor") {
+      vkFrame(v, "vk-odor", 0, Math.min(7, Math.floor((v.t / 2.4) * 8)));
+      if (v.t > 0.8 && Math.random() < dt * 9)
+        burst(new THREE.Vector3(v.o.position.x + rnd(-0.5, 0.5), 0.6, v.o.position.z + rnd(-0.3, 0.3)), 2, 0x9acd32);
+      if (v.t >= 2.4) {
+        if (!K.started) {
+          K.started = true;
+          // 가까운 일반석 승객부터 차례로 감염(어르신·임산부·피해 승객·역무원은 대상 아님)
+          K.convQ = seats
+            .filter(s => s.p && s.p.civ && !s.p.civ.userData.hidden && (s.zone === 1 || SAVE.zone2))
+            .sort((a, b) => d2(a, v.o.position) - d2(b, v.o.position))
+            .slice(0, 6);
+          banner("냄새가 객차를 덮어요! 감염 승객 " + VK_TOTAL + "명을 제압하세요", 2);
+        }
+        v.phase = "fight";
+        v.t = 0;
+        K.odorT = rnd(8, 11);
+      }
+      return;
+    }
+    // fight
+    K.odorT -= dt;
+    if (K.odorT <= 0 && v.hurtT <= 0) {
+      v.phase = "odor";
+      v.t = 0;
+      say(v.o, pick(["킁킁… 좋은 냄새지?", "더 퍼져라~", "아무도 못 피해"]), 1200);
+      return;
+    }
+    if (v.hurtT > 0) {
+      vkFrame(v, "vk-hurt", 0, Math.min(7, Math.floor((1 - v.hurtT / 0.55) * 8)));
+      return;
+    }
+    const row = vkDir(dx, dz);
+    if (v.atkPh < 0.8) {
+      v.atkPh += dt;
+      const f = Math.min(7, Math.floor((v.atkPh / 0.8) * 8));
+      if (f >= 4 && !v.hitDone) {
+        v.hitDone = true;
+        if (L < 1.25 && hero.dead <= 0 && !(hero.inv > 0)) {
+          const dmg = Math.round((7 + S.wave * 0.9) * lapDmg());
+          hero.hp -= dmg;
+          num(hero.pos, "-" + dmg, "hurt", 18);
+          sfx.hurt();
+          shake(0.18, 0.14);
+          kick(new THREE.Vector3(dx, 0, dz).normalize(), 0.14);
+          if (hero.hp <= 0) heroDown();
+        }
+      }
+      vkFrame(v, "vk-attack", row, f);
+      return;
+    }
+    v.atkT -= dt;
+    if (L < 1.05 && v.atkT <= 0) {
+      v.atkT = 1.6;
+      v.atkPh = 0;
+      v.hitDone = false;
+      vkFrame(v, "vk-attack", row, 0);
+      return;
+    }
+    if (L > 2.2 && hero.dead <= 0) {
+      const st = 1.1 * dt;
+      v.o.position.x += ((dx * WORLD_X) / L) * st / WORLD_X;
+      v.o.position.z += (dz / L) * st;
+      v.o.position.z = clamp(v.o.position.z, -ZW + 0.3, 1.9);
+      v.dist += st;
+      vkFrame(v, "vk-walk", row, Math.floor((v.dist / 0.9) * 8) % 8);
+    } else vkFrame(v, "vk-idle", row, Math.floor(v.t * 6) % 8);
+  }
+  function vkDown(v) {
+    if (v.phase === "down") return;
+    const K = S.vk;
+    onDefeat(v);
+    S.rescueCount++;
+    SAVE.rescued = S.rescueCount;
+    v.phase = "down";
+    v.t = 0;
+    v.hp = 0;
+    if (v.tag) {
+      v.tag.remove();
+      v.tag = null;
+    }
+    payNow(40);
+    sfx.ko();
+    shake(0.5, 0.4);
+    S.hitstop = Math.max(S.hitstop, 0.12);
+    banner("빌런왕 제압! 냄새가 걷혀요", 2);
+    say(v.o, pick(["내일은… 씻을게…", "으억… 내 냄새가…"]), 1600);
+    if (K) vkClear(K);
+  }
+  function vkClear(K) {
+    if (K.cleared) return;
+    K.cleared = true;
+    K.convQ = [];
+    // 남은 감염 승객은 정신을 차리고 떠남, 감염됐던 좌석 승객은 제자리로
+    for (const x of S.villains)
+      if (x.sp.infected && x.state === "chase") {
+        puff(x.o.position.x, x.o.position.z, 0.6);
+        removeActor(x);
+      }
+    for (const c of K.converted) {
+      c.civ.userData.hidden = false;
+      c.civ.visible = true;
+      if (!c.s.p) c.s.p = { civ: c.civ };
+    }
+    K.converted = [];
+    $("bossBar").hidden = true;
+    if (K.v.phase !== "down") {
+      // 100명을 다 제압하면 빌런왕도 기운이 빠져 쓰러짐
+      vkDown(K.v);
+    }
+  }
+  function vkUpdate(dt) {
+    if (S.vkPending > 0 && trainState === "away" && mode === "play") {
+      S.vkPending -= dt;
+      if (S.vkPending <= 0) {
+        S.vkPending = 0;
+        startVK();
+      }
+    }
+    const K = S.vk;
+    const el2 = $("stench");
+    const target = K && K.started && !K.cleared ? 1 : 0;
+    const g0 = K ? K.green : S.vkGreen || 0;
+    const g = g0 + (target - g0) * Math.min(1, dt * (target ? 0.55 : 0.9));
+    if (Math.abs(g - (S.vkGreenShown || 0)) > 0.01 || (g < 0.01 && S.vkGreenShown)) {
+      el2.style.opacity = g < 0.01 ? 0 : g.toFixed(2);
+      S.vkGreenShown = g < 0.01 ? 0 : g;
+    }
+    if (!K) {
+      S.vkGreen = g;
+      return;
+    }
+    K.green = g;
+    if (K.cleared) {
+      if (K.v.state === "gone" && g < 0.02) {
+        S.vk = null;
+        S.vkGreen = 0;
+      }
+      return;
+    }
+    if (!K.started) return;
+    K.convT -= dt;
+    if (K.convQ.length && K.convT <= 0) {
+      K.convT = 0.3;
+      const s0 = K.convQ.shift();
+      if (s0.p && s0.p.civ && !s0.p.civ.userData.hidden) {
+        const civ = s0.p.civ;
+        civ.userData.hidden = true;
+        civ.visible = false;
+        s0.p = null;
+        K.converted.push({ s: s0, civ });
+        const v = spawnInfected(civ.position.clone(), !!civ.userData.spec.long);
+        v.o.position.z = clamp(civ.position.z, -ZW + 0.4, 1.9);
+        burst(new THREE.Vector3(civ.position.x, 0.9, civ.position.z), 4, 0x9acd32);
+        say(v.o, pick(["으윽… 이 냄새…", "머리가…", "크아아"]), 1100);
+      }
+    }
+    K.spawnT -= dt;
+    const alive = S.villains.reduce((n, x) => n + (x.sp.infected && x.state === "chase" ? 1 : 0), 0);
+    if (K.spawnT <= 0 && !K.convQ.length && alive < VK_MAX_ALIVE && K.spawned < VK_TOTAL) {
+      K.spawnT = 0.55;
+      const ends = SAVE.zone2 ? [-13.4, CAR + 13.4] : [-13.4, 13.4];
+      const ex = pick(ends);
+      spawnInfected(new THREE.Vector3(ex, 0, rnd(-1.2, 1.2)), Math.random() < 0.45);
+    }
+    if (K.kills >= VK_TOTAL) vkClear(K);
+    if (Math.random() < dt * 2) vkBar();
   }
   function bossTick(dt) {
     const c = S.tele;
@@ -5459,6 +5845,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     last = performance.now();
     banner("출발! 문 닫힙니다", 1);
     spawnWave();
+    S.departs = (S.departs || 0) + 1;
+    if (!S.vk && !S.boss && (S.departs === 2 || (S.departs > 2 && (S.departs - 2) % 6 === 0))) S.vkPending = 5;
     pickEvent();
     newSegment();
   };
@@ -6564,7 +6952,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       for (const e of S.queue) pose(e.o, "idle", t);
     }
     for (const a of actors) {
-      a.visible = a.parent !== null && Math.abs(a.getWorldPosition(v3).x - camera.position.x) < 18;
+      a.visible = !a.userData.hidden && a.parent !== null && Math.abs(a.getWorldPosition(v3).x - camera.position.x) < 18;
       const art = a.userData.art;
       if (art && art.baseWidth) {
         let root = a;
