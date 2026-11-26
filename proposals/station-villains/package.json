@@ -1,0 +1,1 @@
+{"name":"metro-punk-station-villains","version":"1.0.0","private":true,"scripts":{"pack":"node scripts/pack.cjs","build":"node scripts/build-preview.cjs"},"devDependencies":{"@napi-rs/canvas":"0.1.80"}}

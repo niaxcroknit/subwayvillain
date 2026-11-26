@@ -328,6 +328,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
 <div id="coachOv" hidden><div id="coachRing"></div><div id="coachCard"><small id="coachStep">1/8</small><h3 id="coachTitle"></h3><p id="coachText"></p><div class="ovRow"><button class="ovBtn" id="coachSkip">건너뛰기</button><button class="ovBtn" id="coachPrev">이전</button><button class="ovBtn y" id="coachNext">다음 ▶</button></div></div></div>
 <div class="ov" id="dailyOv" hidden><h2>오늘 미션</h2><p class="sub" id="dailySub"></p><div class="dl" id="dailyList"></div><div class="ovRow"><button class="ovBtn" id="btnDailyClose">닫기</button></div></div>
 <div class="ov" id="mapOv" hidden><h2 id="mapTitle">2호선 순환 노선도</h2><p class="sub" id="mapSub"></p><canvas id="mapCv" width="1520" height="640"></canvas><div class="ovRow"><button class="ovBtn" id="btnMapClose">닫기</button><button class="ovBtn y" id="btnMapShop" hidden>편의점 가기 ▶</button></div></div>
+<div class="ov" id="pauseOv" hidden><h2>일시정지</h2><p class="sub">잠깐 쉬어가요</p><div class="ovRow"><button class="ovBtn" id="btnResume">계속하기</button><button class="ovBtn" id="btnPauseHome">처음 화면</button><button class="ovBtn" id="btnAppExit" hidden>앱 나가기</button></div></div>
 <div class="ov" id="dexOv" hidden><h2>빌런 도감</h2><p class="sub" id="dexSub"></p><div class="dexGrid" id="dexGrid"></div><div class="ovRow"><button class="ovBtn" id="btnDexClose">닫기</button></div></div>
 <div class="rotate" id="rotate"><div class="ph" aria-hidden="true"></div><p>폰을 가로로 돌려주세요</p><button id="btnSkip">그냥 세로로 볼게요</button></div>
 <div id="modelView" hidden style="position:fixed;inset:0;z-index:80;background:#cddbd3"><div style="position:absolute;left:24px;top:20px;color:#234237;font:900 18px var(--body)">2호선 승객들 <small style="display:block;font-size:11px;margin-top:6px">같은 3D 모델 · 드래그해서 회전</small></div><button id="closeModels" style="position:absolute;right:20px;top:20px;border:0;border-radius:20px;padding:10px 18px;background:#214b3b;color:white;font-weight:900;z-index:2">게임으로</button><canvas id="modelCanvas" style="width:100%;height:100%;touch-action:none"></canvas><div style="position:absolute;bottom:20px;width:100%;display:flex;justify-content:space-evenly;color:#234237;font:900 13px var(--body)"><span>최민준</span><span>이하린</span><span>위반 승객</span><span>어르신 · 보호</span></div></div><div id="err" hidden>3D를 불러오지 못했어요. 새로고침해 주세요.</div>
@@ -1350,7 +1351,9 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     "vk-attack": "__ASSET_vk-attack__",
     "vk-hurt": "__ASSET_vk-hurt__",
     "vk-defeat": "__ASSET_vk-defeat__",
-    "infected-attack": "__ASSET_infected-attack__"
+    "infected-attack": "__ASSET_infected-attack__",
+    "door-blocker": "__ASSET_door-blocker__",
+    "queue-cutter": "__ASSET_queue-cutter__"
   };
   const ART = {};
   for (const [key, url] of Object.entries(SPRITE_DATA)) {
@@ -1507,7 +1510,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     const gait = locomotionSample(g),
       walk = walkingArt(g);
     a.held = false;
-    if (spec.vk) {
+    if (spec.vk || spec.station) {
       applyHitReaction(g);
       a.kind = kind;
       return;
@@ -2685,6 +2688,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     return m;
   });
   function targetable(v) {
+    if (v?.station) return v.state === "station" && v.hp > 0 && (trainState === "dwell" || trainState === "open");
     if (v?.vk) return v.state === "vk" && v.phase !== "enter" && v.phase !== "down" && v.hp > 0 && !!S.vk?.weak;
     if (v?.sp?.backpack === "front") return false;
     if (v?.sp?.backpack === "back")
@@ -3995,6 +3999,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         vkTick(v, dt);
         continue;
       }
+      if (v.state === "station") {
+        stationTick(v, dt);
+        continue;
+      }
       v.o.position.addScaledVector(v.kb, dt);
       v.kb.multiplyScalar(Math.pow(0.004, dt));
       if (v.state === "sit") {
@@ -4394,9 +4402,19 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       trainT += dt;
       OUT.speed = Math.max(0, 1 - trainT / 2.2);
       if (trainT > 2.3) {
-        trainState = "open";
+        trainState = "dwell";
         trainT = 0;
         OUT.plat.visible = true;
+        startDwell();
+      }
+    } else if (trainState === "dwell") {
+      // 문 열림 · 승하차 시간: 문막이·새치기 탑승은 이때만(하차 승객은 보호)
+      trainT += dt;
+      doorOpen(Math.min(1, trainT / 0.4));
+      if (dwellTick(dt)) {
+        trainState = "open";
+        trainT = 0;
+        endDwell();
         arriveStation();
       }
     } else if (trainState === "open") {
@@ -4407,6 +4425,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         trainT = 0;
       }
     } else if (trainState === "out") {
+      if (trainT === 0) stationLeave();
       trainT += dt;
       doorOpen(Math.max(0, 1 - trainT / 0.4));
       if (trainT > 0.5) OUT.plat.visible = false;
@@ -4706,6 +4725,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     }
     for (const inc of S.incidents) add(inc.victim.tag, inc.victim.o, 1.7, 11, false);
     for (const e of S.elders) add(e.tag, e.o, 1.6, 10, false);
+    for (const a of S.alight) if (!a.done) add(a.tag, a.o, 1.65, 10, false);
     items.sort((a, b) => a.d - b.d);
     const placed = [];
     let words = 0;
@@ -4918,6 +4938,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       c: 0,
       rare: 1,
     },
+    { k: "doorblock", n: "문막이", d: "하차문 앞에 팔짱 끼고 버팀 · 역 정차 중에만", a: "door-blocker", r: 0, c: 3, cols: 8 },
+    { k: "cutter", n: "새치기 탑승", d: "내리기도 전에 어깨부터 밀고 탐 · 문 열렸을 때만", a: "queue-cutter", r: 1, c: 4, cols: 8 },
     { k: "vk", n: "빌런왕", d: "안 씻은 냄새로 멀쩡한 승객까지 빌런으로 만듦 · 한 방에 안 쓰러짐", a: "vk-idle", r: 0, c: 0, cols: 8, boss: 1 },
     { k: "infected", n: "냄새 감염 승객", d: "빌런왕 냄새에 정신을 잃고 달려듦 · 제압하면 정신 차림", a: "infected-attack", r: 0, c: 4, cols: 8 },
     { k: "manspread", n: "쩍벌남", d: "일반석 두 자리를 다리 벌려 혼자 차지", a: "spread", r: 0, c: 0 },
@@ -5212,6 +5234,223 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     shake(0.2, 0.3);
     for (let i = 0; i < (B.followers || 0); i++) spawnMinion(v.o.position);
   }
+  // ================= 역 정차 빌런: 문막이 · 새치기 탑승 (2026-11-26, 코덱스 원화 proposals/station-villains) =================
+  // 역에 서서 문이 열린 동안(dwell)만 등장·공격 가능. 내리는 일반 승객은 보호(초록 딱지)이고 문막이가 있으면 뒤에서 기다림
+  const ST_H = 2.45,
+    DWELL = 8;
+  S.alight = [];
+  function nearDoors() {
+    return W.doors.filter(d => SAVE.zone2 || d.x < CAR / 2).sort((a, b) => Math.abs(a.x - hero.pos.x) - Math.abs(b.x - hero.pos.x));
+  }
+  function spawnStation(kind, x, z) {
+    const female = kind === "cutter";
+    const sp = { skin: 0xf0c8a5, hair: female ? 0x5a2a1a : 0x161616, top: female ? 0x2f7a7a : 0x2a3450, pants: female ? 0x3a3a3e : 0xc9b48a, female, own: true, station: true, kind };
+    const o = person(sp);
+    o.position.set(x, 0, z);
+    scene.add(o);
+    const hp = 28 * (1 + (S.wave - 1) * 0.14) * lapHard() * (kind === "doorblock" ? 1.6 : 0.9);
+    const v = {
+      o,
+      sp,
+      hp,
+      max: hp,
+      state: "station",
+      station: true,
+      guilty: true,
+      seat: null,
+      t: 0,
+      dist: 0,
+      flash: 0,
+      kb: new THREE.Vector3(),
+      ehp: null,
+      atkT: 1.4,
+      tag: el("tag bad", kind === "doorblock" ? "위반 · 문막이" : "위반 · 새치기 탑승"),
+    };
+    S.villains.push(v);
+    return v;
+  }
+  function startDwell() {
+    S.dwell = { t: 0, any: false };
+    banner("문이 열립니다 · 내리는 분 먼저", 1.4);
+    if (S.vk) return;
+    const ds = nearDoors();
+    const n = S.stationCount = (S.stationCount || 0) + 1;
+    const wantBlock = n === 1 || Math.random() < 0.6,
+      wantCut = n === 2 || Math.random() < 0.55;
+    if (wantBlock && ds[0]) {
+      const d = ds[0];
+      const v = spawnStation("doorblock", d.x, -ZW + 1.0);
+      v.door = d;
+      say(v.o, pick(["난 여기서 안 움직여", "내릴 사람은 알아서 비켜 가", "문 앞이 제일 편해"]), 1500);
+      for (let i = 0; i < 2; i++) S.alight.push(alighter(d.x + (i ? 1.0 : -1.0), -ZW + 2.1 + i * 0.3, d));
+      S.dwell.any = true;
+      tip("doorblock", "문막이가 하차문을 막고 있어요! 때려서 내리는 승객 길을 터 주세요");
+    }
+    if (wantCut) {
+      const d = ds[1] || ds[0];
+      if (d) {
+        const v = spawnStation("cutter", d.x + 0.35, -ZW - 1.4);
+        v.door = d;
+        v.goal = new THREE.Vector3(d.x + rnd(-1.2, 1.2), 0, -ZW + rnd(1.4, 2.4));
+        say(v.o, pick(["잠깐만요, 먼저 탈게요!", "비켜요 비켜", "자리 맡아야 돼!"]), 1300);
+        if (!S.alight.some(a => a.door === d)) S.alight.push(alighter(d.x - 0.4, -ZW + 1.3, d));
+        S.dwell.any = true;
+        tip("cutter", "새치기 탑승! 내리는 사람보다 먼저 밀고 타요. 문이 열려 있을 때만 잡을 수 있어요");
+      }
+    }
+  }
+  function alighter(x, z, d) {
+    const female = Math.random() < 0.5;
+    const o = person({ skin: pick(SKIN), hair: 0x2a2420, top: pick([0x6596aa, 0xb47f4f, 0x6e927a]), pants: 0x3a4a6a, long: female, female });
+    o.position.set(x, 0, z);
+    scene.add(o);
+    return { o, door: d, tag: el("tag ok", "보호 · 내리는 승객"), wait: false, done: false };
+  }
+  function dwellTick(dt) {
+    const D = S.dwell;
+    if (!D) return true;
+    D.t += dt;
+    for (const a of S.alight) {
+      if (a.done) continue;
+      const blocker = S.villains.find(v => v.sp.kind === "doorblock" && v.state === "station" && v.door === a.door);
+      const tz = blocker ? -ZW + 1.65 : -ZW - 1.6;
+      const tx = blocker ? a.o.position.x : a.door.x;
+      if (blocker && Math.abs(a.o.position.z - tz) < 0.12) {
+        pose(a.o, "idle", t);
+        if (!a.wait) {
+          a.wait = true;
+          say(a.o, pick(["좀 내릴게요!", "저기요, 내려야 돼요", "문 좀…"]), 1300);
+        }
+        continue;
+      }
+      steer(a.o, tx, tz, 2.2, dt);
+      pose(a.o, "walk", t);
+      if (!blocker && a.o.position.z < -ZW - 1.3) {
+        a.done = true;
+        removeActor(a);
+      }
+    }
+    const busy = S.villains.some(v => v.station && v.state === "station") || S.alight.some(a => !a.done);
+    return D.t > (D.any ? DWELL : 2.2) || (D.any && D.t > 2.5 && !busy);
+  }
+  function endDwell() {
+    for (const a of S.alight) if (!a.done) removeActor(a);
+    S.alight = [];
+    S.dwell = null;
+  }
+  function stationLeave() {
+    // 문이 닫히면 남은 정차 빌런은 객차에 섞여 사라짐(주행 중엔 대상 아님)
+    for (const v of S.villains)
+      if (v.station && v.state === "station") {
+        puff(v.o.position.x, v.o.position.z, 0.5);
+        removeActor(v);
+      }
+  }
+  function stationTick(v, dt) {
+    v.t += dt;
+    const dx = hero.pos.x - v.o.position.x,
+      dz = hero.pos.z - v.o.position.z,
+      L = Math.hypot(dx * WORLD_X, dz);
+    if (v.sp.kind === "doorblock") {
+      // 팔짱 끼고 버티기(정면), 주인공이 옆에 오면 그쪽으로 고개
+      const row = L < 2.2 ? vkDir(dx, dz) : 0;
+      vkFrame(v, "door-blocker", row, Math.floor(v.t * 6) % 8, ST_H);
+    } else {
+      const g = v.goal,
+        tx = g.x - v.o.position.x,
+        tz = g.z - v.o.position.z,
+        d = Math.hypot(tx * WORLD_X, tz);
+      if (d > 0.1) {
+        const st = Math.min(d, 2.1 * dt);
+        v.o.position.x += (tx / d) * st;
+        v.o.position.z += (tz / d) * st;
+        v.dist += st;
+        vkFrame(v, "queue-cutter", vkDir(tx, tz), Math.floor((v.dist / 1.1) * 8) % 8, ST_H);
+      } else vkFrame(v, "queue-cutter", L < 2.2 ? vkDir(dx, dz) : 0, 0, ST_H);
+    }
+    // 가까이 오면 어깨로 툭 밀침(약한 피해)
+    v.atkT -= dt;
+    if (L < 0.95 && v.atkT <= 0 && hero.dead <= 0 && !(hero.inv > 0)) {
+      v.atkT = 1.6;
+      const dmg = Math.round((4 + S.wave * 0.6) * lapDmg());
+      hero.hp -= dmg;
+      num(hero.pos, "-" + dmg, "hurt", 16);
+      sfx.hurt();
+      kick(new THREE.Vector3(dx, 0, dz).normalize(), 0.1);
+      if (hero.hp <= 0) heroDown();
+    }
+  }
+
+  // ================= 일시정지(안드로이드 뒤로가기 · 앱 전환) =================
+  function openPause() {
+    if (mode !== "play") return false;
+    mode = "pause";
+    joy.on = false;
+    joy.dx = joy.dy = 0;
+    $("btnAppExit").hidden = !window.MetroApp;
+    $("pauseOv").hidden = false;
+    persist();
+    return true;
+  }
+  function closePause() {
+    if (mode !== "pause") return;
+    $("pauseOv").hidden = true;
+    mode = "play";
+    last = performance.now();
+  }
+  $("btnResume").onclick = closePause;
+  $("btnPauseHome").onclick = () => {
+    $("pauseOv").hidden = true;
+    mode = "play";
+    showSelection();
+  };
+  $("btnAppExit").onclick = () => {
+    persist();
+    try {
+      window.MetroApp && window.MetroApp.exit();
+    } catch (e) {}
+  };
+  // 안드로이드 앱(MainActivity)이 뒤로가기 때 부름. "exit"이면 앱 종료
+  window.metroBack = () => {
+    if (mode === "pause") {
+      closePause();
+      return "ok";
+    }
+    if (mode === "play") return openPause() ? "ok" : "exit";
+    if (mode === "shop") return "ok";
+    persist();
+    return "exit";
+  };
+
+  // ================= 배경음악: 코드로 만든 짧은 반복곡(외부 음원 없음), 「소리」 설정을 따름 =================
+  const BGM = { next: 0, step: 0 };
+  const SONGS = {
+    ride: { bpm: 92, bass: [45, 45, 52, 52, 43, 43, 50, 50], chord: [[57, 60, 64], [55, 59, 62], [53, 57, 60], [52, 55, 59]], bv: 0.045 },
+    vk: { bpm: 128, bass: [40, 40, 47, 40, 41, 40, 46, 45], chord: [[52, 55, 58], [52, 55, 58], [51, 54, 58], [50, 53, 57]], bv: 0.055, stab: true },
+  };
+  const midi = n => 440 * Math.pow(2, (n - 69) / 12);
+  function bgmTick() {
+    if (!AC || document.hidden || !(SND[SAVE.snd] > 0) || (mode !== "play" && mode !== "shop")) {
+      BGM.next = 0;
+      return;
+    }
+    const song = SONGS[S.vk && S.vk.started && !S.vk.cleared ? "vk" : "ride"],
+      e8 = 60 / song.bpm / 2,
+      now = AC.currentTime;
+    if (BGM.next < now) BGM.next = now + 0.05;
+    while (BGM.next < now + 0.3) {
+      const st = BGM.step++,
+        at = BGM.next - now,
+        e = st % 8,
+        bar = Math.floor(st / 8) % 4;
+      tone(midi(song.bass[e]), e8 * 0.85, "triangle", song.bv, at);
+      if (e === 0 || e === 4) for (const n of song.chord[bar]) tone(midi(n), e8 * 3.4, "sine", 0.011, at);
+      if (e % 2 === 1) tone(6200, 0.018, "square", 0.0035, at);
+      if (song.stab && (e === 3 || e === 6)) tone(midi(song.chord[bar][2] + 12), 0.09, "sawtooth", 0.012, at);
+      BGM.next += e8;
+    }
+  }
+
   // ================= 빌런왕 (2026-11-25, 코덱스 원화 proposals/villain-king) =================
   // 입장 → 팔 벌려 냄새 방출 → 화면 전체 초록빛 → 객차 승객이 차례로 감염 → 옆 칸에서도 감염 승객이 몰려옴
   // 동시 최대 12명. 감염 승객 100명을 다 제압하기 전까지 빌런왕은 공격이 안 통함(무적), 100명을 채우면 지쳐서 한 대에 쓰러짐
@@ -5230,7 +5469,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     for (const m of v.o.userData.mats) m.dispose();
     v.state = "gone";
   }
-  function vkFrame(v, key, row, frame) {
+  function vkFrame(v, key, row, frame, H = VK_H) {
     const a = v.o.userData.art,
       tex = ART[key];
     if (a.sprite.material.map !== tex) {
@@ -5243,8 +5482,8 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     a.mirrored = false;
     a.sprite.center.set(0.5, 8 / 160);
     v.o.rotation.y = 0;
-    a.sprite.scale.set((VK_H * 1.6) / WORLD_X, VK_H, 1);
-    a.baseWidth = VK_H * 1.6;
+    a.sprite.scale.set((H * 1.6) / WORLD_X, H, 1);
+    a.baseWidth = H * 1.6;
     a.sprite.position.set(0, 0.025, 0);
     a.sprite.material.rotation = 0;
     applyHitReaction(v.o);
@@ -5297,6 +5536,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     $("bossBar").hidden = false;
     vkBar();
     banner("빌런왕 등장! 냄새 조심", 1.6);
+    tip("vk", "빌런왕은 무적이에요! 냄새에 감염된 승객 100명을 먼저 제압하면 지쳐서 한 대에 쓰러져요");
     say(o, pick(["흐흐… 다들 내 냄새 맡아봐", "씻는 건 사치야", "이 칸은 이제 내 거야"]), 1600);
     shake(0.2, 0.3);
     return v;
@@ -6040,7 +6280,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   };
   $("btnHelp").onclick = () => openCoach();
   const COACH = [
-    { t: "메트로펑크에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 성희롱범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
+    { t: "메트로펑크에 온 걸 환영해요", d: "객차 안 진상을 제압하는 게임이에요. 빨간 딱지가 붙은 사람만 때릴 수 있어요: 노약자석·임산부석을 차지한 젊은 사람, 다리 벌려 두 자리를 차지한 쩍벌남, 하차문을 막는 문막이, 내리기 전에 밀고 타는 새치기, 성희롱범·시비꾼, 백팩을 뒤로 멘 사람. 일반석에서 폰 보거나 이어폰 낀 건 괜찮아요. 초록 딱지(어르신·임산부·피해 승객·백팩을 앞으로 멘 사람)는 지켜야 할 승객이에요." },
     { t: "이동과 공격", d: "화면 아무 데나 대고 드래그하면 움직여요(PC는 WASD). 빨간 딱지 진상 옆에 서면 자동으로 때려요.", el: "center" },
     { t: "한방", d: "때리고 제압할수록 게이지가 차요. 다 차서 빛나면 눌러서 주변 진상을 한꺼번에 날려요(PC는 E).", el: ["btnUlt"] },
     { t: "대시", d: "잠깐 무적이 되며 빠르게 튀어나가요. 덤비는 진상을 피하거나, 도망가는 몰카범을 잡을 때 써요(PC는 스페이스).", el: ["btnDash"] },
@@ -6953,7 +7193,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
         ts = 0.3;
       }
       update(dt * ts);
-    } else if (mode === "shop") {
+    } else if (mode === "shop" || mode === "pause") {
     } else {
       const a = t * 0.15;
       camera.position.set(-0.6 + Math.sin(a) * 0.8, 11.8, 8.6);
@@ -6974,6 +7214,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       }
     }
     if (hero.o.userData.P.mop) hero.o.userData.P.mop.visible = false;
+    bgmTick();
     updateUmbrellaFan();
     renderer.render(scene, camera);
     requestAnimationFrame(loop);
@@ -7127,7 +7368,10 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
   });
   document.addEventListener("visibilitychange", () => {
     last = performance.now();
-    if (document.hidden) persist();
+    if (document.hidden) {
+      persist();
+      openPause();
+    }
   });
   $("chooseMale").onclick = () => chooseCharacter("male");
   $("chooseFemale").onclick = () => chooseCharacter("female");

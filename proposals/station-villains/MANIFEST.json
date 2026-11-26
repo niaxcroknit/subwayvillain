@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "size": 86683,
+      "sha256": "200529476b87d4ea6758074149f83c84329eb89ae11f8ad1c187470242962e0d",
+      "path": "characters.png"
+    },
+    {
+      "size": 243,
+      "sha256": "6f38f00e3c6ed3aebc43c939051293ec1512a2cd628f16aecdb47269d1a72fc9",
+      "path": "CLAUDE-MESSAGE.txt"
+    },
+    {
+      "size": 21746,
+      "sha256": "9585136032829cd33ba7ceff13f90b951741b1ca93e91264934237f1a3ee0645",
+      "path": "FRAME-SAFETY.json"
+    },
+    {
+      "size": 825,
+      "sha256": "3dce90f31d1e18a2948498db7322cd53e409d4e16912dcd57698ced66f72780c",
+      "path": "IMAGE-PROMPTS.txt"
+    },
+    {
+      "size": 1262178,
+      "sha256": "554631ffa825aa654e50a841a8d7d3d15567062dbf326319ebb80b05712c8183",
+      "path": "index.html"
+    },
+    {
+      "size": 204,
+      "sha256": "1c4d1755db2f28370dafb0d4e1a317e27afe2a5de1265c88cab6732aae4d8949",
+      "path": "package.json"
+    },
+    {
+      "size": 121689,
+      "sha256": "c69c75fe5221a0b6aa821614003a8be9b7ea277f6f51cd4c6bc17dc5e70e8c21",
+      "path": "sequence-preview.png"
+    },
+    {
+      "size": 1840,
+      "sha256": "ee2b1a99dae828b2565c9f0c8e7170ad3f049acb787dda721d415e8b583df759",
+      "path": "START-HERE.md"
+    },
+    {
+      "size": 52901,
+      "sha256": "62e4011c7d01b26a522a69207f5060a112220182cc9f9758f7e12be48b89f378",
+      "path": "station-scene.png"
+    },
+    {
+      "size": 340875,
+      "sha256": "668c424c92fa53b652019f16f71f3c5ada1eb57c2a405ea43309ef6889de6b09",
+      "path": "assets/atlas/door-blocker.png"
+    },
+    {
+      "size": 335311,
+      "sha256": "1a45c22ae1bcd9cb495089e84d1529a60fb9c8844343b74a43d0a881cb9122bd",
+      "path": "assets/atlas/queue-cutter.png"
+    },
+    {
+      "size": 136556,
+      "sha256": "56228edfe7e7d4e2b3c8808bdd803a0a6740602c04a89b5df91e9a10406472c6",
+      "path": "assets/atlas-webp/door-blocker.webp"
+    },
+    {
+      "size": 139434,
+      "sha256": "ef3754f0e7a6e2a73538a9a900c8db40f652456ff5606eb92f8cd8e01381a717",
+      "path": "assets/atlas-webp/queue-cutter.webp"
+    },
+    {
+      "size": 1224810,
+      "sha256": "68e43e70b868eb4b81e155e355a755772408e274a19d58605bc683fd0d0595d7",
+      "path": "assets/original/door-blocker.png"
+    },
+    {
+      "size": 2497794,
+      "sha256": "124d6ea23379920add3b1a7417204b5ea3f713d90edf9f80076cfee7e283017f",
+      "path": "assets/original/queue-cutter.png"
+    },
+    {
+      "size": 665927,
+      "sha256": "faef5aa0ebfdfe75d6d22c473e61bbaa2b118584d477653464a4f08ee82c6002",
+      "path": "assets/scene/dir-civilians.png"
+    },
+    {
+      "size": 7367,
+      "sha256": "72b0ccb1199eeb3fd90f648efedb2e3a0dc085c83714630192b936e6ee2821d9",
+      "path": "scripts/build-preview.cjs"
+    },
+    {
+      "size": 3813,
+      "sha256": "3c3a97b1fc071801e34004c62effb08f3157b39f9436885f6421bb0e536ba30f",
+      "path": "scripts/pack.cjs"
+    }
+  ]
+}

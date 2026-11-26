@@ -1,0 +1,4 @@
+Built-in image_gen, transparent_background=true. Reference: existing dir-civilians.png.
+Shared: mobile game stylized3D civilian proportions, uniform8columns×4rows, front/right/back/left separately drawn,8 coherent behavior keyframes each row, consistent identity/scale/baseline, fullbody transparent margins, no text/background/weapons.
+Door-blocker: stocky adult male, short sidepart black hair, navy puffer vest, ochre sweatshirt, beige chinos, dark sneakers; planted feet, arms crossing, stubborn torso expansion and glance over shoulder, refuses to move.
+Queue-cutter: adult female short auburn bob, teal cropped jacket over ivory shirt, charcoal trousers, white sneakers, orange front crossbody bag; impatient lean, retract shoulder, tuck elbow, shoulder-first shove, forceful step, rear foot follows, recover, ready.

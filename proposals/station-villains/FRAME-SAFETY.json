@@ -1,0 +1,1246 @@
+{
+  "cell": {
+    "width": 256,
+    "height": 160,
+    "footY": 152
+  },
+  "directions": [
+    "front",
+    "right",
+    "back",
+    "left"
+  ],
+  "sharedFit": 1,
+  "frames": [
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 98,
+        "minY": 47,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 62,
+        "y0": 43,
+        "x1": 161,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 98,
+        "minY": 47,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 284,
+        "y0": 43,
+        "x1": 383,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 103,
+        "minY": 47,
+        "maxX": 155,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 512,
+        "y0": 42,
+        "x1": 597,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 101,
+        "minY": 46,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 731,
+        "y0": 41,
+        "x1": 821,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 99,
+        "minY": 44,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 947,
+        "y0": 38,
+        "x1": 1044,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 94,
+        "minY": 43,
+        "maxX": 158,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1167,
+        "y0": 37,
+        "x1": 1272,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 98,
+        "minY": 44,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1394,
+        "y0": 39,
+        "x1": 1488,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 100,
+        "minY": 46,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1618,
+        "y0": 42,
+        "x1": 1710,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 111,
+        "minY": 45,
+        "maxX": 149,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 82,
+        "y0": 262,
+        "x1": 142,
+        "y1": 432
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 110,
+        "minY": 45,
+        "maxX": 158,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 304,
+        "y0": 262,
+        "x1": 381,
+        "y1": 432
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 112,
+        "minY": 44,
+        "maxX": 152,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 528,
+        "y0": 261,
+        "x1": 593,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 112,
+        "minY": 44,
+        "maxX": 153,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 749,
+        "y0": 261,
+        "x1": 814,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 111,
+        "minY": 42,
+        "maxX": 155,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 969,
+        "y0": 258,
+        "x1": 1038,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 111,
+        "minY": 42,
+        "maxX": 154,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1192,
+        "y0": 258,
+        "x1": 1260,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 112,
+        "minY": 43,
+        "maxX": 153,
+        "maxY": 149
+      },
+      "margin": 10,
+      "source": {
+        "x0": 1417,
+        "y0": 259,
+        "x1": 1482,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 112,
+        "minY": 43,
+        "maxX": 153,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1638,
+        "y0": 259,
+        "x1": 1703,
+        "y1": 433
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 97,
+        "minY": 44,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 61,
+        "y0": 483,
+        "x1": 161,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 98,
+        "minY": 45,
+        "maxX": 159,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 284,
+        "y0": 483,
+        "x1": 383,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 102,
+        "minY": 45,
+        "maxX": 153,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 511,
+        "y0": 483,
+        "x1": 595,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 100,
+        "minY": 45,
+        "maxX": 156,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 730,
+        "y0": 483,
+        "x1": 821,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 99,
+        "minY": 42,
+        "maxX": 158,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 951,
+        "y0": 479,
+        "x1": 1047,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 96,
+        "minY": 41,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1169,
+        "y0": 478,
+        "x1": 1272,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 100,
+        "minY": 44,
+        "maxX": 160,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1396,
+        "y0": 482,
+        "x1": 1492,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 100,
+        "minY": 44,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1619,
+        "y0": 483,
+        "x1": 1710,
+        "y1": 654
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 108,
+        "minY": 46,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 80,
+        "y0": 706,
+        "x1": 138,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 97,
+        "minY": 46,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 282,
+        "y0": 706,
+        "x1": 360,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 103,
+        "minY": 46,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 514,
+        "y0": 706,
+        "x1": 581,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 103,
+        "minY": 45,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 735,
+        "y0": 705,
+        "x1": 802,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 101,
+        "minY": 44,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 954,
+        "y0": 703,
+        "x1": 1025,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 101,
+        "minY": 43,
+        "maxX": 149,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1178,
+        "y0": 702,
+        "x1": 1255,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 103,
+        "minY": 45,
+        "maxX": 144,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1402,
+        "y0": 705,
+        "x1": 1469,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "door-blocker",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 103,
+        "minY": 45,
+        "maxX": 144,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1625,
+        "y0": 705,
+        "x1": 1691,
+        "y1": 875
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 0,
+      "bounds": {
+        "minX": 100,
+        "minY": 45,
+        "maxX": 146,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 83,
+        "y0": 33,
+        "x1": 159,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 1,
+      "bounds": {
+        "minX": 97,
+        "minY": 45,
+        "maxX": 146,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 301,
+        "y0": 33,
+        "x1": 382,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 2,
+      "bounds": {
+        "minX": 98,
+        "minY": 46,
+        "maxX": 146,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 525,
+        "y0": 35,
+        "x1": 604,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 3,
+      "bounds": {
+        "minX": 93,
+        "minY": 47,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 740,
+        "y0": 37,
+        "x1": 827,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 4,
+      "bounds": {
+        "minX": 95,
+        "minY": 50,
+        "maxX": 146,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 968,
+        "y0": 41,
+        "x1": 1052,
+        "y1": 210
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 5,
+      "bounds": {
+        "minX": 99,
+        "minY": 48,
+        "maxX": 146,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1194,
+        "y0": 39,
+        "x1": 1271,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 6,
+      "bounds": {
+        "minX": 99,
+        "minY": 45,
+        "maxX": 148,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1411,
+        "y0": 34,
+        "x1": 1491,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 0,
+      "frame": 7,
+      "bounds": {
+        "minX": 101,
+        "minY": 45,
+        "maxX": 149,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1636,
+        "y0": 33,
+        "x1": 1716,
+        "y1": 211
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 0,
+      "bounds": {
+        "minX": 97,
+        "minY": 45,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 76,
+        "y0": 254,
+        "x1": 156,
+        "y1": 431
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 1,
+      "bounds": {
+        "minX": 99,
+        "minY": 45,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 302,
+        "y0": 254,
+        "x1": 378,
+        "y1": 431
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 2,
+      "bounds": {
+        "minX": 97,
+        "minY": 46,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 520,
+        "y0": 255,
+        "x1": 600,
+        "y1": 431
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 3,
+      "bounds": {
+        "minX": 95,
+        "minY": 47,
+        "maxX": 146,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 742,
+        "y0": 256,
+        "x1": 826,
+        "y1": 430
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 4,
+      "bounds": {
+        "minX": 77,
+        "minY": 51,
+        "maxX": 147,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 931,
+        "y0": 260,
+        "x1": 1049,
+        "y1": 428
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 5,
+      "bounds": {
+        "minX": 88,
+        "minY": 50,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1171,
+        "y0": 259,
+        "x1": 1265,
+        "y1": 429
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 6,
+      "bounds": {
+        "minX": 100,
+        "minY": 46,
+        "maxX": 145,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1413,
+        "y0": 254,
+        "x1": 1487,
+        "y1": 430
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 1,
+      "frame": 7,
+      "bounds": {
+        "minX": 99,
+        "minY": 46,
+        "maxX": 144,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1635,
+        "y0": 254,
+        "x1": 1710,
+        "y1": 430
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 0,
+      "bounds": {
+        "minX": 110,
+        "minY": 45,
+        "maxX": 156,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 85,
+        "y0": 475,
+        "x1": 161,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 1,
+      "bounds": {
+        "minX": 110,
+        "minY": 44,
+        "maxX": 158,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 306,
+        "y0": 474,
+        "x1": 386,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 2,
+      "bounds": {
+        "minX": 108,
+        "minY": 45,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 524,
+        "y0": 475,
+        "x1": 605,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 3,
+      "bounds": {
+        "minX": 110,
+        "minY": 45,
+        "maxX": 162,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 748,
+        "y0": 476,
+        "x1": 833,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 4,
+      "bounds": {
+        "minX": 110,
+        "minY": 50,
+        "maxX": 164,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 964,
+        "y0": 485,
+        "x1": 1053,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 5,
+      "bounds": {
+        "minX": 110,
+        "minY": 48,
+        "maxX": 160,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1187,
+        "y0": 481,
+        "x1": 1269,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 6,
+      "bounds": {
+        "minX": 109,
+        "minY": 45,
+        "maxX": 157,
+        "maxY": 151
+      },
+      "margin": 8,
+      "source": {
+        "x0": 1412,
+        "y0": 475,
+        "x1": 1491,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 2,
+      "frame": 7,
+      "bounds": {
+        "minX": 109,
+        "minY": 45,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1632,
+        "y0": 475,
+        "x1": 1712,
+        "y1": 653
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 0,
+      "bounds": {
+        "minX": 110,
+        "minY": 45,
+        "maxX": 162,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 80,
+        "y0": 696,
+        "x1": 166,
+        "y1": 874
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 1,
+      "bounds": {
+        "minX": 111,
+        "minY": 45,
+        "maxX": 162,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 302,
+        "y0": 697,
+        "x1": 388,
+        "y1": 874
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 2,
+      "bounds": {
+        "minX": 109,
+        "minY": 47,
+        "maxX": 167,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 521,
+        "y0": 699,
+        "x1": 616,
+        "y1": 873
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 3,
+      "bounds": {
+        "minX": 110,
+        "minY": 48,
+        "maxX": 164,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 738,
+        "y0": 701,
+        "x1": 829,
+        "y1": 873
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 4,
+      "bounds": {
+        "minX": 109,
+        "minY": 51,
+        "maxX": 182,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 955,
+        "y0": 705,
+        "x1": 1079,
+        "y1": 872
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 5,
+      "bounds": {
+        "minX": 110,
+        "minY": 50,
+        "maxX": 173,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1180,
+        "y0": 704,
+        "x1": 1285,
+        "y1": 873
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 6,
+      "bounds": {
+        "minX": 110,
+        "minY": 46,
+        "maxX": 162,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1405,
+        "y0": 699,
+        "x1": 1491,
+        "y1": 874
+      },
+      "crossedCell": false
+    },
+    {
+      "key": "queue-cutter",
+      "row": 3,
+      "frame": 7,
+      "bounds": {
+        "minX": 110,
+        "minY": 47,
+        "maxX": 157,
+        "maxY": 150
+      },
+      "margin": 9,
+      "source": {
+        "x0": 1629,
+        "y0": 699,
+        "x1": 1708,
+        "y1": 873
+      },
+      "crossedCell": false
+    }
+  ],
+  "motions": [
+    {
+      "key": "door-blocker",
+      "frames": 8,
+      "rows": 4,
+      "scale": 1.2203389830508475
+    },
+    {
+      "key": "queue-cutter",
+      "frames": 8,
+      "rows": 4,
+      "scale": 1.1675675675675676
+    }
+  ]
+}
