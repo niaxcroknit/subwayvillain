@@ -5573,7 +5573,7 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
       kb: new THREE.Vector3(),
       tag: el("tag bad", "냄새 감염"),
       ehp: null,
-      spd: rnd(2.0, 2.6),
+      spd: rnd(4.0, 4.8), // 사용자: "100명 찾아다니느라 일이야" → 빠르게 몰려옴(주인공 6.3보다는 느림)
       reach: 0.8,
     };
     S.villains.push(v);
@@ -5769,10 +5769,14 @@ body{overflow:hidden;background:#8fd0ff;color:var(--ink);font-family:var(--body)
     K.spawnT -= dt;
     const alive = S.villains.reduce((n, x) => n + (x.sp.infected && x.state === "chase" ? 1 : 0), 0);
     if (K.spawnT <= 0 && !K.convQ.length && alive < VK_MAX_ALIVE && K.spawned < VK_TOTAL) {
-      K.spawnT = 0.55;
-      const ends = SAVE.zone2 ? [-13.4, CAR + 13.4] : [-13.4, 13.4];
-      const ex = pick(ends);
-      spawnInfected(new THREE.Vector3(ex, 0, rnd(-1.2, 1.2)), Math.random() < 0.45);
+      K.spawnT = 0.35;
+      // 주인공 가까운 곳(가까운 하차문 2곳·가까운 객차 끝)에서 들어와 바로 달려듦
+      const ends = (SAVE.zone2 ? [-13.4, CAR + 13.4] : [-13.4, 13.4]).filter(x => Math.abs(x - hero.pos.x) < 9);
+      const pts = nearDoors()
+        .slice(0, 2)
+        .map(d => new THREE.Vector3(d.x + rnd(-0.3, 0.3), 0, -ZW - 0.7))
+        .concat(ends.map(x => new THREE.Vector3(x, 0, rnd(-1.2, 1.2))));
+      spawnInfected(pick(pts), Math.random() < 0.45);
     }
     if (K.kills >= VK_TOTAL && !K.weak) {
       K.weak = true;

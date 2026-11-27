@@ -1,6 +1,6 @@
 {
   "name": "line2-clash",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "private": true,
   "description": "2호선 격돌 — v6.8 시스템 + 무기 네 방향 공격·보행",
   "scripts": {
